@@ -27,6 +27,11 @@ public class DStarTerms {
 			}
 		}
 	}
+	public double getD4Suspiciousnes() {
+		//TODO:
+		//	Ausnahmefälle mit Nenner = 0 berücksichtigen --> Wie?
+		return (Math.pow(n_cf, 4) / (n_uf + n_cs));
+	}
 	public int getN_cf() {
 		return n_cf;
 	}
