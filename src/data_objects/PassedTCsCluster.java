@@ -8,6 +8,10 @@ public class PassedTCsCluster {
 	public final List<TestCase> passedTCs;
 	private DStarTerms[] methodDStarTerms;
 	
+	public DStarTerms[] getMethodDStarTerms() {
+		return methodDStarTerms;
+	}
+
 	public PassedTCsCluster(List<TestCase> passedTCs) {
 		this.passedTCs = passedTCs;
 		initDStarTerms();

@@ -9,13 +9,16 @@ import data_objects.TestCase;
 public class ClusteringManager {
 	private List<TestCase> testCases;
 	private PassedTCsCluster passedTCsCluster;
-	public ClusteringManager(List<TestCase> testCases) {
+	private ClusteringStrategy clStrategy;
+	public ClusteringManager(List<TestCase> testCases, ClusteringStrategy clStrategy) {
 		this.testCases = testCases;
+		this.clStrategy = clStrategy;
 		initPassedTCsCluster();
 	}
 	
 	public void runClustering() {
 		System.out.println("Initialized Passed TC Cluster with " + passedTCsCluster.passedTCs.size() + " test cases.");
+		clStrategy.performClustering(testCases, passedTCsCluster);
 		printResults();
 		return;
 	}

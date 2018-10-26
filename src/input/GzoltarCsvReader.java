@@ -14,8 +14,8 @@ import com.opencsv.CSVReaderBuilder;
 import data_objects.TestCase;
 
 public class GzoltarCsvReader {
-	public static String TESTS_FILE_PATH = "C:\\study\\SWDiag\\sharedFolder_UbuntuVM\\MA\\gzoltars\\Lang\\testSmall\\tests";
-	public static String MATRIX_FILE_PATH = "C:\\study\\SWDiag\\sharedFolder_UbuntuVM\\MA\\gzoltars\\Lang\\testSmall\\matrix";
+	public static String TESTS_FILE_PATH = "C:\\study\\SWDiag\\sharedFolder_UbuntuVM\\MA\\gzoltars\\Tests\\testMedium\\tests";
+	public static String MATRIX_FILE_PATH = "C:\\study\\SWDiag\\sharedFolder_UbuntuVM\\MA\\gzoltars\\Tests\\testMedium\\matrix";
 	
 	public static List<TestCase> importTestCases() throws IOException{
 		List<TestCase> testCases = new ArrayList<TestCase>();
