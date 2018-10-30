@@ -13,6 +13,7 @@ public class AgglomerativeHierarchicalClustering implements ClusteringStrategy{
 		List<TestCase> failedTCs = getFailedTCs(testCases);
 		List<Cluster> clusters = initFailedTCsClusters(failedTCs, passedTCsCluster);
 		//TODO: go on here
+		// nochmal [4] prüfen wie genau geclustered wird
 		//			compare SuspSet O(n^2)
 		//			pro Step: 2 ähnlichsten mergen
 		//			update für das neue cluster
