@@ -18,38 +18,42 @@ public class Cluster {
 	/**	(sorted) list of methodIDs which are most suspicious **/
 	private Set<Integer> suspiciousSet;
 	private List<TestCase> failedTCs;
-	private List<TestCase> newFailedTCs;
 	/**	values for Ncf, Nuf, Ncs for each method **/
 	private DStarTerms[] methodDStarTerms;
 	
-	public Cluster(List<TestCase> newFailedTCs, DStarTerms[] passedMethodDStarTerms) {
-		failedTCs = new ArrayList<TestCase>();
-		this.newFailedTCs = newFailedTCs;
+	public Cluster(List<TestCase> failedTCs, DStarTerms[] passedMethodDStarTerms) {
+		this.failedTCs = failedTCs;
 		initMethodDStarTerms(passedMethodDStarTerms);
-		updateSupsiciousSet(newFailedTCs);
+		updateSupsiciousSet(failedTCs);
 	}
-	public void initMethodDStarTerms(DStarTerms[] passedMethodDStarTerms) {
+	private void initMethodDStarTerms(DStarTerms[] passedMethodDStarTerms) {
 		methodDStarTerms = new DStarTerms[Main.methodsCount];
 		for (int i = 0; i < Main.methodsCount; i++) {
 			methodDStarTerms[i] = passedMethodDStarTerms[i].clone();
 		}
 	}
 	
-	public void updateSupsiciousSet(List<TestCase> newFailedTCs) {
+	private void updateSupsiciousSet(List<TestCase> newFailedTCs) {
 		if (newFailedTCs == null || newFailedTCs.size() == 0) {
-			System.err.println("New Failed TCs are null or empty. No reason to update the sups Set.");
+			System.err.println("New Failed TCs are null or empty. No reason to update the susp Set.");
 			return;
 		}
 		Map<Integer, Double> methodDStarSusp = new HashMap<Integer, Double>();
 		for (int i = 0; i < Main.methodsCount; i++) {
+			//TODO: updateTermValues soll boolean zurückgeben, welcher signalisiert ob sich ein Wert geändert hat
+			//		methodDStarSusp speichern und nur neu berechnen, falls sich ein TermValue geändert hat.
 			methodDStarTerms[i].updateTermValues(newFailedTCs);
-			methodDStarSusp.put(i, methodDStarTerms[i].getD4Suspiciousnes());
+			methodDStarSusp.put(i, methodDStarTerms[i].getD4Suspiciousness());
 		}
 		suspiciousSet = retrieveMostSuspiciousSet(methodDStarSusp);
 		return;
 	}
-
-	public Set<Integer> retrieveMostSuspiciousSet(Map<Integer, Double> methodDStarSusp) {
+	/**
+	 * Sorts the methodDStarSusp Map and returns only the "most suspicious" elements, defined by the threshold.
+	 * @param methodDStarSusp
+	 * @return
+	 */
+	private Set<Integer> retrieveMostSuspiciousSet(Map<Integer, Double> methodDStarSusp) {
 		Map<Integer, Double> sortedMethodDStarSusp = SortingUtils.getSortedMapByValuesDescending(methodDStarSusp);
 		Set<Integer> mostSusp = new LinkedHashSet<>();
 		int lastSuspEntry = (int) (sortedMethodDStarSusp.size() * Main.MOST_SUSP_THRESHOLD);
@@ -62,8 +66,7 @@ public class Cluster {
 		}
 		return mostSusp;
 	}
-	public void merge(Cluster c2) {
-		// failing TCs von c2 in c1 newFailing schreiben
-		//	updateSuspiciousnesSet
+	public Set<Integer> getSuspiciousSet() {
+		return suspiciousSet;
 	}
 }

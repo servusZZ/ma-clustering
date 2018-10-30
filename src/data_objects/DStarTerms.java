@@ -29,7 +29,7 @@ public class DStarTerms {
 			}
 		}
 	}
-	public double getD4Suspiciousnes() {
+	public double getD4Suspiciousness() {
 		if ((n_uf + n_cs) == 0) {
 			System.out.println("INFO: Denominator in D* formula is null for method " + methodID + ". Return max value instead.");
 			return Main.MAX_SUSP_VALUE;
