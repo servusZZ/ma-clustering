@@ -8,6 +8,8 @@ public class DStarTerms {
 	private int n_cf = 0;
 	private int n_uf = 0;
 	private int n_cs = 0;
+	/** used only for logging	*/
+	private String consideredTCs = "";
 
 	private final Integer methodID;
 	
@@ -16,6 +18,7 @@ public class DStarTerms {
 	}
 	public void updateTermValues(List<TestCase> testCases) {
 		for (TestCase tc : testCases) {
+			consideredTCs += tc.name + ", ";
 			if (tc.coveredMethods.contains(methodID)) {
 				if (tc.passed) {
 					n_cs++;
@@ -28,15 +31,16 @@ public class DStarTerms {
 				}
 			}
 		}
+		consideredTCs += "--";
 	}
 	public double getD4Suspiciousness() {
 		if ((n_uf + n_cs) == 0) {
-			System.out.println("INFO: Denominator in D* formula is null for method " + methodID + ". Return max value instead.");
+			System.out.println("INFO: Denominator in D* formula is null for method " + methodID + ". Return max value instead. Considered Test Cases: " + consideredTCs);
 			return Main.MAX_SUSP_VALUE;
 		}
 		double susp = Math.pow(n_cf, 4) / (n_uf + n_cs);
 		if (susp > Main.MAX_SUSP_VALUE) {
-			System.out.println("WARNING: Maximum susp. value was exceeded by a normal susp value of " + susp);
+			System.out.println("WARNING: Maximum susp. value was exceeded by a normal susp value of " + susp + ". Considered Test Cases: " + consideredTCs);
 		}
 		return susp;
 	}

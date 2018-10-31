@@ -1,17 +1,17 @@
 package clustering;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.SortedMap;
-
 import data_objects.DStarTerms;
 import data_objects.TestCase;
+import evaluation.RepresentativeSelectionStrategy;
+import hac.experiment.custom.CustomDissimilarityMeasure;
 import main.Main;
+import utils.PrintUtils;
 import utils.SortingUtils;
 
 public class Cluster {
@@ -20,6 +20,8 @@ public class Cluster {
 	private List<TestCase> failedTCs;
 	/**	values for Ncf, Nuf, Ncs for each method **/
 	private DStarTerms[] methodDStarTerms;
+	/**	D* suspiciousness value for each method	 **/
+	Map<Integer, Double> methodDStarSusp = new HashMap<Integer, Double>();
 	
 	public Cluster(List<TestCase> failedTCs, DStarTerms[] passedMethodDStarTerms) {
 		this.failedTCs = failedTCs;
@@ -32,13 +34,43 @@ public class Cluster {
 			methodDStarTerms[i] = passedMethodDStarTerms[i].clone();
 		}
 	}
-	
+	public void dump() {
+		System.out.println("Cluster  " + toString());
+		System.out.println("    D4 Values       [" + PrintUtils.printMapValuesOrdered(methodDStarSusp) + "]");
+		System.out.println("    Suspicious Set  " + suspiciousSet.toString());
+	}
+	/**
+	 * Returns the name of the Cluster as concatenation of the contained Failures.
+	 */
+	@Override
+	public String toString() {
+		return ("[" + PrintUtils.printTestCasesList(failedTCs) + "]");
+	}
+	/**
+	 * Computes the representative of the Cluster. Depends on a representative selection strategy and
+	 * the distance computation of two Test Cases.
+	 * @return
+	 */
+	public TestCase getRepresentative(RepresentativeSelectionStrategy strat, CustomDissimilarityMeasure dis) {
+		return strat.selectRepresentative(this, dis);
+	}
+	/**
+	 * Computes the center of the Cluster, given some Distance metric.
+	 * returns the 'coordinates' (i.e. the method coverage array) of the center.
+	 * Center = The point for which the sum to all points in the cluster is minimal
+	 */
+	public double[] getCenter(CustomDissimilarityMeasure dis) {
+		return dis.computeCenter(failedTCs);
+	}
+	/**
+	 * calculates the suspicious set.
+	 * @param newFailedTCs
+	 */
 	private void updateSupsiciousSet(List<TestCase> newFailedTCs) {
 		if (newFailedTCs == null || newFailedTCs.size() == 0) {
 			System.err.println("New Failed TCs are null or empty. No reason to update the susp Set.");
 			return;
 		}
-		Map<Integer, Double> methodDStarSusp = new HashMap<Integer, Double>();
 		for (int i = 0; i < Main.methodsCount; i++) {
 			//TODO: updateTermValues soll boolean zurückgeben, welcher signalisiert ob sich ein Wert geändert hat
 			//		methodDStarSusp speichern und nur neu berechnen, falls sich ein TermValue geändert hat.
@@ -68,5 +100,8 @@ public class Cluster {
 	}
 	public Set<Integer> getSuspiciousSet() {
 		return suspiciousSet;
+	}
+	public List<TestCase> getFailedTCs() {
+		return failedTCs;
 	}
 }

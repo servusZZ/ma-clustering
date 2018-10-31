@@ -24,13 +24,4 @@ public class DendrogramHelper {
 		getObservations(n.getLeft(), observations);
 		getObservations(n.getRight(), observations);
 	}
-	/**
-	 * Builds a cluster for each node and computes the similarity of both.
-	 * 		True,  iff similarity > Threshold
-	 * 		False, iff similarity <= Threshold
-	 */
-	public static boolean clustersAreSimilar(DendrogramNode n1, DendrogramNode n2) {
-		
-		return false;
-	}
 }

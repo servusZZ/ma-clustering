@@ -12,10 +12,11 @@ import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 
 import data_objects.TestCase;
+import main.Main;
 
 public class GzoltarCsvReader {
-	public static String TESTS_FILE_PATH = "C:\\study\\SWDiag\\sharedFolder_UbuntuVM\\MA\\gzoltars\\Tests\\testMedium\\tests";
-	public static String MATRIX_FILE_PATH = "C:\\study\\SWDiag\\sharedFolder_UbuntuVM\\MA\\gzoltars\\Tests\\testMedium\\matrix";
+	public static String TESTS_FILE_PATH = Main.BASE_DIR + Main.PROJECT_DIR + "tests";
+	public static String MATRIX_FILE_PATH = Main.BASE_DIR + Main.PROJECT_DIR + "matrix";
 	
 	public static List<TestCase> importTestCases() throws IOException{
 		List<TestCase> testCases = new ArrayList<TestCase>();
@@ -28,24 +29,27 @@ public class GzoltarCsvReader {
 		
 		String[] nextTestEntry;
 		List<Boolean[]> coverageMatrix = getCoverageMatrix(matrixReader.readAll());
-		Iterator iter = coverageMatrix.iterator();
+		Iterator<Boolean[]> iter = coverageMatrix.iterator();
 		while(iter.hasNext()) {
 			nextTestEntry = testsReader.readNext();
-			String testCaseName = nextTestEntry[0];
-			String testCaseResult = nextTestEntry[1];
 			if (nextTestEntry[1].equals("FAIL")) {
-				testCases.add(new TestCase(nextTestEntry[0], false, (Boolean[])iter.next()));
+				testCases.add(new TestCase(nextTestEntry[0], false, iter.next()));
 			} else {
-				testCases.add(new TestCase(nextTestEntry[0], true, (Boolean[])iter.next()));
+				testCases.add(new TestCase(nextTestEntry[0], true, iter.next()));
 			}
 		}
 		return testCases;
 	}
 	private static List<Boolean[]> getCoverageMatrix(List<String[]> coverageEntries){
 		List<Boolean[]> coverageMatrix = new ArrayList<Boolean[]>();
+		boolean first = true;
 		for (String[] coverageEntry : coverageEntries) {
-			Boolean[] booleanEntry = new Boolean[coverageEntry.length];
-			for (int i = 0; i < coverageEntry.length; i++) {
+			if (first) {
+				Main.methodsCount = coverageEntry.length;
+				first = false;
+			}
+			Boolean[] booleanEntry = new Boolean[Main.methodsCount];
+			for (int i = 0; i < Main.methodsCount; i++) {
 				if (coverageEntry[i].equals("1")) {
 					booleanEntry[i] = true;
 				} else {

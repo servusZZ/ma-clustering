@@ -9,13 +9,22 @@ import ch.usi.inf.sape.hac.dendrogram.ObservationNode;
 import data_objects.PassedTCsCluster;
 import data_objects.TestCase;
 import hac.experiment.custom.DendrogramHelper;
-
+import main.Main;
+import utils.MetricUtils;
+/**
+ * Builds the Clusters based on a Dendrogram (root node). Uses fault localization ranks, i.e. the 
+ * suspicious set to determine the cutting point of the failure tree.
+ * Merging of clusters stops as soon as two child clusters are not similar anymore
+ *
+ */
 public class ClusterBuilder {
 	private DendrogramNode root;
 	private PassedTCsCluster passedTCsCluster;
+	private TestCase[] failures;
 	
-	public ClusterBuilder(DendrogramNode root, List<TestCase> passedTCs) {
+	public ClusterBuilder(DendrogramNode root, List<TestCase> passedTCs, TestCase[] failures) {
 		this.root = root;
+		this.failures = failures;
 		this.passedTCsCluster = new PassedTCsCluster(passedTCs);
 	}
 	public List<Cluster> getClustersOfCuttingLevel(){
@@ -23,15 +32,61 @@ public class ClusterBuilder {
 		List<DendrogramNode> queue = new ArrayList<DendrogramNode>();
 		DendrogramNode tmpNode = root;
 		
-		boolean childsNotSimilar = DendrogramHelper.clustersAreSimilar(tmpNode.getLeft(), tmpNode.getRight());
-		while(childsNotSimilar) {
+		while(!clustersAreSimilar(tmpNode.getLeft(), tmpNode.getRight())) {
 			insertNodeIntoQueue(queue, tmpNode.getLeft());
 			insertNodeIntoQueue(queue, tmpNode.getRight());
-			//TODO GO ON HERE
-			// clustersAreSimilar implementieren + algorithmus überdenken ob das so passt
+			tmpNode = queue.remove(0);
+			
+			if (tmpNode instanceof ObservationNode) {
+				// all clusters are splitted into atomic test cases (failures)
+				break;
+			}
 		}
 		
+		// if node is ObservationNode --> build all TC Cluster
+		// if node is MergeNode and child1, child2 are similar --> build cluster for tmpNode but not for childs
+		queue.add(tmpNode);
+		resultClusters = getClustersByDendrogramNodes(queue);
 		return resultClusters;
+	}
+	/**
+	 * 
+	 * 
+	 */
+	private List<Cluster> getClustersByDendrogramNodes(List<DendrogramNode> nodes){
+		List<Cluster> clusters = new ArrayList<Cluster>();
+		for (DendrogramNode node: nodes) {
+			clusters.add(getClusterByDendrogramNode(node));
+		}
+		return clusters;
+	}
+	/**
+	 * Builds a cluster for each node and computes the similarity of both.
+	 * 		True,  iff similarity > Threshold
+	 * 		False, iff similarity <= Threshold
+	 */
+	private boolean clustersAreSimilar(DendrogramNode n1, DendrogramNode n2) {
+		Cluster clusterN1 = getClusterByDendrogramNode(n1);
+		Cluster clusterN2 = getClusterByDendrogramNode(n2);
+		clusterN1.dump();
+		clusterN2.dump();
+		double similarity = MetricUtils.jaccardSetSimilarity(clusterN1.getSuspiciousSet(), clusterN2.getSuspiciousSet());
+		System.out.println("The clusters have a similarity value of " + similarity);
+		if(similarity > Main.SIMILARITY_THRESHOLD) {
+			return true;
+		}
+		return false;
+	}
+	private Cluster getClusterByDendrogramNode(DendrogramNode n) {
+		List<TestCase> failingTCsN = getFailingTestCasesByIndex(DendrogramHelper.getObservations(n));
+		return new Cluster(failingTCsN, passedTCsCluster.getMethodDStarTerms());
+	}
+	private List<TestCase> getFailingTestCasesByIndex(List<Integer> tcIndexes){
+		List<TestCase> failingTCs = new ArrayList<TestCase>();
+		for (int tcIndex: tcIndexes) {
+			failingTCs.add(failures[tcIndex]);
+		}
+		return failingTCs;
 	}
 	/**
 	 * Inserts the node at the right position in the queue. The start of the queue contains MergeNodes sorted by Dissimilarity.
@@ -42,6 +97,7 @@ public class ClusterBuilder {
 	private void insertNodeIntoQueue(List<DendrogramNode> queue, DendrogramNode n) {
 		if(queue.isEmpty() || (n instanceof ObservationNode)) {
 			queue.add(n);
+			return;
 		}
 		int position = 0;
 		MergeNode mergeNode = (MergeNode)n;

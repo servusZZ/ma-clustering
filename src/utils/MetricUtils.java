@@ -8,6 +8,6 @@ public class MetricUtils {
 		Set<Integer> intersection = s1.stream()
 			    .filter(s2::contains)
 			    .collect(Collectors.toSet());
-		return(intersection.size()/(s1.size() + s2.size() - intersection.size()));
+		return((double)intersection.size()/(s1.size() + s2.size() - intersection.size()));
 	}
 }
