@@ -14,6 +14,7 @@ import ch.usi.inf.sape.hac.experiment.DissimilarityMeasure;
 import ch.usi.inf.sape.hac.experiment.Experiment;
 import clustering.Cluster;
 import clustering.ClusterBuilder;
+import clustering.Refinement;
 import data_objects.Fault;
 import data_objects.TestCase;
 import evaluation.EvaluationManager;
@@ -26,11 +27,18 @@ import input.GzoltarCsvReader;
 
 public class Main {
 	public static final double MOST_SUSP_THRESHOLD = 0.2;
-	public static final double SIMILARITY_THRESHOLD = 0.85;
+	public static final int MOST_SUSP_MAX_COUNT = 15;
+	public static final double SIMILARITY_THRESHOLD = 0.65;
+	//TODO:
+	//	sinnvolle Berechnung für MOST_SUSP_SET überlegen
+	//	nur Werte aufnehmen, welche nicht 0.0 sind?
+	//		dann muss ich berücksichtigen, wenn 2 sets unterschiedliche Größe haben
+	//	MOST_SUSP_MAX_COUNT verwenden?
+	//		
 	public static final double MAX_SUSP_VALUE = 1000000000;
 	
 	public static final String BASE_DIR = "C:\\study\\SWDiag\\sharedFolder_UbuntuVM\\MA\\";
-	public static final String PROJECT_DIR = "gzoltars\\Lang\\37\\";
+	public static final String PROJECT_DIR = "gzoltars\\Tests\\testMedium\\";
 	
 	public static int testsCount = 0;
 	public static int methodsCount = 0;
@@ -50,9 +58,10 @@ public class Main {
 		List<TestCase> failedTCsList = new ArrayList<TestCase>();
 		List<TestCase> passedTCs = new ArrayList<TestCase>();
 		splitTestCases(testCases, failedTCsList, passedTCs);
-		TestCase[] failures = new TestCase[failedTCsList.size()];
+		failuresCount = failedTCsList.size();
+		TestCase[] failures = new TestCase[failuresCount];
 		failedTCsList.toArray(failures);
-		System.out.println(failures.length + " of them are Failures.");
+		System.out.println(failuresCount + " of them are Failures.");
 		Set<Fault> faults = FaultFailureMappingReader.importFaults();
 		FaultFailureMappingReader.addFaultsToFailures(failedTCsList, faults);
 		System.out.println("Imported " + faults.size() + " underlying faults.");
@@ -70,7 +79,14 @@ public class Main {
 		
 		System.out.println("Determine cutting point of the Failure Tree...");
 		ClusterBuilder cb = new ClusterBuilder(dendrogram.getRoot(), passedTCs, failures);
+		System.out.println("DEBUG: Created ClusterBuilder and passedTCs");
 		List<Cluster> clusters = cb.getClustersOfCuttingLevel();
+		System.out.println("Cutting level of the Failure Tree contains " + clusters.size() + " clusters.");
+		dumpClusters(clusters);
+		Refinement refinement = new Refinement(cb.getPassedTCsCluster());
+		clusters = refinement.refineClusters(clusters);
+		System.out.println("Number of refined clusters: " + clusters.size());
+		
 		System.out.println("Created " + clusters.size() + " clusters");
 		dumpClusters(clusters);
 		
@@ -78,8 +94,8 @@ public class Main {
 		EvaluationManager em = new EvaluationManager((CustomDissimilarityMeasure)dissimilarityMeasure, new KNNToCenterSelection(), clusters, faults);
 		em.evaluateClustering();
 		// TODO:
-		//		Prüfen, warum in faults_components.csv mapping nur .lang. statt .lang3. angegeben ist?
-		//		check if evaluation works, check log
+		//		check if evaluation works, check log, seems ok
+		//			Idee MOST_SUSP_THRESHOLD: Im allg. nur Methoden in SuspSet aufnehemn, welche susp. > 0 haben?
 		//		provide more metrics
 		//		prepare more gzoltar projects
 	}

@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import data_objects.DStarTerms;
+import data_objects.Fault;
 import data_objects.TestCase;
 import evaluation.RepresentativeSelectionStrategy;
 import hac.experiment.custom.CustomDissimilarityMeasure;
@@ -20,6 +21,10 @@ public class Cluster {
 	private List<TestCase> failedTCs;
 	/**	values for Ncf, Nuf, Ncs for each method **/
 	private DStarTerms[] methodDStarTerms;
+	/**	the representative TC of the cluster, stores the result of the last call of computeRepresentative()*/
+	private TestCase representative;
+	/**	the fault that has the majority in the cluster	*/
+	private Fault majorFault;
 	/**	D* suspiciousness value for each method	 **/
 	Map<Integer, Double> methodDStarSusp = new HashMap<Integer, Double>();
 	
@@ -27,6 +32,7 @@ public class Cluster {
 		this.failedTCs = failedTCs;
 		initMethodDStarTerms(passedMethodDStarTerms);
 		updateSupsiciousSet(failedTCs);
+		computeMajorFault();
 	}
 	private void initMethodDStarTerms(DStarTerms[] passedMethodDStarTerms) {
 		methodDStarTerms = new DStarTerms[Main.methodsCount];
@@ -51,8 +57,9 @@ public class Cluster {
 	 * the distance computation of two Test Cases.
 	 * @return
 	 */
-	public TestCase getRepresentative(RepresentativeSelectionStrategy strat, CustomDissimilarityMeasure dis) {
-		return strat.selectRepresentative(this, dis);
+	public TestCase computeRepresentative(RepresentativeSelectionStrategy strat, CustomDissimilarityMeasure dis) {
+		representative = strat.selectRepresentative(this, dis);
+		return representative;
 	}
 	/**
 	 * Computes the center of the Cluster, given some Distance metric.
@@ -92,16 +99,46 @@ public class Cluster {
 		if(lastSuspEntry < 1) {
 			lastSuspEntry = 1;
 		}
+		else if(lastSuspEntry > Main.MOST_SUSP_MAX_COUNT) {
+			lastSuspEntry = Main.MOST_SUSP_MAX_COUNT;
+		}
 		Iterator<Integer> it = sortedMethodDStarSusp.keySet().iterator();
 		for (int i = 0; i < lastSuspEntry; i++) {
 			mostSusp.add(it.next());
 		}
 		return mostSusp;
 	}
+	private void computeMajorFault() {
+		int max = -1;
+		Map<Fault, Integer> faultCounts = new HashMap<Fault, Integer>();
+		for (TestCase tc: failedTCs) {
+			faultCounts.put(tc.getFault(), (faultCounts.getOrDefault(tc.getFault(), 0) + 1));
+		}
+		for (Map.Entry<Fault, Integer> entry: faultCounts.entrySet()) {
+			if (max < entry.getValue()) {
+				majorFault = entry.getKey();
+			}
+		}
+	}
 	public Set<Integer> getSuspiciousSet() {
 		return suspiciousSet;
 	}
 	public List<TestCase> getFailedTCs() {
 		return failedTCs;
+	}
+	public TestCase getRepresentative() {
+		return representative;
+	}
+	public Fault getMajorFault() {
+		return majorFault;
+	}
+	public int correctlyAssignedTCs() {
+		int correctlyAssignedCount = 0;
+		for (TestCase tc: failedTCs) {
+			if (tc.getFault() == majorFault) {
+				correctlyAssignedCount++;
+			}
+		}
+		return correctlyAssignedCount;
 	}
 }

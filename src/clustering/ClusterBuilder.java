@@ -20,6 +20,7 @@ import utils.MetricUtils;
 public class ClusterBuilder {
 	private DendrogramNode root;
 	private PassedTCsCluster passedTCsCluster;
+
 	private TestCase[] failures;
 	
 	public ClusterBuilder(DendrogramNode root, List<TestCase> passedTCs, TestCase[] failures) {
@@ -27,6 +28,7 @@ public class ClusterBuilder {
 		this.failures = failures;
 		this.passedTCsCluster = new PassedTCsCluster(passedTCs);
 	}
+
 	public List<Cluster> getClustersOfCuttingLevel(){
 		List<Cluster> resultClusters = new ArrayList<Cluster>();
 		List<DendrogramNode> queue = new ArrayList<DendrogramNode>();
@@ -49,16 +51,27 @@ public class ClusterBuilder {
 		resultClusters = getClustersByDendrogramNodes(queue);
 		return resultClusters;
 	}
-	/**
-	 * 
-	 * 
-	 */
 	private List<Cluster> getClustersByDendrogramNodes(List<DendrogramNode> nodes){
 		List<Cluster> clusters = new ArrayList<Cluster>();
 		for (DendrogramNode node: nodes) {
 			clusters.add(getClusterByDendrogramNode(node));
 		}
 		return clusters;
+	}
+	/**
+	 * Compares two clusters.
+	 * 		True,  iff similarity > Threshold
+	 * 		False, iff similarity <= Threshold
+	 */
+	private boolean clustersAreSimilar(Cluster c1, Cluster c2) {
+		c1.dump();
+		c2.dump();
+		double similarity = MetricUtils.jaccardSetSimilarity(c1.getSuspiciousSet(), c2.getSuspiciousSet());
+		System.out.println("The clusters have a similarity value of " + similarity);
+		if(similarity > Main.SIMILARITY_THRESHOLD) {
+			return true;
+		}
+		return false;
 	}
 	/**
 	 * Builds a cluster for each node and computes the similarity of both.
@@ -68,14 +81,7 @@ public class ClusterBuilder {
 	private boolean clustersAreSimilar(DendrogramNode n1, DendrogramNode n2) {
 		Cluster clusterN1 = getClusterByDendrogramNode(n1);
 		Cluster clusterN2 = getClusterByDendrogramNode(n2);
-		clusterN1.dump();
-		clusterN2.dump();
-		double similarity = MetricUtils.jaccardSetSimilarity(clusterN1.getSuspiciousSet(), clusterN2.getSuspiciousSet());
-		System.out.println("The clusters have a similarity value of " + similarity);
-		if(similarity > Main.SIMILARITY_THRESHOLD) {
-			return true;
-		}
-		return false;
+		return clustersAreSimilar(clusterN1, clusterN2);
 	}
 	private Cluster getClusterByDendrogramNode(DendrogramNode n) {
 		List<TestCase> failingTCsN = getFailingTestCasesByIndex(DendrogramHelper.getObservations(n));
@@ -115,5 +121,8 @@ public class ClusterBuilder {
 		}
 		// mergeNode has the greatest dissimilarity value and is inserted as last element
 		queue.add(mergeNode);
+	}
+	public PassedTCsCluster getPassedTCsCluster() {
+		return passedTCsCluster;
 	}
 }
