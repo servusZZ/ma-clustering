@@ -28,7 +28,7 @@ import input.GzoltarCsvReader;
 public class Main {
 	public static final double MOST_SUSP_THRESHOLD = 0.2;
 	public static final int MOST_SUSP_MAX_COUNT = 15;
-	public static final double SIMILARITY_THRESHOLD = 0.65;
+	public static final double SIMILARITY_THRESHOLD = 0.85;
 	//TODO:
 	//	sinnvolle Berechnung für MOST_SUSP_SET überlegen
 	//	nur Werte aufnehmen, welche nicht 0.0 sind?
@@ -38,7 +38,7 @@ public class Main {
 	public static final double MAX_SUSP_VALUE = 1000000000;
 	
 	public static final String BASE_DIR = "C:\\study\\SWDiag\\sharedFolder_UbuntuVM\\MA\\";
-	public static final String PROJECT_DIR = "gzoltars\\Tests\\testMedium\\";
+	public static final String PROJECT_DIR = "gzoltars\\Lang\\37\\";
 	
 	public static int testsCount = 0;
 	public static int methodsCount = 0;

@@ -1,6 +1,8 @@
 package clustering;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -23,8 +25,8 @@ public class Cluster {
 	private DStarTerms[] methodDStarTerms;
 	/**	the representative TC of the cluster, stores the result of the last call of computeRepresentative()*/
 	private TestCase representative;
-	/**	the fault that has the majority in the cluster	*/
-	private Fault majorFault;
+	/**	the faults that have the majority in the cluster */
+	private Set<Fault> majorFaults;
 	/**	D* suspiciousness value for each method	 **/
 	Map<Integer, Double> methodDStarSusp = new HashMap<Integer, Double>();
 	
@@ -109,14 +111,16 @@ public class Cluster {
 		return mostSusp;
 	}
 	private void computeMajorFault() {
+		majorFaults = new HashSet<Fault>();
 		int max = -1;
 		Map<Fault, Integer> faultCounts = new HashMap<Fault, Integer>();
 		for (TestCase tc: failedTCs) {
 			faultCounts.put(tc.getFault(), (faultCounts.getOrDefault(tc.getFault(), 0) + 1));
+			max = Math.max(faultCounts.get(tc.getFault()), max);
 		}
 		for (Map.Entry<Fault, Integer> entry: faultCounts.entrySet()) {
-			if (max < entry.getValue()) {
-				majorFault = entry.getKey();
+			if (entry.getValue() == max) {
+				majorFaults.add(entry.getKey());
 			}
 		}
 	}
@@ -129,16 +133,44 @@ public class Cluster {
 	public TestCase getRepresentative() {
 		return representative;
 	}
+	/**	call hasMajorFault before calling this method to ensure
+	 *  that the result is valid.
+	 */
 	public Fault getMajorFault() {
-		return majorFault;
+		Iterator<Fault> iter = majorFaults.iterator();
+		return iter.next();
+	}
+	public Set<Fault> getMajorFaults() {
+		return majorFaults;
+	}
+	/**
+	 * Returns true, iff the cluster has exaclty one major fault
+	 * and false,	 iff the cluster has multiple major faults.
+	 */
+	public boolean hasMajorFault() {
+		if (majorFaults.size() == 1) {
+			return true;
+		}
+		return false;
 	}
 	public int correctlyAssignedTCs() {
 		int correctlyAssignedCount = 0;
 		for (TestCase tc: failedTCs) {
-			if (tc.getFault() == majorFault) {
+			if (tc.getFault() == getMajorFault()) {
 				correctlyAssignedCount++;
 			}
 		}
 		return correctlyAssignedCount;
+	}
+	/**
+	 * Returns an array that holds the number of failures per fault.
+	 * The array has the passed order. 
+	 */
+	public int[] getFailuresPerFaultCount(Map<Fault, Integer> faultToIndexMapping) {
+		int[] failuresPerFaultCount = new int[faultToIndexMapping.size()];
+		for (TestCase failure: failedTCs) {
+			failuresPerFaultCount[faultToIndexMapping.get(failure.getFault())] += 1;
+		}
+		return failuresPerFaultCount;
 	}
 }
