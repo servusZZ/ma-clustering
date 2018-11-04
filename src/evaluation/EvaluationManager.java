@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import clustering.Cluster;
 import data_objects.Fault;
@@ -35,8 +34,11 @@ public class EvaluationManager {
 		} else {
 			System.out.println("Representative selection failed!");
 		}
-		System.out.println("Purity of Clusters: " + purity());
-		f1Measure();
+		System.out.println("Purity of Clusters:       " + purity());
+		Map<Fault, Integer> faultToIndexMapping = getFaultToIndexMapping();
+		int[][] failuresPerFaultPerCluster = getFailuresPerFaultPerCluster(faultToIndexMapping);
+		f1Measure(failuresPerFaultPerCluster, faultToIndexMapping);
+		totalDeviationEntropy(failuresPerFaultPerCluster, faultToIndexMapping);
 		if (allFaultsRevealed) {
 			evaluateReduction();
 		}
@@ -72,9 +74,11 @@ public class EvaluationManager {
 		System.out.println("Fault Revealing is successful. All Faults are revealed by at least one representative.");
 		return true;
 	}
+	/**
+	 * Check whether all representatives reveal the major fault in their cluster.
+	 * If multiple major faults exists, on of them has to be revealed.
+	 */
 	private boolean evaluateRepresentativeSelection() {
-		//TODO: Fall prüfen, dass >1 Faults am häufigsten vorkommen
-		//		dann wären alle Faults mit den häufigsten Vorkommnissen als Repräsentativen ok
 		boolean evaluationSuccessful = true;
 		for (Cluster c: clusters) {
 			if (!c.getMajorFaults().contains(c.getRepresentative().getFault())) {
@@ -88,22 +92,15 @@ public class EvaluationManager {
 		double reduction = (1 - ((double)clusters.size() / Main.failuresCount)) * 100;
 		double idealReduction = (1 - ((double)faults.size() / Main.failuresCount)) * 100;
 		double achievedReduction = (reduction / idealReduction) * 100;
-		System.out.println("Reduction: " + reduction + "%");
-		System.out.println("ARed:      " + achievedReduction + "%");
+		System.out.println("Reduction:                " + String.format("%.4g%n", reduction) + "%");
+		System.out.println("ARed:                     " + String.format("%.4g%n", achievedReduction) + "%");
 	}
 	/**
 	 * precision = TP / (TP + FP)
 	 * recall = TP / (TP + FN)
 	 * F1-Score = 2 * (precision x recall)/(precision + recall)	
 	 */
-	private void f1Measure() {
-		Map<Fault, Integer> faultToIndexMapping = getFaultToIndexMapping();
-		int[][] failuresPerFaultPerCluster = new int[clusters.size()][];
-		int i = 0;
-		for (Cluster c: clusters) {
-			failuresPerFaultPerCluster[i] = c.getFailuresPerFaultCount(faultToIndexMapping);
-			i++;
-		}
+	private void f1Measure(int[][] failuresPerFaultPerCluster, Map<Fault, Integer> faultToIndexMapping) {
 		int[] terms = calculateTPandFP(failuresPerFaultPerCluster, faultToIndexMapping);
 		int TP = terms[0];
 		int FP = terms[1];
@@ -111,9 +108,39 @@ public class EvaluationManager {
 		double precision = (double) TP / (TP + FP);
 		double recall = (double) TP / (TP + FN);
 		double F1 = 2.0 * ((precision * recall) / (precision + recall));
-		System.out.println("Precision:  " + precision);
-		System.out.println("Recall:     " + recall);
-		System.out.println("F1-Score:   " + F1);
+		System.out.println("Precision:                " + precision);
+		System.out.println("Recall:                   " + recall);
+		System.out.println("F1-Score:                 " + F1);
+	}
+	/**
+	 * Computes the deviation entropy (entropy of the underlying faults).
+	 * The cluster entropy is generally speaking more important than fault entropy and 
+	 * measured by the purity (1 is the best value).
+	 */
+	private void totalDeviationEntropy(int[][] failuresPerFaultPerCluster, Map<Fault, Integer> faultToIndexMapping) {
+		double totalDeviationEntropy = 0.0;
+		for (Map.Entry<Fault, Integer> faultToIndex:faultToIndexMapping.entrySet()) {
+			double deviationEntropyPerFault = deviationEntropyPerFault(failuresPerFaultPerCluster, faultToIndex.getValue());
+			System.out.println("   Deviation Entropy of " + faultToIndex.getKey().name + " is " + deviationEntropyPerFault);
+			totalDeviationEntropy -= deviationEntropyPerFault;
+		}
+		System.out.println("Total Deviation Entropy:  " + totalDeviationEntropy);
+	}
+	private double deviationEntropyPerFault(int[][] failuresPerFaultPerCluster, int faultIndex) {
+		int sumOfFailures = 0;
+		double deviationEntropy = 0.0;
+		for (int i = 0; i < failuresPerFaultPerCluster.length; i++) {
+			sumOfFailures += failuresPerFaultPerCluster[i][faultIndex];
+		}
+		for (int i = 0; i < failuresPerFaultPerCluster.length; i++) {
+			if (failuresPerFaultPerCluster[i][faultIndex] == 0) {
+				// assumption: 0log(0) = 0
+				continue;
+			}
+			 deviationEntropy -= ((double)failuresPerFaultPerCluster[i][faultIndex] / (double)sumOfFailures) * 
+					Math.log(((double)failuresPerFaultPerCluster[i][faultIndex] / (double)sumOfFailures));
+		}
+		return deviationEntropy;
 	}
 	/**
 	 * FN = 2 Failures with same faults assigned to different clusters
@@ -147,6 +174,15 @@ public class EvaluationManager {
 			}
 		}
 		return terms;
+	}
+	private int[][] getFailuresPerFaultPerCluster(Map<Fault, Integer> faultToIndexMapping){
+		int[][] failuresPerFaultPerCluster = new int[clusters.size()][];
+		int i = 0;
+		for (Cluster c: clusters) {
+			failuresPerFaultPerCluster[i] = c.getFailuresPerFaultCount(faultToIndexMapping);
+			i++;
+		}
+		return failuresPerFaultPerCluster;
 	}
 	private Map<Fault, Integer> getFaultToIndexMapping(){
 		Map<Fault, Integer> faultToIndexMapping = new HashMap<Fault, Integer>();

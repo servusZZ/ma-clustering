@@ -46,6 +46,7 @@ public class Cluster {
 		System.out.println("Cluster  " + toString());
 		System.out.println("    D4 Values       [" + PrintUtils.printMapValuesOrdered(methodDStarSusp) + "]");
 		System.out.println("    Suspicious Set  " + suspiciousSet.toString());
+		System.out.println("    Major Fault(s)  " + majorFaults.toString());
 	}
 	/**
 	 * Returns the name of the Cluster as concatenation of the contained Failures.

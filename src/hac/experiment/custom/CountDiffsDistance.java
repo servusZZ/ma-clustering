@@ -10,6 +10,8 @@ import main.Main;
 
 public class CountDiffsDistance implements DissimilarityMeasure, CustomDissimilarityMeasure {
 
+	//TODO: Evtl Jaccard-Koeffizient stattdessen nehmen
+	//			überlegen wie es sich bei Sets unterschiedlicher Größe verhält
 	@Override
 	public double computeDissimilarity(Experiment experiment, int observation1, int observation2) {
 		TestCase tc1 = (TestCase) experiment.getObservation(observation1);
