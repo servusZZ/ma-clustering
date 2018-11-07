@@ -92,8 +92,8 @@ public class EvaluationManager {
 		double reduction = (1 - ((double)clusters.size() / Main.failuresCount)) * 100;
 		double idealReduction = (1 - ((double)faults.size() / Main.failuresCount)) * 100;
 		double achievedReduction = (reduction / idealReduction) * 100;
-		System.out.println("Reduction:                " + String.format("%.4g%n", reduction) + "%");
-		System.out.println("ARed:                     " + String.format("%.4g%n", achievedReduction) + "%");
+		System.out.print("Reduction:                " + String.format("%.3g%n", reduction));
+		System.out.print("ARed:                     " + String.format("%.3g%n", achievedReduction));
 	}
 	/**
 	 * precision = TP / (TP + FP)
@@ -122,7 +122,7 @@ public class EvaluationManager {
 		for (Map.Entry<Fault, Integer> faultToIndex:faultToIndexMapping.entrySet()) {
 			double deviationEntropyPerFault = deviationEntropyPerFault(failuresPerFaultPerCluster, faultToIndex.getValue());
 			System.out.println("   Deviation Entropy of " + faultToIndex.getKey().name + " is " + deviationEntropyPerFault);
-			totalDeviationEntropy -= deviationEntropyPerFault;
+			totalDeviationEntropy += deviationEntropyPerFault;
 		}
 		System.out.println("Total Deviation Entropy:  " + totalDeviationEntropy);
 	}
@@ -137,8 +137,8 @@ public class EvaluationManager {
 				// assumption: 0log(0) = 0
 				continue;
 			}
-			 deviationEntropy -= ((double)failuresPerFaultPerCluster[i][faultIndex] / (double)sumOfFailures) * 
-					Math.log(((double)failuresPerFaultPerCluster[i][faultIndex] / (double)sumOfFailures));
+			 deviationEntropy -= (((double)failuresPerFaultPerCluster[i][faultIndex] / (double)sumOfFailures) * 
+					Math.log(((double)failuresPerFaultPerCluster[i][faultIndex] / (double)sumOfFailures)));
 		}
 		return deviationEntropy;
 	}

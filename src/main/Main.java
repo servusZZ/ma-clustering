@@ -10,7 +10,6 @@ import ch.usi.inf.sape.hac.agglomeration.AgglomerationMethod;
 import ch.usi.inf.sape.hac.agglomeration.AverageLinkage;
 import ch.usi.inf.sape.hac.dendrogram.Dendrogram;
 import ch.usi.inf.sape.hac.dendrogram.DendrogramBuilder;
-import ch.usi.inf.sape.hac.experiment.DissimilarityMeasure;
 import ch.usi.inf.sape.hac.experiment.Experiment;
 import clustering.Cluster;
 import clustering.ClusterBuilder;
@@ -19,9 +18,12 @@ import data_objects.Fault;
 import data_objects.TestCase;
 import evaluation.EvaluationManager;
 import evaluation.KNNToCenterSelection;
+import hac.experiment.custom.AverageCenterCalculation;
 import hac.experiment.custom.CountDiffsDistance;
 import hac.experiment.custom.CustomDissimilarityMeasure;
 import hac.experiment.custom.FailureClusteringExperiment;
+import hac.experiment.custom.ICenterCalculation;
+import hac.experiment.custom.JaccardDistance;
 import input.FaultFailureMappingReader;
 import input.GzoltarCsvReader;
 
@@ -68,7 +70,8 @@ public class Main {
 		
 		System.out.println("Perform agglomerative hierarchical clustering of Failures...");
 		Experiment experiment = new FailureClusteringExperiment(failures);
-		DissimilarityMeasure dissimilarityMeasure = new CountDiffsDistance();
+		ICenterCalculation centerCalc = new AverageCenterCalculation();
+		CustomDissimilarityMeasure dissimilarityMeasure = new JaccardDistance(centerCalc);
 		AgglomerationMethod agglomerationMethod = new AverageLinkage();
 		DendrogramBuilder dendrogramBuilder = new DendrogramBuilder(experiment.getNumberOfObservations());
 		HierarchicalAgglomerativeClusterer clusterer = new HierarchicalAgglomerativeClusterer(experiment, dissimilarityMeasure, agglomerationMethod);
@@ -91,12 +94,10 @@ public class Main {
 		dumpClusters(clusters);
 		
 		System.out.println("Evaluate the Clustering...");
-		EvaluationManager em = new EvaluationManager((CustomDissimilarityMeasure)dissimilarityMeasure, new KNNToCenterSelection(), clusters, faults);
+		EvaluationManager em = new EvaluationManager(dissimilarityMeasure, new KNNToCenterSelection(), clusters, faults);
 		em.evaluateClustering();
 		// TODO:
-		//		check if evaluation works, check log, seems ok
-		//			Idee MOST_SUSP_THRESHOLD: Im allg. nur Methoden in SuspSet aufnehemn, welche susp. > 0 haben?
-		//		provide more metrics
+		//		Idee MOST_SUSP_THRESHOLD: Im allg. nur Methoden in SuspSet aufnehemn, welche susp. > 0 haben?
 		//		prepare more gzoltar projects
 	}
 	

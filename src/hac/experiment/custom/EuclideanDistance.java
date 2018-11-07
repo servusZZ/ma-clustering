@@ -9,7 +9,12 @@ import ch.usi.inf.sape.hac.experiment.Experiment;
 import data_objects.TestCase;
 import main.Main;
 
-public class EuclideanDistance implements DissimilarityMeasure, CustomDissimilarityMeasure{
+public class EuclideanDistance extends CustomDissimilarityMeasure{
+	
+	public EuclideanDistance(ICenterCalculation centerCalculation) {
+		super(centerCalculation);
+	}
+
 	@Override
 	public double computeDissimilarity(Experiment experiment, int observation1, int observation2) {
 		TestCase tc1 = (TestCase) experiment.getObservation(observation1);

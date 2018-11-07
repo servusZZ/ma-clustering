@@ -1,15 +1,14 @@
 package hac.experiment.custom;
 
-import java.util.Iterator;
 import java.util.List;
 
 import ch.usi.inf.sape.hac.experiment.Experiment;
 import data_objects.TestCase;
-import main.Main;
+import utils.MetricUtils;
 
-public class CountDiffsDistance extends CustomDissimilarityMeasure {
+public class JaccardDistance extends CustomDissimilarityMeasure{
 
-	public CountDiffsDistance(ICenterCalculation centerCalculation) {
+	public JaccardDistance(ICenterCalculation centerCalculation) {
 		super(centerCalculation);
 	}
 
@@ -17,13 +16,9 @@ public class CountDiffsDistance extends CustomDissimilarityMeasure {
 	public double computeDissimilarity(Experiment experiment, int observation1, int observation2) {
 		TestCase tc1 = (TestCase) experiment.getObservation(observation1);
 		TestCase tc2 = (TestCase) experiment.getObservation(observation2);
-		double diff = 0;
-		for (int i = 0; i < Main.methodsCount; i++) {
-			if(tc1.coverage[i] != tc2.coverage[i]) {
-				diff++;
-			}
-		}
-		return diff;
+		double similarity = MetricUtils.jaccardSetSimilarity(tc1.coveredMethods, tc2.coveredMethods);
+		double distance = 1-similarity;
+		return distance;
 	}
 
 	@Override
@@ -31,11 +26,9 @@ public class CountDiffsDistance extends CustomDissimilarityMeasure {
 		return centerCalculation.computeDistanceToCenter(center, tc);
 	}
 
-	/**
-	 * Sum up the coverage values and divide by the number of Failures for each method.
-	 */
 	@Override
 	public double[] computeCenter(List<TestCase> failedTCs) {
 		return centerCalculation.computeCenter(failedTCs);
 	}
+
 }

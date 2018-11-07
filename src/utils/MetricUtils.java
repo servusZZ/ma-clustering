@@ -10,4 +10,5 @@ public class MetricUtils {
 			    .collect(Collectors.toSet());
 		return((double)intersection.size()/(s1.size() + s2.size() - intersection.size()));
 	}
+	
 }
