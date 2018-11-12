@@ -1,7 +1,5 @@
 package hac.experiment.custom;
 
-import java.util.List;
-
 import ch.usi.inf.sape.hac.experiment.DissimilarityMeasure;
 import data_objects.TestCase;
 
@@ -12,5 +10,5 @@ public abstract class CustomDissimilarityMeasure implements DissimilarityMeasure
 		this.centerCalculation = centerCalculation;
 	}
 	public abstract double computeDistanceToCenter(double[] center, int[] tc);
-	public abstract double[] computeCenter(List<TestCase> failedTCs);
+	public abstract double[] computeCenter(TestCase[] failedTCs);
 }

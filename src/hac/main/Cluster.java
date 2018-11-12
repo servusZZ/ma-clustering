@@ -1,26 +1,25 @@
-package clustering;
+package hac.main;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import data_objects.DStarTerms;
+
 import data_objects.Fault;
 import data_objects.TestCase;
-import evaluation.RepresentativeSelectionStrategy;
+import hac.data_objects.DStarTerms;
+import hac.evaluation.RepresentativeSelectionStrategy;
 import hac.experiment.custom.CustomDissimilarityMeasure;
-import main.Main;
+import priorization.main.Main;
 import utils.PrintUtils;
 import utils.SortingUtils;
 
 public class Cluster {
 	/**	(sorted) list of methodIDs which are most suspicious **/
 	private Set<Integer> suspiciousSet;
-	private List<TestCase> failedTCs;
+	private TestCase[] failedTCs;
 	/**	values for Ncf, Nuf, Ncs for each method **/
 	private DStarTerms[] methodDStarTerms;
 	/**	the representative TC of the cluster, stores the result of the last call of computeRepresentative()*/
@@ -30,7 +29,7 @@ public class Cluster {
 	/**	D* suspiciousness value for each method	 **/
 	Map<Integer, Double> methodDStarSusp = new HashMap<Integer, Double>();
 	
-	public Cluster(List<TestCase> failedTCs, DStarTerms[] passedMethodDStarTerms) {
+	public Cluster(TestCase[] failedTCs, DStarTerms[] passedMethodDStarTerms) {
 		this.failedTCs = failedTCs;
 		initMethodDStarTerms(passedMethodDStarTerms);
 		updateSupsiciousSet(failedTCs);
@@ -53,7 +52,7 @@ public class Cluster {
 	 */
 	@Override
 	public String toString() {
-		return ("[" + PrintUtils.printTestCasesList(failedTCs) + "]");
+		return ("[" + failedTCs + "]");
 	}
 	/**
 	 * Computes the representative of the Cluster. Depends on a representative selection strategy and
@@ -76,8 +75,8 @@ public class Cluster {
 	 * calculates the suspicious set.
 	 * @param newFailedTCs
 	 */
-	private void updateSupsiciousSet(List<TestCase> newFailedTCs) {
-		if (newFailedTCs == null || newFailedTCs.size() == 0) {
+	private void updateSupsiciousSet(TestCase[] newFailedTCs) {
+		if (newFailedTCs == null || newFailedTCs.length == 0) {
 			System.err.println("New Failed TCs are null or empty. No reason to update the susp Set.");
 			return;
 		}
@@ -128,7 +127,7 @@ public class Cluster {
 	public Set<Integer> getSuspiciousSet() {
 		return suspiciousSet;
 	}
-	public List<TestCase> getFailedTCs() {
+	public TestCase[] getFailedTCs() {
 		return failedTCs;
 	}
 	public TestCase getRepresentative() {

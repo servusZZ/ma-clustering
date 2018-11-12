@@ -1,10 +1,9 @@
 package hac.experiment.custom;
 
 import java.util.Iterator;
-import java.util.List;
 
 import data_objects.TestCase;
-import main.Main;
+import priorization.main.Main;
 
 public class AverageCenterCalculation implements ICenterCalculation {
 
@@ -25,12 +24,12 @@ public class AverageCenterCalculation implements ICenterCalculation {
 	 * 		m1 is covered by 3 Test Cases and not covered by 2
 	 * 		m1.value = 3/5
 	 */
-	public double[] computeCenter(List<TestCase> failedTCs) {
+	public double[] computeCenter(TestCase[] failedTCs) {
 		double[] center = new double[Main.methodsCount];
-		for (int i = 0; i < failedTCs.size(); i++) {
-			Iterator<Integer> coveredMethods = failedTCs.get(i).coveredMethods.iterator();
+		for (int i = 0; i < failedTCs.length; i++) {
+			Iterator<Integer> coveredMethods = failedTCs[i].coveredMethods.iterator();
 			while (coveredMethods.hasNext()) {
-				center[coveredMethods.next()] += ((double)1)/failedTCs.size();
+				center[coveredMethods.next()] += ((double)1)/failedTCs.length;
 			}
 		}
 		return center;

@@ -1,8 +1,7 @@
-package data_objects;
+package hac.data_objects;
 
-import java.util.List;
-
-import main.Main;
+import data_objects.TestCase;
+import priorization.main.Main;
 
 public class DStarTerms {
 	private int n_cf = 0;
@@ -16,7 +15,7 @@ public class DStarTerms {
 	public DStarTerms(int methodID) {
 		this.methodID = methodID;
 	}
-	public void updateTermValues(List<TestCase> testCases) {
+	public void updateTermValues(TestCase[] testCases) {
 		for (TestCase tc : testCases) {
 			consideredTCs += tc.name + ", ";
 			if (tc.coveredMethods.contains(methodID)) {

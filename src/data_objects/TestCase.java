@@ -3,7 +3,7 @@ package data_objects;
 import java.util.HashSet;
 import java.util.Set;
 
-import main.Main;
+import priorization.main.Main;
 
 public class TestCase {
 	public final String name;

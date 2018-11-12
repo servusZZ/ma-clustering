@@ -1,4 +1,4 @@
-package clustering;
+package hac.main;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,10 +6,10 @@ import java.util.List;
 import ch.usi.inf.sape.hac.dendrogram.DendrogramNode;
 import ch.usi.inf.sape.hac.dendrogram.MergeNode;
 import ch.usi.inf.sape.hac.dendrogram.ObservationNode;
-import data_objects.PassedTCsCluster;
 import data_objects.TestCase;
+import hac.data_objects.PassedTCsCluster;
 import hac.experiment.custom.DendrogramHelper;
-import main.Main;
+import priorization.main.Main;
 import utils.MetricUtils;
 /**
  * Builds the Clusters based on a Dendrogram (root node). Uses fault localization ranks, i.e. the 
@@ -23,7 +23,7 @@ public class ClusterBuilder {
 
 	private TestCase[] failures;
 	
-	public ClusterBuilder(DendrogramNode root, List<TestCase> passedTCs, TestCase[] failures) {
+	public ClusterBuilder(DendrogramNode root, TestCase[] passedTCs, TestCase[] failures) {
 		this.root = root;
 		this.failures = failures;
 		this.passedTCsCluster = new PassedTCsCluster(passedTCs);
@@ -84,15 +84,17 @@ public class ClusterBuilder {
 		return clustersAreSimilar(clusterN1, clusterN2);
 	}
 	private Cluster getClusterByDendrogramNode(DendrogramNode n) {
-		List<TestCase> failingTCsN = getFailingTestCasesByIndex(DendrogramHelper.getObservations(n));
+		TestCase[] failingTCsN = getFailingTestCasesByIndex(DendrogramHelper.getObservations(n));
 		return new Cluster(failingTCsN, passedTCsCluster.getMethodDStarTerms());
 	}
-	private List<TestCase> getFailingTestCasesByIndex(List<Integer> tcIndexes){
+	private TestCase[] getFailingTestCasesByIndex(List<Integer> tcIndexes){
 		List<TestCase> failingTCs = new ArrayList<TestCase>();
 		for (int tcIndex: tcIndexes) {
 			failingTCs.add(failures[tcIndex]);
 		}
-		return failingTCs;
+		TestCase[] failingTCsArray = new TestCase[failingTCs.size()];
+		failingTCs.toArray(failingTCsArray);
+		return failingTCsArray;
 	}
 	/**
 	 * Inserts the node at the right position in the queue. The start of the queue contains MergeNodes sorted by Dissimilarity.

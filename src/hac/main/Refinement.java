@@ -1,4 +1,4 @@
-package clustering;
+package hac.main;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,9 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import data_objects.PassedTCsCluster;
 import data_objects.TestCase;
-import main.Main;
+import hac.data_objects.PassedTCsCluster;
+import priorization.main.Main;
 import utils.MetricUtils;
 
 public class Refinement {
@@ -35,13 +35,14 @@ public class Refinement {
 			Cluster c1 = clusters.get(i);
 			Cluster c2 = clusters.get(j);
 			if (maxSimilarityValue > Main.SIMILARITY_THRESHOLD) {
-				List<TestCase> mergedFailedTCs = c1.getFailedTCs();
-				mergedFailedTCs.addAll(c2.getFailedTCs());
+				
+				List<TestCase> mergedFailedTCs = Arrays.asList(c1.getFailedTCs());
+				mergedFailedTCs.addAll(Arrays.asList(c2.getFailedTCs()));
 				// c1 is now broken because we changed the list of failed TCs
 				clusterRowIndexMapping.put(c1, null);
 				clusterRowIndexMapping.put(c2, null);
 				deleteClustersFromMatrix(i, j, similarity);
-				Cluster mergedC12 = new Cluster(mergedFailedTCs, passedTCsCluster.getMethodDStarTerms());
+				Cluster mergedC12 = new Cluster((TestCase[])mergedFailedTCs.toArray(), passedTCsCluster.getMethodDStarTerms());
 				clusterRowIndexMapping.put(mergedC12, nextClusterID);
 				nextClusterID++;
 				updateSimilarityMatrix(similarity, mergedC12);

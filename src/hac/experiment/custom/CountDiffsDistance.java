@@ -1,11 +1,8 @@
 package hac.experiment.custom;
 
-import java.util.Iterator;
-import java.util.List;
-
 import ch.usi.inf.sape.hac.experiment.Experiment;
 import data_objects.TestCase;
-import main.Main;
+import priorization.main.Main;
 
 public class CountDiffsDistance extends CustomDissimilarityMeasure {
 
@@ -35,7 +32,7 @@ public class CountDiffsDistance extends CustomDissimilarityMeasure {
 	 * Sum up the coverage values and divide by the number of Failures for each method.
 	 */
 	@Override
-	public double[] computeCenter(List<TestCase> failedTCs) {
+	public double[] computeCenter(TestCase[] failedTCs) {
 		return centerCalculation.computeCenter(failedTCs);
 	}
 }

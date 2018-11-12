@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import data_objects.TestCase;
+import hac.main.Cluster;
 
 public class PrintUtils {
 	public static String printTestCasesList(List<TestCase> testCases) {
@@ -31,5 +32,10 @@ public class PrintUtils {
 			i++;
 		}
 		return mapValues;
+	}
+	public static void dumpClusters(List<Cluster> clusters) {
+		for (Cluster cl: clusters) {
+			cl.dump();
+		}
 	}
 }

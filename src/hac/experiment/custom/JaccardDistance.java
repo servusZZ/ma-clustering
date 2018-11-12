@@ -1,7 +1,5 @@
 package hac.experiment.custom;
 
-import java.util.List;
-
 import ch.usi.inf.sape.hac.experiment.Experiment;
 import data_objects.TestCase;
 import utils.MetricUtils;
@@ -27,7 +25,7 @@ public class JaccardDistance extends CustomDissimilarityMeasure{
 	}
 
 	@Override
-	public double[] computeCenter(List<TestCase> failedTCs) {
+	public double[] computeCenter(TestCase[] failedTCs) {
 		return centerCalculation.computeCenter(failedTCs);
 	}
 

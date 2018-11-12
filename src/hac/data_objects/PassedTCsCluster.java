@@ -1,14 +1,13 @@
-package data_objects;
+package hac.data_objects;
 
-import java.util.List;
-
-import main.Main;
+import data_objects.TestCase;
+import priorization.main.Main;
 
 public class PassedTCsCluster {
-	public final List<TestCase> passedTCs;
+	public final TestCase[] passedTCs;
 	private DStarTerms[] methodDStarTerms;
 
-	public PassedTCsCluster(List<TestCase> passedTCs) {
+	public PassedTCsCluster(TestCase[] passedTCs) {
 		this.passedTCs = passedTCs;
 		initDStarTerms();
 	}

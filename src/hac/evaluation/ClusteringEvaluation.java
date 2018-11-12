@@ -1,4 +1,4 @@
-package evaluation;
+package hac.evaluation;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -6,19 +6,19 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import clustering.Cluster;
 import data_objects.Fault;
 import data_objects.TestCase;
 import hac.experiment.custom.CustomDissimilarityMeasure;
-import main.Main;
+import hac.main.Cluster;
+import priorization.main.Main;
 
-public class EvaluationManager {
+public class ClusteringEvaluation {
 	private CustomDissimilarityMeasure dissimilarityMeasure;
 	private RepresentativeSelectionStrategy representativeSelection;
 	private List<Cluster> clusters;
 	private Set<Fault> faults;
 	
-	public EvaluationManager(CustomDissimilarityMeasure dissimilarityMeasure, RepresentativeSelectionStrategy representativeSelection, List<Cluster> clusters, Set<Fault> faults) {
+	public ClusteringEvaluation(CustomDissimilarityMeasure dissimilarityMeasure, RepresentativeSelectionStrategy representativeSelection, List<Cluster> clusters, Set<Fault> faults) {
 		this.dissimilarityMeasure = dissimilarityMeasure;
 		this.representativeSelection = representativeSelection;
 		this.clusters = clusters;

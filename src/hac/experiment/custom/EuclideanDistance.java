@@ -1,13 +1,10 @@
 package hac.experiment.custom;
 
-import java.util.List;
-
 import org.apache.commons.lang3.NotImplementedException;
 
-import ch.usi.inf.sape.hac.experiment.DissimilarityMeasure;
 import ch.usi.inf.sape.hac.experiment.Experiment;
 import data_objects.TestCase;
-import main.Main;
+import priorization.main.Main;
 
 public class EuclideanDistance extends CustomDissimilarityMeasure{
 	
@@ -35,7 +32,7 @@ public class EuclideanDistance extends CustomDissimilarityMeasure{
 	}
 
 	@Override
-	public double[] computeCenter(List<TestCase> failedTCs) {
+	public double[] computeCenter(TestCase[] failedTCs) {
 		throw new NotImplementedException("Not implemented to compute center for euclidean distance");
 	}
 }

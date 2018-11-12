@@ -1,11 +1,10 @@
-package evaluation;
+package hac.evaluation;
 
 import java.util.Arrays;
-import java.util.List;
 
-import clustering.Cluster;
 import data_objects.TestCase;
 import hac.experiment.custom.CustomDissimilarityMeasure;
+import hac.main.Cluster;
 
 public class KNNToCenterSelection implements RepresentativeSelectionStrategy{
 
@@ -13,8 +12,7 @@ public class KNNToCenterSelection implements RepresentativeSelectionStrategy{
 	public TestCase selectRepresentative(Cluster c1, CustomDissimilarityMeasure dissimilarityMeasure) {
 		double[] center = c1.getCenter(dissimilarityMeasure);
 		System.out.println("DEBUG: center " + Arrays.toString(center));
-		TestCase[] failures = new TestCase[c1.getFailedTCs().size()];
-		c1.getFailedTCs().toArray(failures);
+		TestCase[] failures = c1.getFailedTCs();
 		double minDistance = dissimilarityMeasure.computeDistanceToCenter(center, failures[0].numericCoverage);
 		int minDistanceTCIndex = 0;
 		for (int i = 1; i < failures.length; i++) {
