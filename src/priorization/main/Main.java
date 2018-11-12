@@ -8,6 +8,7 @@ import java.util.Set;
 import data_import.gzoltars.GzoltarDataReader;
 import data_objects.Fault;
 import data_objects.TestCase;
+import evaluation.PrioritizationEvaluation;
 import hac.main.HierarchicalAgglomerativeClustering;
 import utils.DataImportUtils;
 
@@ -22,9 +23,13 @@ public class Main {
 	//	MOST_SUSP_MAX_COUNT verwenden?
 	//		
 	public static final double MAX_SUSP_VALUE = 1000000000;
+	//TODO: Auf MAX_SUSP_VALUE Anzahl an FailingTests addieren, in denen die methode vorkommt? 
 	
 	public static final String BASE_DIR = "C:\\study\\SWDiag\\sharedFolder_UbuntuVM\\MA\\";
-	public static final String PROJECT_DIR = "gzoltars\\Lang\\37\\";
+	public static final String PROJECT_DIR = "gzoltars\\Tests\\testMedium\\";
+	
+	public static final String OUTPUT_DIR = "C:\\study\\workspace_master-thesis-java\\ma-clustering\\output\\";
+	public static final int FAILURES_TO_INVESTIGATE = 5;
 	
 	public static int testsCount = 0;
 	public static int methodsCount = 0;
@@ -59,10 +64,11 @@ public class Main {
 		System.out.println("Perform hierarchical agglomerative clustering of Failures...");
 		PrioritizationStrategyBase hac = new HierarchicalAgglomerativeClustering(testCases, failures, passedTCs, faults);
 		List<TestCase> prioritizedFailures = hac.prioritizeFailures();
-		
+		System.out.println("Prioritized Failures: " + prioritizedFailures);
+		System.out.println("Write Evaluation to output file.");
+		PrioritizationEvaluation eval = new PrioritizationEvaluation(faults, failures, FAILURES_TO_INVESTIGATE);
+		eval.evaluatePrioritizationStrategy(prioritizedFailures, "HAC");
+		// TODO: Implement PrioritizationEvaluation
+		//		write metrics in excel csv file
 		}
-	
-
-
-
 }

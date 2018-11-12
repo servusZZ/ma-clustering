@@ -1,6 +1,7 @@
 package hac.main;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -61,16 +62,24 @@ public class HierarchicalAgglomerativeClustering extends PrioritizationStrategyB
 		System.out.println("Created " + clusters.size() + " clusters");
 		PrintUtils.dumpClusters(clusters);
 		if (countClustersBeforeRefinement != clusters.size()) {
-			System.out.println("ATTENTION: The Refinement step changed the number of final clusters!");
-			System.out.println("ATTENTION: This wasn't tested before, so check the result once manually.");
+			System.out.println("WARNING: The Refinement step changed the number of final clusters!");
+			System.out.println("WARNING: This wasn't tested before, so check the result once manually.");
 		}
 		System.out.println("Evaluate the Clustering...");
 		ClusteringEvaluation em = new ClusteringEvaluation(dissimilarityMeasure, new KNNToCenterSelection(), clusters, faults);
 		em.evaluateClustering();
-		// TODO:
-		//		Idee MOST_SUSP_THRESHOLD: Im allg. nur Methoden in SuspSet aufnehemn, welche susp. > 0 haben?
+		prioritizedFailures = performPrioritization(clusters);
+		return prioritizedFailures;
+	}
 	
-		
+	private List<TestCase> performPrioritization(List<Cluster> clusters){
+		List<TestCase> prioritizedFailures = new ArrayList<TestCase>();
+		Collections.sort(clusters);
+		System.out.println("DEBUG: Sorted Clusters");
+		System.out.println(clusters);
+		for (Cluster c: clusters) {
+			prioritizedFailures.add(0, c.getRepresentative());
+		}
 		return prioritizedFailures;
 	}
 

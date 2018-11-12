@@ -1,5 +1,6 @@
 package hac.main;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -16,7 +17,7 @@ import priorization.main.Main;
 import utils.PrintUtils;
 import utils.SortingUtils;
 
-public class Cluster {
+public class Cluster implements Comparable<Cluster>{
 	/**	(sorted) list of methodIDs which are most suspicious **/
 	private Set<Integer> suspiciousSet;
 	private TestCase[] failedTCs;
@@ -52,7 +53,7 @@ public class Cluster {
 	 */
 	@Override
 	public String toString() {
-		return ("[" + failedTCs + "]");
+		return ("[" + Arrays.toString(failedTCs) + "]");
 	}
 	/**
 	 * Computes the representative of the Cluster. Depends on a representative selection strategy and
@@ -130,6 +131,10 @@ public class Cluster {
 	public TestCase[] getFailedTCs() {
 		return failedTCs;
 	}
+	/** 
+	 * The representative TC of the cluster, stores the result of the last call of computeRepresentative().
+	 * Note: computeRepresentative() has to be called at least once before calling this method.
+	 */
 	public TestCase getRepresentative() {
 		return representative;
 	}
@@ -172,5 +177,21 @@ public class Cluster {
 			failuresPerFaultCount[faultToIndexMapping.get(failure.getFault())] += 1;
 		}
 		return failuresPerFaultCount;
+	}
+	/**
+	 * Natural ordering of clusters by their size (number of contained failing test cases)
+	 * Note: This class has a natural ordering that is inconsistent with equals
+	 */
+	@Override
+	public int compareTo(Cluster o) {
+		if (o == null) {
+			return 1;
+		}
+		if (this.getFailedTCs().length > o.getFailedTCs().length) {
+			return 1;
+		} else if (this.getFailedTCs().length == o.getFailedTCs().length) {
+			return 0;
+		}
+		return -1;
 	}
 }
