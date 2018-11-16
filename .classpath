@@ -7,5 +7,6 @@
 	<classpathentry kind="lib" path="libs/commons-lang3-3.8.1.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/hac"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/pit-merge-mutation-matrices"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

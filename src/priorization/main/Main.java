@@ -5,7 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import data_export.PitMergedMutationsWriter;
 import data_import.gzoltars.GzoltarDataReader;
+import data_import.pit.PitMergedMutationsReader;
+import data_import.pit.data_objects.PitMethod;
 import data_objects.Fault;
 import data_objects.TestCase;
 import evaluation.PrioritizationEvaluation;
@@ -38,8 +41,17 @@ public class Main {
 	public static int passedTestsCount = 0;
 	
 	public static void main(String[] args) throws IOException {
+		// TODO: Go on here, Restructure Main
+		//		for each project
+		//			K = 100 Times
+		//				prepare faulty version
+		//				runAnalysis
+		
 		System.out.println("Program started...");
-		List<TestCase> testCasesList = GzoltarDataReader.importTestCases();
+		String dir = "C:\\study\\SWDiag\\sharedFolder_UbuntuVM\\MA\\pit_data_tests\\test_small\\pit-data\\";
+		List<PitMethod> methods = PitMergedMutationsReader.readPitMergedMethods(dir);
+		System.out.println("DEBUG: Imported " + methods.size() + " PitMethods");
+		/*List<TestCase> testCasesList = GzoltarDataReader.importTestCases();
 		Set<Fault> faults = GzoltarDataReader.importFaults();
 		TestCase[] testCases = new TestCase[testCasesList.size()];
 		testCasesList.toArray(testCases);
@@ -67,8 +79,6 @@ public class Main {
 		System.out.println("Prioritized Failures: " + prioritizedFailures);
 		System.out.println("Write Evaluation to output file.");
 		PrioritizationEvaluation eval = new PrioritizationEvaluation(faults, failures, FAILURES_TO_INVESTIGATE);
-		eval.evaluatePrioritizationStrategy(prioritizedFailures, "HAC");
-		// TODO: Implement PrioritizationEvaluation
-		//		write metrics in excel csv file
+		eval.evaluatePrioritizationStrategy(prioritizedFailures, "HAC");	*/
 		}
 }

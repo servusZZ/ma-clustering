@@ -1,11 +1,7 @@
 package evaluation;
 
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.StringWriter;
-import java.io.Writer;
 import java.nio.file.Files;
-import java.nio.file.OpenOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
@@ -14,12 +10,6 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import com.opencsv.CSVParser;
-import com.opencsv.CSVParserBuilder;
-import com.opencsv.CSVWriterBuilder;
-import com.opencsv.ICSVParser;
-import com.opencsv.ICSVWriter;
 
 import data_objects.Fault;
 import data_objects.TestCase;
@@ -57,30 +47,24 @@ public class PrioritizationEvaluation {
 			}
 		}
 		evaluationEtnry[3] = "" + fixedFailuresCount;
+		//TODO: für untersch. debugging strategies anpassen
 		evaluationEtnry[4] = "FIND_EXACTLY_ONE_FAULT";
 		writeEvaluationEntry(evaluationEtnry);
 	}
-	private Path createOutputFileHeaderIfNotExisting() throws IOException {
-		Path outputFilePath = Paths.get(Main.OUTPUT_DIR, OUTPUT_FILE_NAME);
-		if (!Files.exists(outputFilePath)) {
-			List<String> header = new ArrayList<String>();
-			header.add("PrioritizationStrategy;InvestigatedFailures;FoundFaults;FixedFailures;DebuggingStrategy");
-			//TODO: Debugging strategy klären + Code entsprechend updaten
-			Files.write(outputFilePath, header);
-		}
-		return outputFilePath;
-	}
 	private void writeEvaluationEntry(String[] evaluationEntry) throws IOException {
-		Path outputFilePath = createOutputFileHeaderIfNotExisting();
-		//Writer writer = new FileWriter(Main.OUTPUT_DIR + OUTPUT_FILE_NAME);
-		//ICSVWriter csvWriter = new CSVWriterBuilder(writer).withSeparator(';').build();
-		//csvWriter.writeNext(evaluationEntry);
+		Path outputFilePath = Paths.get(Main.OUTPUT_DIR, OUTPUT_FILE_NAME);
 		List<String> lines = new ArrayList<String>();
+		StandardOpenOption createOrAppend = StandardOpenOption.APPEND;
+		if (!Files.exists(outputFilePath)) {
+			//TODO: für untersch. debugging strategies anpassen
+			createOrAppend = StandardOpenOption.CREATE_NEW;
+			lines.add("PrioritizationStrategy;InvestigatedFailures;FoundFaults;FixedFailures;DebuggingStrategy");
+		}
 		String line = evaluationEntry[0];
 		for (int i = 1; i < evaluationEntry.length; i++) {
 			line += ";" + evaluationEntry[i];
 		}
 		lines.add(line);
-		Files.write(outputFilePath, lines, StandardOpenOption.APPEND);
+		Files.write(outputFilePath, lines, createOrAppend);
 	}
 }
