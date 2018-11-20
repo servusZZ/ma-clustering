@@ -13,6 +13,7 @@ import data_objects.TestCase;
 import hac.data_objects.DStarTerms;
 import hac.evaluation.RepresentativeSelectionStrategy;
 import hac.experiment.custom.CustomDissimilarityMeasure;
+import priorization.main.AnalysisWrapper;
 import priorization.main.Main;
 import utils.PrintUtils;
 import utils.SortingUtils;
@@ -37,8 +38,8 @@ public class Cluster implements Comparable<Cluster>{
 		computeMajorFault();
 	}
 	private void initMethodDStarTerms(DStarTerms[] passedMethodDStarTerms) {
-		methodDStarTerms = new DStarTerms[Main.methodsCount];
-		for (int i = 0; i < Main.methodsCount; i++) {
+		methodDStarTerms = new DStarTerms[AnalysisWrapper.methodsCount];
+		for (int i = 0; i < AnalysisWrapper.methodsCount; i++) {
 			methodDStarTerms[i] = passedMethodDStarTerms[i].clone();
 		}
 	}
@@ -81,8 +82,9 @@ public class Cluster implements Comparable<Cluster>{
 			System.err.println("New Failed TCs are null or empty. No reason to update the susp Set.");
 			return;
 		}
-		for (int i = 0; i < Main.methodsCount; i++) {
-			//TODO: updateTermValues soll boolean zurückgeben, welcher signalisiert ob sich ein Wert geändert hat
+		for (int i = 0; i < AnalysisWrapper.methodsCount; i++) {
+			// derzeit noch nicht benötigt, da Cluster nur erstellt aber nie geupdatet wird;
+			//		updateTermValues soll boolean zurückgeben, welcher signalisiert ob sich ein Wert geändert hat
 			//		methodDStarSusp speichern und nur neu berechnen, falls sich ein TermValue geändert hat.
 			methodDStarTerms[i].updateTermValues(newFailedTCs);
 			methodDStarSusp.put(i, methodDStarTerms[i].getD4Suspiciousness());

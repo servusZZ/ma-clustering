@@ -10,6 +10,7 @@ import data_objects.Fault;
 import data_objects.TestCase;
 import hac.experiment.custom.CustomDissimilarityMeasure;
 import hac.main.Cluster;
+import priorization.main.AnalysisWrapper;
 import priorization.main.Main;
 
 public class ClusteringEvaluation {
@@ -38,10 +39,7 @@ public class ClusteringEvaluation {
 		Map<Fault, Integer> faultToIndexMapping = getFaultToIndexMapping();
 		int[][] failuresPerFaultPerCluster = getFailuresPerFaultPerCluster(faultToIndexMapping);
 		f1Measure(failuresPerFaultPerCluster, faultToIndexMapping);
-		totalDeviationEntropy(failuresPerFaultPerCluster, faultToIndexMapping);
-		if (allFaultsRevealed) {
-			evaluateReduction();
-		}
+		totalFaultEntropy(failuresPerFaultPerCluster, faultToIndexMapping);
 	}
 	private Set<Fault> copyFaults(){
 		Set<Fault> faultsCopy = new HashSet<Fault>(faults.size());
@@ -88,13 +86,13 @@ public class ClusteringEvaluation {
 		}
 		return evaluationSuccessful;
 	}
-	private void evaluateReduction() {
+	/*private void evaluateReduction() {
 		double reduction = (1 - ((double)clusters.size() / Main.failuresCount)) * 100;
 		double idealReduction = (1 - ((double)faults.size() / Main.failuresCount)) * 100;
 		double achievedReduction = (reduction / idealReduction) * 100;
 		System.out.print("Reduction:                " + String.format("%.3g%n", reduction));
 		System.out.print("ARed:                     " + String.format("%.3g%n", achievedReduction));
-	}
+	}	*/
 	/**
 	 * precision = TP / (TP + FP)
 	 * recall = TP / (TP + FN)
@@ -117,11 +115,11 @@ public class ClusteringEvaluation {
 	 * The cluster entropy is generally speaking more important than fault entropy and 
 	 * measured by the purity (1 is the best value).
 	 */
-	private void totalDeviationEntropy(int[][] failuresPerFaultPerCluster, Map<Fault, Integer> faultToIndexMapping) {
+	private void totalFaultEntropy(int[][] failuresPerFaultPerCluster, Map<Fault, Integer> faultToIndexMapping) {
 		double totalDeviationEntropy = 0.0;
 		for (Map.Entry<Fault, Integer> faultToIndex:faultToIndexMapping.entrySet()) {
 			double deviationEntropyPerFault = deviationEntropyPerFault(failuresPerFaultPerCluster, faultToIndex.getValue());
-			System.out.println("   Deviation Entropy of " + faultToIndex.getKey().name + " is " + deviationEntropyPerFault);
+			System.out.println("   Deviation Entropy of " + faultToIndex.getKey().id + " is " + deviationEntropyPerFault);
 			totalDeviationEntropy += deviationEntropyPerFault;
 		}
 		System.out.println("Total Deviation Entropy:  " + totalDeviationEntropy);
@@ -203,6 +201,6 @@ public class ClusteringEvaluation {
 		for (Cluster c: clusters) {
 			correctlyAssignedSum += c.correctlyAssignedTCs();
 		}
-		return (((double)correctlyAssignedSum)/Main.failuresCount);
+		return (((double)correctlyAssignedSum)/AnalysisWrapper.failuresCount);
 	}
 }

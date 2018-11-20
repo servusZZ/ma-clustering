@@ -11,7 +11,14 @@ import data_import.pit.data_objects.PitTestCase;
  * A faulty version means to select a subset of faults out of all faults of the project.
  */
 public abstract class PitFaultSelectionStrategyBase {
-	private List<PitMutation> pitFaults;
-	private Set<PitTestCase> pitTests;
-	public abstract List<PitMutation> selectFaultyVersions();
+	protected int minFaultCount;
+	protected int maxFaultCount;
+	protected int versionsPerFaultCount;
+	public PitFaultSelectionStrategyBase(int minFaultCount,
+			int maxFaultCount, int versionsPerFaultCount) {
+		this.minFaultCount = minFaultCount;
+		this.maxFaultCount = maxFaultCount;
+		this.versionsPerFaultCount = versionsPerFaultCount;
+	}
+	public abstract List<Set<PitMutation>> selectFaultyVersions(List<PitMutation> pitFaults, List<PitTestCase> pitTests);
 }

@@ -33,9 +33,12 @@ public class DStarTerms {
 		consideredTCs += "--";
 	}
 	public double getD4Suspiciousness() {
+		if (n_cf == 0) {
+			return 0.0;
+		}
 		if ((n_uf + n_cs) == 0) {
-			System.out.println("INFO: Denominator in D* formula is null for method " + methodID + ". Return max value instead. Considered Test Cases: " + consideredTCs);
-			return Main.MAX_SUSP_VALUE;
+			System.out.println("INFO: Denominator in D* formula is null for method " + methodID + ". Return (max value + n_cf) instead. Considered Test Cases: " + consideredTCs);
+			return Main.MAX_SUSP_VALUE + n_cf;
 		}
 		double susp = Math.pow(n_cf, 4) / (n_uf + n_cs);
 		if (susp > Main.MAX_SUSP_VALUE) {

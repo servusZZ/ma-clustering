@@ -4,15 +4,15 @@ import java.util.List;
 
 public class Fault implements Comparable<Fault>{
 	public List<String> failures;
-	public String name;
+	public String id;
 	
 	public Fault(String name, List<String> failures) {
-		this.name = name;
+		this.id = name;
 		this.failures = failures;
 	}
 	@Override
 	public String toString() {
-		return name;
+		return id;
 	}
 	@Override
 	public int compareTo(Fault f) {

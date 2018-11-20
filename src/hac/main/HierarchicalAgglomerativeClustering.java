@@ -14,6 +14,7 @@ import ch.usi.inf.sape.hac.experiment.Experiment;
 import data_objects.Fault;
 import data_objects.TestCase;
 import hac.evaluation.ClusteringEvaluation;
+import hac.evaluation.ClusteringEvaluationEntry;
 import hac.evaluation.KNNToCenterSelection;
 import hac.experiment.custom.AverageCenterCalculation;
 import hac.experiment.custom.CustomDissimilarityMeasure;
@@ -25,11 +26,10 @@ import utils.PrintUtils;
 
 public class HierarchicalAgglomerativeClustering extends PrioritizationStrategyBase{
 
-	public HierarchicalAgglomerativeClustering(TestCase[] testCases,
-			TestCase[] failures, TestCase[] passedTCs, Set<Fault> faults) {
-		super(testCases, failures, passedTCs, faults);
+	public HierarchicalAgglomerativeClustering(TestCase[] failures,
+			TestCase[] passedTCs, Set<Fault> faults) {
+		super(failures, passedTCs, faults);
 	}
-
 	private Dendrogram performHAC(CustomDissimilarityMeasure dissimilarityMeasure) {
 		Experiment experiment = new FailureClusteringExperiment(failures);
 		AgglomerationMethod agglomerationMethod = new AverageLinkage();
@@ -66,8 +66,11 @@ public class HierarchicalAgglomerativeClustering extends PrioritizationStrategyB
 			System.out.println("WARNING: This wasn't tested before, so check the result once manually.");
 		}
 		System.out.println("Evaluate the Clustering...");
+		//TODO: ClusterEvaluation überarbeiten
 		ClusteringEvaluation em = new ClusteringEvaluation(dissimilarityMeasure, new KNNToCenterSelection(), clusters, faults);
 		em.evaluateClustering();
+		//this.clusteringMetrics = new ClusteringEvaluationEntry(clusters.size(),
+		//		representativeSelectionSuccessful, representativeSelectionFailed, purity, precision, recall, f1score, faultEntropy);
 		prioritizedFailures = performPrioritization(clusters);
 		return prioritizedFailures;
 	}
@@ -82,5 +85,4 @@ public class HierarchicalAgglomerativeClustering extends PrioritizationStrategyB
 		}
 		return prioritizedFailures;
 	}
-
 }

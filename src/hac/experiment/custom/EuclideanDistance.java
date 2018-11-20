@@ -4,7 +4,7 @@ import org.apache.commons.lang3.NotImplementedException;
 
 import ch.usi.inf.sape.hac.experiment.Experiment;
 import data_objects.TestCase;
-import priorization.main.Main;
+import priorization.main.AnalysisWrapper;
 
 public class EuclideanDistance extends CustomDissimilarityMeasure{
 	
@@ -17,7 +17,7 @@ public class EuclideanDistance extends CustomDissimilarityMeasure{
 		TestCase tc1 = (TestCase) experiment.getObservation(observation1);
 		TestCase tc2 = (TestCase) experiment.getObservation(observation2);
 		double diff = 0;
-		for (int i = 0; i < Main.methodsCount; i++) {
+		for (int i = 0; i < AnalysisWrapper.methodsCount; i++) {
 			if(tc1.coverage[i] != tc2.coverage[i]) {
 				diff++;
 			}

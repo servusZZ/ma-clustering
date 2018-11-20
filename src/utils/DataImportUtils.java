@@ -17,6 +17,16 @@ public class DataImportUtils {
 			}
 		}
 	}
+	public static void addFaultsToFailures(TestCase[] failures, Collection<Fault> faults) {
+		for (int i = 0; i < failures.length; i++) {
+			for (Fault f: faults) {
+				if (f.failures.contains(failures[i].name)) {
+					failures[i].setFault(f);
+					break;
+				}
+			}
+		}
+	}
 	
 	public static void splitTestCases(final List<TestCase> testCases, List<TestCase> failedTCs, List<TestCase> passedTCs) {
 		for(TestCase tc: testCases) {

@@ -4,7 +4,6 @@ package clustering;
 
 class ClusterTest {
 /*
- * TODO: Brauche erst ein dummy Cluster objekt welches ich aufbauen muss
 	@Test
 	void retrieveMostSuspiciousSetTest() {
 		Map<Integer, Double> methodDStarSusp = new HashMap<Integer, Double>();

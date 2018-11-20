@@ -14,17 +14,17 @@ import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
-import com.opencsv.CSVWriter;
-import com.opencsv.CSVWriterBuilder;
 
 import data_objects.Fault;
 import data_objects.TestCase;
-import priorization.main.Main;
+import priorization.main.AnalysisWrapper;
 
 public class GzoltarDataReader {
-	public static String TESTS_FILE_PATH = Main.BASE_DIR + Main.PROJECT_DIR + "tests";
-	public static String MATRIX_FILE_PATH = Main.BASE_DIR + Main.PROJECT_DIR + "matrix";
-	public static String MAPPING_FILE_PATH = Main.BASE_DIR + Main.PROJECT_DIR + "faults_failures.csv";
+	public static final String BASE_DIR = "C:\\study\\SWDiag\\sharedFolder_UbuntuVM\\MA\\";
+	public static final String PROJECT_DIR = "gzoltars\\Tests\\testMedium\\";
+	public static String TESTS_FILE_PATH = BASE_DIR + PROJECT_DIR + "tests";
+	public static String MATRIX_FILE_PATH = BASE_DIR + PROJECT_DIR + "matrix";
+	public static String MAPPING_FILE_PATH = BASE_DIR + PROJECT_DIR + "faults_failures.csv";
 	
 	
 	public static Set<Fault> importFaults() throws IOException{
@@ -78,11 +78,11 @@ public class GzoltarDataReader {
 		boolean first = true;
 		for (String[] coverageEntry : coverageEntries) {
 			if (first) {
-				Main.methodsCount = coverageEntry.length;
+				AnalysisWrapper.methodsCount = coverageEntry.length;
 				first = false;
 			}
-			Boolean[] booleanEntry = new Boolean[Main.methodsCount];
-			for (int i = 0; i < Main.methodsCount; i++) {
+			Boolean[] booleanEntry = new Boolean[AnalysisWrapper.methodsCount];
+			for (int i = 0; i < AnalysisWrapper.methodsCount; i++) {
 				if (coverageEntry[i].equals("1")) {
 					booleanEntry[i] = true;
 				} else {

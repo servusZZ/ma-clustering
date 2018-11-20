@@ -3,7 +3,7 @@ package hac.experiment.custom;
 import java.util.Iterator;
 
 import data_objects.TestCase;
-import priorization.main.Main;
+import priorization.main.AnalysisWrapper;
 
 public class AverageCenterCalculation implements ICenterCalculation {
 
@@ -12,7 +12,7 @@ public class AverageCenterCalculation implements ICenterCalculation {
 	 */
 	public double computeDistanceToCenter(double[] center, int[] tc) {
 		double diff = 0;
-		for (int i = 0; i < Main.methodsCount; i++) {
+		for (int i = 0; i < AnalysisWrapper.methodsCount; i++) {
 			diff += Math.abs(center[i] - tc[i]);
 		}
 		return diff;
@@ -25,7 +25,7 @@ public class AverageCenterCalculation implements ICenterCalculation {
 	 * 		m1.value = 3/5
 	 */
 	public double[] computeCenter(TestCase[] failedTCs) {
-		double[] center = new double[Main.methodsCount];
+		double[] center = new double[AnalysisWrapper.methodsCount];
 		for (int i = 0; i < failedTCs.length; i++) {
 			Iterator<Integer> coveredMethods = failedTCs[i].coveredMethods.iterator();
 			while (coveredMethods.hasNext()) {

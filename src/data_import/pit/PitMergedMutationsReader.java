@@ -3,13 +3,11 @@ package data_import.pit;
 import java.beans.XMLDecoder;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
 import data_export.PitMergedMutationsWriter;
 import data_import.pit.data_objects.PitMethod;
-import data_import.pit.data_objects.PitTestCase;
 
 public class PitMergedMutationsReader {
 
