@@ -31,16 +31,17 @@ public abstract class PrioritizationStrategyBase {
 	 * Returns a prioritized order of all failures in which they should be investigated according
 	 * to the concrete prioritization strategy.
 	 */
-	public abstract List<TestCase> prioritizeFailures();
+	public abstract void prioritizeFailures();
 	
 	/**
 	 * Evaluates the strategy and returns a respective EvaluationEntry object which can
 	 * be written to the output file. The method prioritizeFailures must be called before
 	 * calling this method.
 	 * The clusteringMetrics in the returned EvaluationEntry object are null by default and
-	 * must be set within the prioritizeFailures method in respective subclasses. 
+	 * must be set within the prioritizeFailures method in respective subclasses.
 	 */
 	public EvaluationEntry evaluatePrioritizationStrategy(int failuresToInvestigateCount, ProjectEvaluationEntry projectMetrics) {
+		//TODO: berücksichtigen, dass das Clustering nicht alle failures berücksichtigen kann
 		Set<Fault> foundFaults = evaluationHelper.getFoundFaults(prioritizedFailures.subList(0, failuresToInvestigateCount));
 		Set<TestCase> fixedFailures = evaluationHelper.getFixedFailures(foundFaults, failures);
 		EvaluationEntry metrics = new EvaluationEntry(strategyName, foundFaults.size(),

@@ -9,8 +9,7 @@ import ch.usi.inf.sape.hac.dendrogram.ObservationNode;
 import data_objects.TestCase;
 import hac.data_objects.PassedTCsCluster;
 import hac.experiment.custom.DendrogramHelper;
-import priorization.main.Main;
-import utils.MetricUtils;
+import hac.sbfl.SBFLConfiguration;
 /**
  * Builds the Clusters based on a Dendrogram (root node). Uses fault localization ranks, i.e. the 
  * suspicious set to determine the cutting point of the failure tree.
@@ -20,13 +19,16 @@ import utils.MetricUtils;
 public class ClusterBuilder {
 	private DendrogramNode root;
 	private PassedTCsCluster passedTCsCluster;
+	private SBFLConfiguration sbflConfig;
 
 	private TestCase[] failures;
 	
-	public ClusterBuilder(DendrogramNode root, TestCase[] passedTCs, TestCase[] failures) {
+	public ClusterBuilder(DendrogramNode root, TestCase[] passedTCs, TestCase[] failures,
+			SBFLConfiguration sbflConfig) {
 		this.root = root;
 		this.failures = failures;
 		this.passedTCsCluster = new PassedTCsCluster(passedTCs);
+		this.sbflConfig = sbflConfig;
 	}
 
 	public List<Cluster> getClustersOfCuttingLevel(){
@@ -59,21 +61,6 @@ public class ClusterBuilder {
 		return clusters;
 	}
 	/**
-	 * Compares two clusters.
-	 * 		True,  iff similarity > Threshold
-	 * 		False, iff similarity <= Threshold
-	 */
-	private boolean clustersAreSimilar(Cluster c1, Cluster c2) {
-		c1.dump();
-		c2.dump();
-		double similarity = MetricUtils.jaccardSetSimilarity(c1.getSuspiciousSet(), c2.getSuspiciousSet());
-		System.out.println("The clusters have a similarity value of " + similarity);
-		if(similarity > Main.SIMILARITY_THRESHOLD) {
-			return true;
-		}
-		return false;
-	}
-	/**
 	 * Builds a cluster for each node and computes the similarity of both.
 	 * 		True,  iff similarity > Threshold
 	 * 		False, iff similarity <= Threshold
@@ -81,11 +68,11 @@ public class ClusterBuilder {
 	private boolean clustersAreSimilar(DendrogramNode n1, DendrogramNode n2) {
 		Cluster clusterN1 = getClusterByDendrogramNode(n1);
 		Cluster clusterN2 = getClusterByDendrogramNode(n2);
-		return clustersAreSimilar(clusterN1, clusterN2);
+		return sbflConfig.clustersAreSimilar(clusterN1, clusterN2);
 	}
 	private Cluster getClusterByDendrogramNode(DendrogramNode n) {
 		TestCase[] failingTCsN = getFailingTestCasesByIndex(DendrogramHelper.getObservations(n));
-		return new Cluster(failingTCsN, passedTCsCluster.getMethodDStarTerms());
+		return new Cluster(failingTCsN, passedTCsCluster.getMethodDStarTerms(), sbflConfig);
 	}
 	private TestCase[] getFailingTestCasesByIndex(List<Integer> tcIndexes){
 		List<TestCase> failingTCs = new ArrayList<TestCase>();

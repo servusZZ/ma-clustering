@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -13,10 +12,9 @@ import data_objects.TestCase;
 import hac.data_objects.DStarTerms;
 import hac.evaluation.RepresentativeSelectionStrategy;
 import hac.experiment.custom.CustomDissimilarityMeasure;
+import hac.sbfl.SBFLConfiguration;
 import priorization.main.AnalysisWrapper;
-import priorization.main.Main;
 import utils.PrintUtils;
-import utils.SortingUtils;
 
 public class Cluster implements Comparable<Cluster>{
 	/**	(sorted) list of methodIDs which are most suspicious **/
@@ -30,12 +28,16 @@ public class Cluster implements Comparable<Cluster>{
 	private Set<Fault> majorFaults;
 	/**	D* suspiciousness value for each method	 **/
 	Map<Integer, Double> methodDStarSusp = new HashMap<Integer, Double>();
+	private SBFLConfiguration sbflConfig;
 	
-	public Cluster(TestCase[] failedTCs, DStarTerms[] passedMethodDStarTerms) {
+	public Cluster(TestCase[] failedTCs, DStarTerms[] passedMethodDStarTerms,
+			SBFLConfiguration sbflConfig) {
 		this.failedTCs = failedTCs;
 		initMethodDStarTerms(passedMethodDStarTerms);
 		updateSupsiciousSet(failedTCs);
 		computeMajorFault();
+		representative = null;
+		this.sbflConfig = sbflConfig;
 	}
 	private void initMethodDStarTerms(DStarTerms[] passedMethodDStarTerms) {
 		methodDStarTerms = new DStarTerms[AnalysisWrapper.methodsCount];
@@ -59,7 +61,6 @@ public class Cluster implements Comparable<Cluster>{
 	/**
 	 * Computes the representative of the Cluster. Depends on a representative selection strategy and
 	 * the distance computation of two Test Cases.
-	 * @return
 	 */
 	public TestCase computeRepresentative(RepresentativeSelectionStrategy strat, CustomDissimilarityMeasure dis) {
 		representative = strat.selectRepresentative(this, dis);
@@ -83,7 +84,8 @@ public class Cluster implements Comparable<Cluster>{
 			return;
 		}
 		for (int i = 0; i < AnalysisWrapper.methodsCount; i++) {
-			// derzeit noch nicht benötigt, da Cluster nur erstellt aber nie geupdatet wird;
+			// Performance verbesserung: 
+			//		(derzeit noch nicht benötigt, da Cluster nur erstellt aber nie geupdatet wird)
 			//		updateTermValues soll boolean zurückgeben, welcher signalisiert ob sich ein Wert geändert hat
 			//		methodDStarSusp speichern und nur neu berechnen, falls sich ein TermValue geändert hat.
 			methodDStarTerms[i].updateTermValues(newFailedTCs);
@@ -94,24 +96,9 @@ public class Cluster implements Comparable<Cluster>{
 	}
 	/**
 	 * Sorts the methodDStarSusp Map and returns only the "most suspicious" elements, defined by the threshold.
-	 * @param methodDStarSusp
-	 * @return
 	 */
 	private Set<Integer> retrieveMostSuspiciousSet(Map<Integer, Double> methodDStarSusp) {
-		Map<Integer, Double> sortedMethodDStarSusp = SortingUtils.getSortedMapByValuesDescending(methodDStarSusp);
-		Set<Integer> mostSusp = new LinkedHashSet<>();
-		int lastSuspEntry = (int) (sortedMethodDStarSusp.size() * Main.MOST_SUSP_THRESHOLD);
-		if(lastSuspEntry < 1) {
-			lastSuspEntry = 1;
-		}
-		else if(lastSuspEntry > Main.MOST_SUSP_MAX_COUNT) {
-			lastSuspEntry = Main.MOST_SUSP_MAX_COUNT;
-		}
-		Iterator<Integer> it = sortedMethodDStarSusp.keySet().iterator();
-		for (int i = 0; i < lastSuspEntry; i++) {
-			mostSusp.add(it.next());
-		}
-		return mostSusp;
+		return sbflConfig.computeMostSuspiciousSet(methodDStarSusp);
 	}
 	private void computeMajorFault() {
 		majorFaults = new HashSet<Fault>();
@@ -138,6 +125,9 @@ public class Cluster implements Comparable<Cluster>{
 	 * Note: computeRepresentative() has to be called at least once before calling this method.
 	 */
 	public TestCase getRepresentative() {
+		if (representative == null) {
+			System.err.println("ERROR: getRepresentative method of cluster is called before the representative was computed by method computeRepresentative().");
+		}
 		return representative;
 	}
 	/**	call hasMajorFault before calling this method to ensure

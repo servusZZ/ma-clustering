@@ -1,7 +1,7 @@
 package hac.data_objects;
 
 import data_objects.TestCase;
-import priorization.main.Main;
+import hac.sbfl.SBFLConfiguration;
 
 public class DStarTerms {
 	private int n_cf = 0;
@@ -38,10 +38,10 @@ public class DStarTerms {
 		}
 		if ((n_uf + n_cs) == 0) {
 			System.out.println("INFO: Denominator in D* formula is null for method " + methodID + ". Return (max value + n_cf) instead. Considered Test Cases: " + consideredTCs);
-			return Main.MAX_SUSP_VALUE + n_cf;
+			return SBFLConfiguration.MAX_SUSP_VALUE + n_cf;
 		}
 		double susp = Math.pow(n_cf, 4) / (n_uf + n_cs);
-		if (susp > Main.MAX_SUSP_VALUE) {
+		if (susp > SBFLConfiguration.MAX_SUSP_VALUE) {
 			System.out.println("WARNING: Maximum susp. value was exceeded by a normal susp value of " + susp + ". Considered Test Cases: " + consideredTCs);
 		}
 		return susp;

@@ -1,7 +1,6 @@
 package hac.evaluation;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -11,13 +10,13 @@ import data_objects.TestCase;
 import hac.experiment.custom.CustomDissimilarityMeasure;
 import hac.main.Cluster;
 import priorization.main.AnalysisWrapper;
-import priorization.main.Main;
 
 public class ClusteringEvaluation {
 	private CustomDissimilarityMeasure dissimilarityMeasure;
 	private RepresentativeSelectionStrategy representativeSelection;
 	private List<Cluster> clusters;
 	private Set<Fault> faults;
+	private ClusteringEvaluationEntry clusteringMetrics;
 	
 	public ClusteringEvaluation(CustomDissimilarityMeasure dissimilarityMeasure, RepresentativeSelectionStrategy representativeSelection, List<Cluster> clusters, Set<Fault> faults) {
 		this.dissimilarityMeasure = dissimilarityMeasure;
@@ -29,76 +28,55 @@ public class ClusteringEvaluation {
 	 * calls all metric computations/ evaluation methods and print results
 	 */
 	public void evaluateClustering() {
-		boolean allFaultsRevealed = evaluateFaultDetection();
-		if (evaluateRepresentativeSelection()) {
-			System.out.println("Representative selection is successful. All Representatives reveal the major Fault in their clusters.");
-		} else {
-			System.out.println("Representative selection failed!");
-		}
-		System.out.println("Purity of Clusters:       " + purity());
+		int[] repSelectionSuccessfulFailedCount = evaluateRepresentativeSelection();
+		System.out.println("DEBUG: The representative selection was successful for " + repSelectionSuccessfulFailedCount[0] + " clusters.");
+		System.out.println("DEBUG: The representative selection failed for " + repSelectionSuccessfulFailedCount[1] + " clusters.");
+		double purity = purity();
+		System.out.println("DEBUG: Purity of Clusters:       " + purity);
+		
 		Map<Fault, Integer> faultToIndexMapping = getFaultToIndexMapping();
 		int[][] failuresPerFaultPerCluster = getFailuresPerFaultPerCluster(faultToIndexMapping);
-		f1Measure(failuresPerFaultPerCluster, faultToIndexMapping);
-		totalFaultEntropy(failuresPerFaultPerCluster, faultToIndexMapping);
+		
+		double[] precisionRecallF1 = f1Measure(failuresPerFaultPerCluster, faultToIndexMapping);
+		System.out.println("DEBUG: Precision:                " + precisionRecallF1[0]);
+		System.out.println("DEBUG: Recall:                   " + precisionRecallF1[1]);
+		System.out.println("DEBUG: F1-Score:                 " + precisionRecallF1[2]);
+		double totalFaultEntropy = totalFaultEntropy(failuresPerFaultPerCluster, faultToIndexMapping);
+		System.out.println("DEBUG: Total Deviation Entropy:  " + totalFaultEntropy);
+		clusteringMetrics = new ClusteringEvaluationEntry(dissimilarityMeasure.getClass().getSimpleName(),
+				clusters.size(), representativeSelection.getClass().getSimpleName(),
+				repSelectionSuccessfulFailedCount[0], repSelectionSuccessfulFailedCount[1],
+				purity, precisionRecallF1[0], precisionRecallF1[1], precisionRecallF1[2], totalFaultEntropy);
 	}
-	private Set<Fault> copyFaults(){
-		Set<Fault> faultsCopy = new HashSet<Fault>(faults.size());
-		for (Fault f: faults) {
-			faultsCopy.add(f);
-		}
-		return faultsCopy;
+
+
+	public ClusteringEvaluationEntry getClusteringMetrics() {
+		return clusteringMetrics;
 	}
 	/**
-	 * Checks whether all Faults would be detected by just fixing the representative Failures.
-	 * returns whether the check was successful (true) or not (false).
+	 * Counts the clusters for which the representative selection was successful (result[0])
+	 * and for which clusters it failed (result[1]).
+	 * 'Successful' means, that the representative reveals the major fault in the respective
+	 * cluster.
 	 */
-	private boolean evaluateFaultDetection() {
-		System.out.println("Check whether all Faults are revealed...");
-		System.out.println("All Faults: " + faults);
-		//Set<Fault> revealedFaults = new HashSet<Fault>();
-		Set<Fault> remainingFaults = copyFaults();
+	private int[] evaluateRepresentativeSelection() {
+		int successful = 0, failed = 0;
 		for (Cluster c: clusters) {
-			System.out.println("Cluster  " + c);
 			TestCase representative = c.computeRepresentative(representativeSelection, dissimilarityMeasure);
-			System.out.println("Representative: " + representative + " \tRevealed Fault: " + representative.getFault());
-			//revealedFaults.add(representative.getFault());
-			remainingFaults.remove(representative.getFault());
-		}
-		if (!remainingFaults.isEmpty()) {
-			System.err.println("ERROR: Not all faults could be revealed by the representative Tests!\n");
-			System.out.println("Remaining Faults: " + remainingFaults);
-			return false;
-		}
-		System.out.println("Fault Revealing is successful. All Faults are revealed by at least one representative.");
-		return true;
-	}
-	/**
-	 * Check whether all representatives reveal the major fault in their cluster.
-	 * If multiple major faults exists, on of them has to be revealed.
-	 */
-	private boolean evaluateRepresentativeSelection() {
-		boolean evaluationSuccessful = true;
-		for (Cluster c: clusters) {
-			if (!c.getMajorFaults().contains(c.getRepresentative().getFault())) {
-				System.err.println("ERROR: The Representative " + c.getRepresentative() + " of Cluster " + c + " reveals the Fault " + c.getRepresentative().getFault() + ". However the major Faults of the cluster are " + c.getMajorFaults() + "\n");
-				evaluationSuccessful = false;
+			if (c.getMajorFaults().contains(representative.getFault())) {
+				successful++;
+			} else {
+				failed++;
 			}
 		}
-		return evaluationSuccessful;
+		return new int[] {successful, failed};
 	}
-	/*private void evaluateReduction() {
-		double reduction = (1 - ((double)clusters.size() / Main.failuresCount)) * 100;
-		double idealReduction = (1 - ((double)faults.size() / Main.failuresCount)) * 100;
-		double achievedReduction = (reduction / idealReduction) * 100;
-		System.out.print("Reduction:                " + String.format("%.3g%n", reduction));
-		System.out.print("ARed:                     " + String.format("%.3g%n", achievedReduction));
-	}	*/
 	/**
 	 * precision = TP / (TP + FP)
 	 * recall = TP / (TP + FN)
 	 * F1-Score = 2 * (precision x recall)/(precision + recall)	
 	 */
-	private void f1Measure(int[][] failuresPerFaultPerCluster, Map<Fault, Integer> faultToIndexMapping) {
+	private double[] f1Measure(int[][] failuresPerFaultPerCluster, Map<Fault, Integer> faultToIndexMapping) {
 		int[] terms = calculateTPandFP(failuresPerFaultPerCluster, faultToIndexMapping);
 		int TP = terms[0];
 		int FP = terms[1];
@@ -106,23 +84,20 @@ public class ClusteringEvaluation {
 		double precision = (double) TP / (TP + FP);
 		double recall = (double) TP / (TP + FN);
 		double F1 = 2.0 * ((precision * recall) / (precision + recall));
-		System.out.println("Precision:                " + precision);
-		System.out.println("Recall:                   " + recall);
-		System.out.println("F1-Score:                 " + F1);
+		return new double[] {precision, recall, F1};
 	}
 	/**
 	 * Computes the deviation entropy (entropy of the underlying faults).
-	 * The cluster entropy is generally speaking more important than fault entropy and 
-	 * measured by the purity (1 is the best value).
+	 * The cluster entropy measured by the purity (1 is the best value).
 	 */
-	private void totalFaultEntropy(int[][] failuresPerFaultPerCluster, Map<Fault, Integer> faultToIndexMapping) {
+	private double totalFaultEntropy(int[][] failuresPerFaultPerCluster, Map<Fault, Integer> faultToIndexMapping) {
 		double totalDeviationEntropy = 0.0;
 		for (Map.Entry<Fault, Integer> faultToIndex:faultToIndexMapping.entrySet()) {
 			double deviationEntropyPerFault = deviationEntropyPerFault(failuresPerFaultPerCluster, faultToIndex.getValue());
 			System.out.println("   Deviation Entropy of " + faultToIndex.getKey().id + " is " + deviationEntropyPerFault);
 			totalDeviationEntropy += deviationEntropyPerFault;
 		}
-		System.out.println("Total Deviation Entropy:  " + totalDeviationEntropy);
+		return totalDeviationEntropy;
 	}
 	private double deviationEntropyPerFault(int[][] failuresPerFaultPerCluster, int faultIndex) {
 		int sumOfFailures = 0;
@@ -203,4 +178,44 @@ public class ClusteringEvaluation {
 		}
 		return (((double)correctlyAssignedSum)/AnalysisWrapper.failuresCount);
 	}
+	
+	/*private Set<Fault> copyFaults(){
+		Set<Fault> faultsCopy = new HashSet<Fault>(faults.size());
+		for (Fault f: faults) {
+			faultsCopy.add(f);
+		}
+		return faultsCopy;
+	}	*/
+	/**
+	 * Checks whether all Faults would be detected by just fixing the representative Failures.
+	 * returns whether the check was successful (true) or not (false).
+	 * Not needed.
+	 */
+	/*private boolean evaluateFaultDetection() {
+		System.out.println("Check whether all Faults are revealed...");
+		System.out.println("All Faults: " + faults);
+		//Set<Fault> revealedFaults = new HashSet<Fault>();
+		Set<Fault> remainingFaults = copyFaults();
+		for (Cluster c: clusters) {
+			System.out.println("Cluster  " + c);
+			TestCase representative = c.computeRepresentative(representativeSelection, dissimilarityMeasure);
+			System.out.println("Representative: " + representative + " \tRevealed Fault: " + representative.getFault());
+			//revealedFaults.add(representative.getFault());
+			remainingFaults.remove(representative.getFault());
+		}
+		if (!remainingFaults.isEmpty()) {
+			System.err.println("ERROR: Not all faults could be revealed by the representative Tests!\n");
+			System.out.println("Remaining Faults: " + remainingFaults);
+			return false;
+		}
+		System.out.println("Fault Revealing is successful. All Faults are revealed by at least one representative.");
+		return true;
+	}	*/
+	/*private void evaluateReduction() {
+	double reduction = (1 - ((double)clusters.size() / Main.failuresCount)) * 100;
+	double idealReduction = (1 - ((double)faults.size() / Main.failuresCount)) * 100;
+	double achievedReduction = (reduction / idealReduction) * 100;
+	System.out.print("Reduction:                " + String.format("%.3g%n", reduction));
+	System.out.print("ARed:                     " + String.format("%.3g%n", achievedReduction));
+}	*/
 }

@@ -8,16 +8,23 @@ public class ClusteringEvaluationEntry {
 	private int representativeSelectionSuccessful;
 	/**	the number of clusters for which the representative selection wasn't successful */
 	private int representativeSelectionFailed;
+	/**	contains the class name of the representative selection */
+	private String representativeSelectionStrategy;
+	/**	contains the class name of the distance measurement */
+	private String dissimilarityMeasure;
 	private double purity;
 	private double precision;
 	private double recall;
 	private double f1score;
 	private double faultEntropy;
 	
-	public ClusteringEvaluationEntry(int clustersCount, int representativeSelectionSuccessful,
+	public ClusteringEvaluationEntry(String dissimilarityMeasure, int clustersCount,
+			String representativeSelectionStrategy, int representativeSelectionSuccessful,
 			int representativeSelectionFailed, double purity, double precision,
 			double recall, double f1score, double faultEntropy) {
+		this.dissimilarityMeasure = dissimilarityMeasure;
 		this.clustersCount = clustersCount;
+		this.representativeSelectionStrategy = representativeSelectionStrategy;
 		this.representativeSelectionSuccessful = representativeSelectionSuccessful;
 		this.representativeSelectionFailed = representativeSelectionFailed;
 		this.purity = purity;
@@ -27,7 +34,8 @@ public class ClusteringEvaluationEntry {
 		this.faultEntropy = faultEntropy;
 	}
 	public String getValues() {
-		return clustersCount + ";" + representativeSelectionSuccessful + ";" + representativeSelectionFailed +
+		return dissimilarityMeasure + ";" + clustersCount + ";" + representativeSelectionStrategy +
+				 ";" + representativeSelectionSuccessful + ";" + representativeSelectionFailed +
 				 ";" + getGermanRepresentation(purity) +
 				 ";" + getGermanRepresentation(precision) +
 				 ";" + getGermanRepresentation(recall) +

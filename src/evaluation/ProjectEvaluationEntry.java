@@ -16,8 +16,7 @@ public class ProjectEvaluationEntry {
 	//TODO: define project types, this refers to the kind
 			//	how faults are distributed:
 			//		e.g. multiple faults in same class/ package
-			//		failures that are caused by multiple faults contained?
-			//		
+			//		failures that are caused by multiple faults contained?	
 	private String faultDistributionType;
 	
 	public ProjectEvaluationEntry(int id, String projectName, int faultsCount,

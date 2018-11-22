@@ -15,10 +15,10 @@ public class EvaluationEntry {
 	private int investigatedFailuresCount;
 	private String debuggingStrategy;
 	
-	// metrics related to the faulty project for which the prioritization is performed
+	/** metrics related to the faulty project for which the prioritization is performed */
 	private ProjectEvaluationEntry projectMetrics;
 	
-	// optional: clustering metrics if the prioritization strategy is clustering
+	/** optional: clustering metrics if the prioritization strategy is clustering */
 	private ClusteringEvaluationEntry clusteringMetrics;
 	
 	/**
@@ -43,7 +43,7 @@ public class EvaluationEntry {
 				+ ";" + getClusteringMetricsHeader();
 	}
 	private String getClusteringMetricsHeader() {
-		return "#Clusters;#SuccessfulRepresentatives;#FailedRepresentatives;Purity;Precision;Recall;F1-Score;FaultEntropy";
+		return "DissimilarityMeasure;#Clusters;RepresentativeSelectionStrategy;#SuccessfulRepresentatives;#FailedRepresentatives;Purity;Precision;Recall;F1-Score;FaultEntropy";
 	}
 	public String getValues() {
 		return prioritizationStrategyName + ";" + foundFaults + ";" + fixedFailures +
@@ -56,6 +56,6 @@ public class EvaluationEntry {
 		if (clusteringMetrics != null) {
 			return clusteringMetrics.getValues();
 		}
-		return ";;;;;;;";
+		return ";;;;;;;;;";
 	}
 }

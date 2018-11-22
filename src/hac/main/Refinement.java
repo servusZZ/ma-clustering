@@ -8,21 +8,22 @@ import java.util.Map;
 
 import data_objects.TestCase;
 import hac.data_objects.PassedTCsCluster;
-import priorization.main.Main;
+import hac.sbfl.SBFLConfiguration;
 import utils.MetricUtils;
 
 public class Refinement {
 	private int nextClusterID = 0;
 	Map<Cluster, Integer> clusterRowIndexMapping = new HashMap<Cluster, Integer>();
 	private PassedTCsCluster passedTCsCluster;
+	private SBFLConfiguration sbflConfig;
 	
-	public Refinement(PassedTCsCluster passedTCsCluster) {
+	public Refinement(PassedTCsCluster passedTCsCluster, SBFLConfiguration sbflConfig) {
 		this.passedTCsCluster = passedTCsCluster;
+		this.sbflConfig = sbflConfig;
 	}
 	/**
 	 * Does a pairwise comparison of the passed clusters (clusters of the cutting level of the Failure Tree)
 	 * and merges similar clusters.
-	 * @return
 	 */
 	public List<Cluster> refineClusters(List<Cluster> clusters){
 		List<Cluster> refinedClusters = new ArrayList<Cluster>();
@@ -34,15 +35,14 @@ public class Refinement {
 			double maxSimilarityValue = similarity[maxValueIndexes[0]][maxValueIndexes[1]];
 			Cluster c1 = clusters.get(i);
 			Cluster c2 = clusters.get(j);
-			if (maxSimilarityValue > Main.SIMILARITY_THRESHOLD) {
-				
+			if (sbflConfig.clustersAreSimilar(maxSimilarityValue)) {
 				List<TestCase> mergedFailedTCs = Arrays.asList(c1.getFailedTCs());
 				mergedFailedTCs.addAll(Arrays.asList(c2.getFailedTCs()));
 				// c1 is now broken because we changed the list of failed TCs
 				clusterRowIndexMapping.put(c1, null);
 				clusterRowIndexMapping.put(c2, null);
 				deleteClustersFromMatrix(i, j, similarity);
-				Cluster mergedC12 = new Cluster((TestCase[])mergedFailedTCs.toArray(), passedTCsCluster.getMethodDStarTerms());
+				Cluster mergedC12 = new Cluster((TestCase[])mergedFailedTCs.toArray(), passedTCsCluster.getMethodDStarTerms(), sbflConfig);
 				clusterRowIndexMapping.put(mergedC12, nextClusterID);
 				nextClusterID++;
 				updateSimilarityMatrix(similarity, mergedC12);

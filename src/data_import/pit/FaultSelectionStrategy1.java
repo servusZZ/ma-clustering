@@ -21,6 +21,7 @@ public class FaultSelectionStrategy1 extends PitFaultSelectionStrategyBase{
 	
 	@Override
 	public List<Set<PitMutation>> selectFaultyVersions(List<PitMutation> pitFaults, List<PitTestCase> pitTests) {
+		//TODO: Versions per fault count berücksichtigen
 		List<Set<PitMutation>> faultyVersions = new ArrayList<Set<PitMutation>>();
 		for (int i = minFaultCount; i <= maxFaultCount; i++) {
 			Set<PitMutation> faultyVersion = new HashSet<PitMutation>();

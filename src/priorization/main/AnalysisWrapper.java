@@ -35,7 +35,7 @@ public class AnalysisWrapper {
 	public static int testsCount = 0;
 	
 	public AnalysisWrapper() {
-		faultSelectionStrategy = new FaultSelectionStrategy1(9, 10, 2);
+		faultSelectionStrategy = new FaultSelectionStrategy1(2, 3, 2);
 		outputWriter = new EvaluationFileWriter(OUTPUT_DIR, OUTPUT_FILE_NAME);
 	}
 /**

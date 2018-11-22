@@ -14,21 +14,24 @@ import ch.usi.inf.sape.hac.experiment.Experiment;
 import data_objects.Fault;
 import data_objects.TestCase;
 import hac.evaluation.ClusteringEvaluation;
-import hac.evaluation.ClusteringEvaluationEntry;
 import hac.evaluation.KNNToCenterSelection;
 import hac.experiment.custom.AverageCenterCalculation;
 import hac.experiment.custom.CustomDissimilarityMeasure;
 import hac.experiment.custom.FailureClusteringExperiment;
 import hac.experiment.custom.ICenterCalculation;
 import hac.experiment.custom.JaccardDistance;
+import hac.sbfl.OverlapConfiguration1;
+import hac.sbfl.SBFLConfiguration;
 import priorization.main.PrioritizationStrategyBase;
 import utils.PrintUtils;
 
 public class HierarchicalAgglomerativeClustering extends PrioritizationStrategyBase{
-
+	private SBFLConfiguration sbflConfig;
+	
 	public HierarchicalAgglomerativeClustering(TestCase[] failures,
 			TestCase[] passedTCs, Set<Fault> faults) {
 		super(failures, passedTCs, faults);
+		this.sbflConfig = new OverlapConfiguration1();
 	}
 	private Dendrogram performHAC(CustomDissimilarityMeasure dissimilarityMeasure) {
 		Experiment experiment = new FailureClusteringExperiment(failures);
@@ -39,8 +42,7 @@ public class HierarchicalAgglomerativeClustering extends PrioritizationStrategyB
 		return dendrogramBuilder.getDendrogram();
 	}
 	@Override
-	public List<TestCase> prioritizeFailures() {
-		List<TestCase> prioritizedFailures = new ArrayList<TestCase>();
+	public void prioritizeFailures() {
 		ICenterCalculation centerCalc = new AverageCenterCalculation();
 		CustomDissimilarityMeasure dissimilarityMeasure = new JaccardDistance(centerCalc);
 		
@@ -49,13 +51,13 @@ public class HierarchicalAgglomerativeClustering extends PrioritizationStrategyB
 		dendrogram.dump();
 		
 		System.out.println("Determine cutting point of the Failure Tree...");
-		ClusterBuilder cb = new ClusterBuilder(dendrogram.getRoot(), passedTCs, failures);
+		ClusterBuilder cb = new ClusterBuilder(dendrogram.getRoot(), passedTCs, failures, sbflConfig);
 		System.out.println("DEBUG: Created ClusterBuilder and passedTCs");
 		List<Cluster> clusters = cb.getClustersOfCuttingLevel();
 		System.out.println("Cutting level of the Failure Tree contains " + clusters.size() + " clusters.");
 		PrintUtils.dumpClusters(clusters);
 		int countClustersBeforeRefinement = clusters.size();
-		Refinement refinement = new Refinement(cb.getPassedTCsCluster());
+		Refinement refinement = new Refinement(cb.getPassedTCsCluster(), sbflConfig);
 		clusters = refinement.refineClusters(clusters);
 		System.out.println("Number of refined clusters: " + clusters.size());
 		
@@ -66,16 +68,20 @@ public class HierarchicalAgglomerativeClustering extends PrioritizationStrategyB
 			System.out.println("WARNING: This wasn't tested before, so check the result once manually.");
 		}
 		System.out.println("Evaluate the Clustering...");
-		//TODO: ClusterEvaluation überarbeiten
-		ClusteringEvaluation em = new ClusteringEvaluation(dissimilarityMeasure, new KNNToCenterSelection(), clusters, faults);
-		em.evaluateClustering();
-		//this.clusteringMetrics = new ClusteringEvaluationEntry(clusters.size(),
-		//		representativeSelectionSuccessful, representativeSelectionFailed, purity, precision, recall, f1score, faultEntropy);
+		ClusteringEvaluation clusteringEvaluation = new ClusteringEvaluation(dissimilarityMeasure, new KNNToCenterSelection(), clusters, faults);
+		clusteringEvaluation.evaluateClustering();
+		clusteringMetrics = clusteringEvaluation.getClusteringMetrics();
 		prioritizedFailures = performPrioritization(clusters);
-		return prioritizedFailures;
 	}
-	
+	/**
+	 * Clusters and representatives are already known. Sorts the clusters by size to
+	 * possibly enhance the #fixedFailures metric.
+	 */
 	private List<TestCase> performPrioritization(List<Cluster> clusters){
+		//TODO: prioritization enhancement
+		//			unähnlichste Cluster (nach D* metric) zuerst um zu vermeiden, dass der gleiche Fault gefunden wird
+		//			als eigene Strategie aufnehmen: einmal nach größe und einmal nach Ähnlichkeit sortieren
+		//		und: berücksichtigen, dass lediglich durch die Cluster nicht alle TC priorisiert werden
 		List<TestCase> prioritizedFailures = new ArrayList<TestCase>();
 		Collections.sort(clusters);
 		System.out.println("DEBUG: Sorted Clusters");
