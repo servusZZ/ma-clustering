@@ -32,7 +32,7 @@ public class ProjectEvaluationEntry {
 		this.faultDistributionType = "NA";
 	}
 	public String getHeader() {
-		return "FaultyVersion-ID;ProjectName;#Faults;#Failuers;#PassedTCs;#Tests;DDU;MinTestSize;FaultDistribution";
+		return "FaultyVersion-ID;ProjectName;#Faults;#Failures;#PassedTCs;#Tests;DDU;MinTestSize;FaultDistribution";
 	}
 	public String getValues() {
 		return id + ";" + projectName + ";" + faultsCount + ";" + failuresCount +

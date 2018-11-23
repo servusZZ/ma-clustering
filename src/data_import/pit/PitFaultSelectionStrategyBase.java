@@ -20,5 +20,9 @@ public abstract class PitFaultSelectionStrategyBase {
 		this.maxFaultCount = maxFaultCount;
 		this.versionsPerFaultCount = versionsPerFaultCount;
 	}
+	/**
+	 * Selects versionsPerFaultCount * (maxFaultCount - minFaultCount + 1) faulty versions
+	 * according to the concrete strategy.
+	 */
 	public abstract List<Set<PitMutation>> selectFaultyVersions(List<PitMutation> pitFaults, List<PitTestCase> pitTests);
 }

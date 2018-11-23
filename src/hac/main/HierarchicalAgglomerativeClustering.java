@@ -32,6 +32,7 @@ public class HierarchicalAgglomerativeClustering extends PrioritizationStrategyB
 			TestCase[] passedTCs, Set<Fault> faults) {
 		super(failures, passedTCs, faults);
 		this.sbflConfig = new OverlapConfiguration1();
+		this.strategyName = "HAC";
 	}
 	private Dendrogram performHAC(CustomDissimilarityMeasure dissimilarityMeasure) {
 		Experiment experiment = new FailureClusteringExperiment(failures);

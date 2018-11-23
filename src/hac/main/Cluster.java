@@ -33,11 +33,11 @@ public class Cluster implements Comparable<Cluster>{
 	public Cluster(TestCase[] failedTCs, DStarTerms[] passedMethodDStarTerms,
 			SBFLConfiguration sbflConfig) {
 		this.failedTCs = failedTCs;
+		this.sbflConfig = sbflConfig;
 		initMethodDStarTerms(passedMethodDStarTerms);
 		updateSupsiciousSet(failedTCs);
 		computeMajorFault();
 		representative = null;
-		this.sbflConfig = sbflConfig;
 	}
 	private void initMethodDStarTerms(DStarTerms[] passedMethodDStarTerms) {
 		methodDStarTerms = new DStarTerms[AnalysisWrapper.methodsCount];

@@ -41,11 +41,15 @@ public abstract class PrioritizationStrategyBase {
 	 * must be set within the prioritizeFailures method in respective subclasses.
 	 */
 	public EvaluationEntry evaluatePrioritizationStrategy(int failuresToInvestigateCount, ProjectEvaluationEntry projectMetrics) {
-		//TODO: berücksichtigen, dass das Clustering nicht alle failures berücksichtigen kann
-		Set<Fault> foundFaults = evaluationHelper.getFoundFaults(prioritizedFailures.subList(0, failuresToInvestigateCount));
+		int investigatedFailuresActual = failuresToInvestigateCount;
+		if (prioritizedFailures.size() < failuresToInvestigateCount) {
+			investigatedFailuresActual = prioritizedFailures.size();
+		}
+		Set<Fault> foundFaults = evaluationHelper.getFoundFaults(prioritizedFailures.subList(0, investigatedFailuresActual));
 		Set<TestCase> fixedFailures = evaluationHelper.getFixedFailures(foundFaults, failures);
 		EvaluationEntry metrics = new EvaluationEntry(strategyName, foundFaults.size(),
-				fixedFailures.size(), failuresToInvestigateCount, projectMetrics, clusteringMetrics);
+				fixedFailures.size(), investigatedFailuresActual, failuresToInvestigateCount,
+				projectMetrics, clusteringMetrics);
 		return metrics;
 	}
 }

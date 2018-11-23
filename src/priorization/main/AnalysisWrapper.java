@@ -59,6 +59,7 @@ public class AnalysisWrapper {
 		int id = 1;
 		for (Set<PitMutation> faultyVersion:faultyVersions) {
 			PitDataObjectsConverter converter = prep.initTestsAndFaults(faultyVersion);
+			System.out.println("Processing next faulty Version with " + converter.getFaults().size() + " faults, " + converter.getFailures().length + " failures, " + converter.getPassedTCs().length + " passing Test Cases and " + AnalysisWrapper.methodsCount + " relevant methods.");
 			ProjectEvaluationEntry projectMetrics = new ProjectEvaluationEntry(id, projectName,
 					converter.getFaults().size(), converter.getFailures().length,
 					converter.getPassedTCs().length);
