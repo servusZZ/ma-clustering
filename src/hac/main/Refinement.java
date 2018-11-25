@@ -9,7 +9,6 @@ import java.util.Map;
 import data_objects.TestCase;
 import hac.data_objects.PassedTCsCluster;
 import hac.sbfl.SBFLConfiguration;
-import utils.MetricUtils;
 
 public class Refinement {
 	private int nextClusterID = 0;
@@ -32,17 +31,19 @@ public class Refinement {
 			int[] maxValueIndexes = getMaxValueOfMatrix(similarity);
 			int i = maxValueIndexes[0];
 			int j = maxValueIndexes[1];
-			double maxSimilarityValue = similarity[maxValueIndexes[0]][maxValueIndexes[1]];
+			double maxSimilarityValue = similarity[i][j];
 			Cluster c1 = clusters.get(i);
 			Cluster c2 = clusters.get(j);
 			if (sbflConfig.clustersAreSimilar(maxSimilarityValue)) {
-				List<TestCase> mergedFailedTCs = Arrays.asList(c1.getFailedTCs());
-				mergedFailedTCs.addAll(Arrays.asList(c2.getFailedTCs()));
-				// c1 is now broken because we changed the list of failed TCs
+				TestCase[] mergedFailedTCs = new TestCase[c1.getFailedTCs().length + c2.getFailedTCs().length];
+				// no check for duplicate TestCases is necessary because the 
+				// failures of all clusters are disjoint.
+				System.arraycopy(c1.getFailedTCs(), 0, mergedFailedTCs, 0, c1.getFailedTCs().length);
+				System.arraycopy(c2.getFailedTCs(), 0, mergedFailedTCs, c1.getFailedTCs().length, c2.getFailedTCs().length);
 				clusterRowIndexMapping.put(c1, null);
 				clusterRowIndexMapping.put(c2, null);
 				deleteClustersFromMatrix(i, j, similarity);
-				Cluster mergedC12 = new Cluster((TestCase[])mergedFailedTCs.toArray(), passedTCsCluster.getMethodDStarTerms(), sbflConfig);
+				Cluster mergedC12 = new Cluster(mergedFailedTCs, passedTCsCluster.getMethodDStarTerms(), sbflConfig);
 				clusterRowIndexMapping.put(mergedC12, nextClusterID);
 				nextClusterID++;
 				updateSimilarityMatrix(similarity, mergedC12);
@@ -85,7 +86,7 @@ public class Refinement {
 			if (c1 == c2 || clusterRowIndexMapping.get(c2) == null) {
 				continue;
 			}
-			double similarityValue = MetricUtils.jaccardSetSimilarity(c2.getSuspiciousSet(), c1.getSuspiciousSet());
+			double similarityValue = sbflConfig.getSimilarityValue(c1, c2);
 			int j = clusterRowIndexMapping.get(c2);
 			similarity[i][j] = similarityValue;
 			similarity[j][i] = similarityValue;
@@ -97,13 +98,13 @@ public class Refinement {
 			clusterRowIndexMapping.put(clusters.get(i), nextClusterID);
 			nextClusterID++;
 			for (int j = i+1; j < clusters.size(); j++) {
-				double similarityValue = MetricUtils.jaccardSetSimilarity(clusters.get(i).getSuspiciousSet(), clusters.get(j).getSuspiciousSet());
+				double similarityValue = sbflConfig.getSimilarityValue(clusters.get(i), clusters.get(j));
 				similarity[i][j] = similarityValue;
 				similarity[j][i] = similarityValue;
 			}
 		}
 		if (nextClusterID != clusters.size()-1) {
-			System.err.println("Cluster index mapping is broken!");
+			System.err.println("ERROR: Cluster index mapping is broken!");
 		}
 		clusterRowIndexMapping.put(clusters.get(clusters.size()-1), nextClusterID);
 		nextClusterID++;

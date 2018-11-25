@@ -9,17 +9,24 @@ import data_import.pit.FaultSelectionStrategy1;
 import data_import.pit.PitAnalysisPreparation;
 import data_import.pit.PitDataObjectsConverter;
 import data_import.pit.PitFaultSelectionStrategyBase;
+import data_import.pit.SelectSpecificFaults1;
 import data_import.pit.data_objects.PitMutation;
 import evaluation.ProjectEvaluationEntry;
 import evaluation.StatisticsPrinter;
 import hac.main.HierarchicalAgglomerativeClustering;
-
+/**
+ * Wrapper to analyze a pit project. Usage:<br>
+ * import()<br>
+ * analyze()<br>
+ * __ get faulty versions<br>
+ * __ build and analyze each<br>
+ */
 public class AnalysisWrapper {
 	private static final String OUTPUT_DIR = "C:\\study\\workspace_master-thesis-java\\ma-clustering\\output\\";
 	private final static String OUTPUT_FILE_NAME = "prioritization-evaluation.csv";
 	
-	private static final int MIN_FAILURES_TO_INVESTIGATE = 3;
-	private static final int MAX_FAILURES_TO_INVESTIGATE = 5;
+	private static final int MIN_FAILURES_TO_INVESTIGATE = 1;
+	private static final int MAX_FAILURES_TO_INVESTIGATE = 10;
 	
 	private PitAnalysisPreparation prep;
 	private PitFaultSelectionStrategyBase faultSelectionStrategy;
@@ -35,15 +42,10 @@ public class AnalysisWrapper {
 	public static int testsCount = 0;
 	
 	public AnalysisWrapper() {
-		faultSelectionStrategy = new FaultSelectionStrategy1(2, 3, 2);
+		//TODO: change to different fault selection strategy again
+		faultSelectionStrategy = new SelectSpecificFaults1();
 		outputWriter = new EvaluationFileWriter(OUTPUT_DIR, OUTPUT_FILE_NAME);
 	}
-/**
- * import()
- * analyze()
- * 		get faulty versions
- * 		build and analyze each
- */
 	/**
 	 * imports data and creates multiple faulty versions to analyze for a PIT project
 	 */
@@ -56,36 +58,30 @@ public class AnalysisWrapper {
 	 * Analyzes all faulty versions for a PIT project.
 	 */
 	public void analyze() throws IOException {
-		int id = 1;
+		int faultyProjectId = 1;
 		for (Set<PitMutation> faultyVersion:faultyVersions) {
 			PitDataObjectsConverter converter = prep.initTestsAndFaults(faultyVersion);
 			System.out.println("Processing next faulty Version with " + converter.getFaults().size() + " faults, " + converter.getFailures().length + " failures, " + converter.getPassedTCs().length + " passing Test Cases and " + AnalysisWrapper.methodsCount + " relevant methods.");
-			ProjectEvaluationEntry projectMetrics = new ProjectEvaluationEntry(id, projectName,
+			ProjectEvaluationEntry projectMetrics = new ProjectEvaluationEntry(faultyProjectId, projectName,
 					converter.getFaults().size(), converter.getFailures().length,
 					converter.getPassedTCs().length);
-			//TODO: PrioritizationStrategy Factory anlegen, welche alle strategien
-			//		initialisiert und zurück gibt
-			analyzeStrategy(new HierarchicalAgglomerativeClustering(converter.getFailures(),
-					converter.getPassedTCs(), converter.getFaults()), projectMetrics);
-			id++;
+			List<PrioritizationStrategyBase> strategies = PrioritizationStrategyFactory.createStrategies(
+					converter.getFailures(), converter.getPassedTCs(), converter.getFaults());
+			for (PrioritizationStrategyBase strategy: strategies) {
+				System.out.println("Analyzing strategy " + strategy.strategyName);
+				analyzeStrategy(strategy, projectMetrics);
+			}
+			//TODO: SameName/Class/Package clustering implementieren
+			//		Train/Test split Konzept überlegen (vllt. paar Faults aus random speichern und vorerst immer die zum debuggen nehmen?)
+			faultyProjectId++;
 		}
 	}
-	
 	private void analyzeStrategy(PrioritizationStrategyBase strategy, ProjectEvaluationEntry projectMetrics) throws IOException {
 		strategy.prioritizeFailures();
 		for (int i = MIN_FAILURES_TO_INVESTIGATE; i <= MAX_FAILURES_TO_INVESTIGATE; i++) {
 			outputWriter.writeEvaluationEntry(strategy.evaluatePrioritizationStrategy(i, projectMetrics));
 		}
 	}
-	/*private void analyze_HAC(TestCase[] failures, TestCase[] passedTCs, Set<Fault> faults) throws IOException {
-		PrioritizationStrategyBase hac = new HierarchicalAgglomerativeClustering(failures,
-				passedTCs, faults);
-		List<TestCase> prioritizedFailures = hac.prioritizeFailures();
-		System.out.println("Prioritized Failures: " + prioritizedFailures);
-	}
-	private void analyze_Random() {
-	}	*/
-
 	
 	/**
 	 * Method to simply print the statistics for a project and then exit the program.

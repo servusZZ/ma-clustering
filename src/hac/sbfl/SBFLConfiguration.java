@@ -16,6 +16,7 @@ import hac.main.Cluster;
  * and Methods:<br>
  *  - compute if 2 clusters are similar<br>
  *  - computeMostSuspSet (for each cluster)
+ *  - compute Similarity Value (for 2 clusters)
  *
  */
 public abstract class SBFLConfiguration {
@@ -25,5 +26,5 @@ public abstract class SBFLConfiguration {
 	public abstract Set<Integer> computeMostSuspiciousSet(Map<Integer, Double> methodDStarSusp);
 	public abstract boolean clustersAreSimilar(Cluster c1, Cluster c2);
 	public abstract boolean clustersAreSimilar(double similarityValue);
-	
+	public abstract double getSimilarityValue(Cluster c1, Cluster c2);
 }

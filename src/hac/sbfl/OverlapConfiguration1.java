@@ -71,7 +71,7 @@ public class OverlapConfiguration1 extends SBFLConfiguration{
 	public boolean clustersAreSimilar(Cluster c1, Cluster c2) {
 		c1.dump();
 		c2.dump();
-		double similarity = MetricUtils.overlapSimilarity(c1.getSuspiciousSet(), c2.getSuspiciousSet());
+		double similarity = getSimilarityValue(c1, c2);
 		System.out.println("The clusters have a similarity value of " + similarity);
 		if(similarity > SIMILARITY_THRESHOLD) {
 			return true;
@@ -84,5 +84,9 @@ public class OverlapConfiguration1 extends SBFLConfiguration{
 			return true;
 		}
 		return false;
+	}
+	@Override
+	public double getSimilarityValue(Cluster c1, Cluster c2) {
+		return MetricUtils.overlapSimilarity(c1.getSuspiciousSet(), c2.getSuspiciousSet());
 	}
 }
