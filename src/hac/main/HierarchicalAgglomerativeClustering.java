@@ -1,7 +1,6 @@
 package hac.main;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -13,6 +12,8 @@ import ch.usi.inf.sape.hac.dendrogram.DendrogramBuilder;
 import ch.usi.inf.sape.hac.experiment.Experiment;
 import data_objects.Fault;
 import data_objects.TestCase;
+import hac.cluster.prioritization.ClusterPrioritizationBase;
+import hac.cluster.prioritization.ClusterPrioritizationDissimilarGreatestFirst;
 import hac.evaluation.ClusteringEvaluation;
 import hac.evaluation.KNNToCenterSelection;
 import hac.experiment.custom.AverageCenterCalculation;
@@ -27,12 +28,14 @@ import utils.PrintUtils;
 
 public class HierarchicalAgglomerativeClustering extends PrioritizationStrategyBase{
 	private SBFLConfiguration sbflConfig;
+	private ClusterPrioritizationBase clusterPrioritization;
 	
 	public HierarchicalAgglomerativeClustering(TestCase[] failures,
 			TestCase[] passedTCs, Set<Fault> faults) {
 		super(failures, passedTCs, faults);
 		this.sbflConfig = new OverlapConfiguration1();
-		this.strategyName = "HAC";
+		this.clusterPrioritization = new ClusterPrioritizationDissimilarGreatestFirst(sbflConfig);
+		this.strategyName = "HAC DissimilarGreatestFirst";
 	}
 	private Dendrogram performHAC(CustomDissimilarityMeasure dissimilarityMeasure) {
 		Experiment experiment = new FailureClusteringExperiment(failures);
@@ -71,23 +74,17 @@ public class HierarchicalAgglomerativeClustering extends PrioritizationStrategyB
 		ClusteringEvaluation clusteringEvaluation = new ClusteringEvaluation(dissimilarityMeasure, new KNNToCenterSelection(), clusters, faults);
 		clusteringEvaluation.evaluateClustering();
 		clusteringMetrics = clusteringEvaluation.getClusteringMetrics();
-		prioritizedFailures = performPrioritization(clusters);
+		clusters = clusterPrioritization.prioritizeClusters(clusters);
+		prioritizedFailures = getRepresentativesOfClusters(clusters);
 	}
 	/**
-	 * Clusters and representatives are already known. Sorts the clusters by size to
-	 * possibly enhance the #fixedFailures metric.
+	 * Returns the representatives of the passed prioritized clusters.
+	 * The representatives of the clusters must have been already computed before.
 	 */
-	private List<TestCase> performPrioritization(List<Cluster> clusters){
-		//TODO: prioritization enhancement
-		//			unähnlichste Cluster (nach D* metric) zuerst um zu vermeiden, dass der gleiche Fault gefunden wird
-		//			als eigene Strategie aufnehmen: einmal nach größe und einmal nach Ähnlichkeit sortieren
-		//		und: berücksichtigen, dass lediglich durch die Cluster nicht alle TC priorisiert werden
+	private List<TestCase> getRepresentativesOfClusters(List<Cluster> clusters){
 		List<TestCase> prioritizedFailures = new ArrayList<TestCase>();
-		Collections.sort(clusters);
-		System.out.println("DEBUG: Sorted Clusters");
-		System.out.println(clusters);
 		for (Cluster c: clusters) {
-			prioritizedFailures.add(0, c.getRepresentative());
+			prioritizedFailures.add(c.getRepresentative());
 		}
 		return prioritizedFailures;
 	}

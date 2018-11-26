@@ -121,8 +121,8 @@ public class Cluster implements Comparable<Cluster>{
 		return failedTCs;
 	}
 	/** 
-	 * The representative TC of the cluster, stores the result of the last call of computeRepresentative().
-	 * Note: computeRepresentative() has to be called at least once before calling this method.
+	 * The representative TC of the cluster, stores the result of the last call of computeRepresentative().<br>
+	 * CAUTION: computeRepresentative() has to be called at least once before calling this method.
 	 */
 	public TestCase getRepresentative() {
 		if (representative == null) {
