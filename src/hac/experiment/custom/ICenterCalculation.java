@@ -1,6 +1,6 @@
 package hac.experiment.custom;
 
-import data_objects.TestCase;
+import prioritization.data_objects.TestCase;
 
 public interface ICenterCalculation {
 	public double computeDistanceToCenter(double[] center, int[] tc);

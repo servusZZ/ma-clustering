@@ -3,8 +3,8 @@ package hac.experiment.custom;
 import org.apache.commons.lang3.NotImplementedException;
 
 import ch.usi.inf.sape.hac.experiment.Experiment;
-import data_objects.TestCase;
-import priorization.main.AnalysisWrapper;
+import faulty_project.globals.FaultyProjectGlobals;
+import prioritization.data_objects.TestCase;
 
 public class EuclideanDistance extends CustomDissimilarityMeasure{
 	
@@ -17,7 +17,7 @@ public class EuclideanDistance extends CustomDissimilarityMeasure{
 		TestCase tc1 = (TestCase) experiment.getObservation(observation1);
 		TestCase tc2 = (TestCase) experiment.getObservation(observation2);
 		double diff = 0;
-		for (int i = 0; i < AnalysisWrapper.methodsCount; i++) {
+		for (int i = 0; i < FaultyProjectGlobals.methodsCount; i++) {
 			if(tc1.coverage[i] != tc2.coverage[i]) {
 				diff++;
 			}

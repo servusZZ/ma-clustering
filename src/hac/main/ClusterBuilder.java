@@ -6,10 +6,11 @@ import java.util.List;
 import ch.usi.inf.sape.hac.dendrogram.DendrogramNode;
 import ch.usi.inf.sape.hac.dendrogram.MergeNode;
 import ch.usi.inf.sape.hac.dendrogram.ObservationNode;
-import data_objects.TestCase;
+import hac.data_objects.Cluster;
 import hac.data_objects.PassedTCsCluster;
 import hac.experiment.custom.DendrogramHelper;
 import hac.sbfl.SBFLConfiguration;
+import prioritization.data_objects.TestCase;
 /**
  * Builds the Clusters based on a Dendrogram (root node). Uses fault localization ranks, i.e. the 
  * suspicious set to determine the cutting point of the failure tree.

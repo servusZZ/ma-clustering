@@ -3,12 +3,12 @@ package priorization.main;
 import java.util.List;
 import java.util.Set;
 
-import data_objects.Fault;
-import data_objects.TestCase;
 import evaluation.EvaluationEntry;
 import evaluation.EvaluationUtils;
-import evaluation.ProjectEvaluationEntry;
 import hac.evaluation.ClusteringEvaluationEntry;
+import prioritization.data_objects.Fault;
+import prioritization.data_objects.TestCase;
+import prioritization.evaluation.ProjectEvaluationEntry;
 
 public abstract class PrioritizationStrategyBase {
 	protected TestCase[] failures;

@@ -5,8 +5,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
-import data_objects.Fault;
-import data_objects.TestCase;
+import prioritization.data_objects.Fault;
+import prioritization.data_objects.TestCase;
 import priorization.main.PrioritizationStrategyBase;
 
 /**

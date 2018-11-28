@@ -1,7 +1,7 @@
 package hac.data_objects;
 
-import data_objects.TestCase;
 import hac.sbfl.SBFLConfiguration;
+import prioritization.data_objects.TestCase;
 
 public class DStarTerms {
 	private int n_cf = 0;

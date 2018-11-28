@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import data_objects.Fault;
-import data_objects.TestCase;
 import hac.main.HierarchicalAgglomerativeClustering;
+import prioritization.data_objects.Fault;
+import prioritization.data_objects.TestCase;
 import prioritization.strategies.OptimalPrioritization;
 import prioritization.strategies.RandomPrioritization;
 

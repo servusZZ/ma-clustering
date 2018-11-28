@@ -3,10 +3,10 @@ package evaluation;
 import java.util.ArrayList;
 import java.util.List;
 
-import data_import.pit.data_objects.EPitMutationStatus;
-import data_import.pit.data_objects.PitMethod;
-import data_import.pit.data_objects.PitMutation;
-import data_import.pit.data_objects.PitTestCase;
+import pit.data_objects.EPitMutationStatus;
+import pit.data_objects.PitMethod;
+import pit.data_objects.PitMutation;
+import pit.data_objects.PitTestCase;
 
 public class StatisticsPrinter {
 	private List<PitMethod> methods;

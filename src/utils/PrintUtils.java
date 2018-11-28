@@ -3,8 +3,8 @@ package utils;
 import java.util.List;
 import java.util.Map;
 
-import data_objects.TestCase;
-import hac.main.Cluster;
+import hac.data_objects.Cluster;
+import prioritization.data_objects.TestCase;
 
 public class PrintUtils {
 	public static String printTestCasesList(List<TestCase> testCases) {

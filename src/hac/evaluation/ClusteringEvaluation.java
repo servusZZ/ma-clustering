@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import data_objects.Fault;
-import data_objects.TestCase;
+import faulty_project.globals.FaultyProjectGlobals;
+import hac.data_objects.Cluster;
 import hac.experiment.custom.CustomDissimilarityMeasure;
-import hac.main.Cluster;
-import priorization.main.AnalysisWrapper;
+import prioritization.data_objects.Fault;
+import prioritization.data_objects.TestCase;
 
 public class ClusteringEvaluation {
 	private CustomDissimilarityMeasure dissimilarityMeasure;
@@ -176,7 +176,7 @@ public class ClusteringEvaluation {
 		for (Cluster c: clusters) {
 			correctlyAssignedSum += c.correctlyAssignedTCs();
 		}
-		return (((double)correctlyAssignedSum)/AnalysisWrapper.failuresCount);
+		return (((double)correctlyAssignedSum)/FaultyProjectGlobals.failuresCount);
 	}
 	
 	/*private Set<Fault> copyFaults(){

@@ -1,8 +1,8 @@
 package hac.evaluation;
 
-import data_objects.TestCase;
+import hac.data_objects.Cluster;
 import hac.experiment.custom.CustomDissimilarityMeasure;
-import hac.main.Cluster;
+import prioritization.data_objects.TestCase;
 
 public interface RepresentativeSelectionStrategy {
 	public TestCase selectRepresentative(Cluster c1, CustomDissimilarityMeasure dis);

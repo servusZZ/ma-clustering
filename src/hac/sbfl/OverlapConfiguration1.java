@@ -4,10 +4,12 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import hac.data_objects.Cluster;
+
 import java.util.Set;
 
-import hac.main.Cluster;
-import priorization.main.AnalysisWrapper;
+import faulty_project.globals.FaultyProjectGlobals;
 import utils.MetricUtils;
 import utils.SortingUtils;
 /**
@@ -53,7 +55,7 @@ public class OverlapConfiguration1 extends SBFLConfiguration{
 		return mostSuspSet;
 	}
 	private int getMostSuspiciousSetSize() {
-		int mostSuspSetSize = (int) (AnalysisWrapper.methodsCount * MOST_SUSP_THRESHOLD);
+		int mostSuspSetSize = (int) (FaultyProjectGlobals.methodsCount * MOST_SUSP_THRESHOLD);
 		if(mostSuspSetSize < MOST_SUSP_MIN_COUNT) {
 			return MOST_SUSP_MIN_COUNT;
 		}

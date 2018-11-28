@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import hac.main.Cluster;
+import hac.data_objects.Cluster;
 import hac.sbfl.SBFLConfiguration;
 import utils.MathUtils;
 

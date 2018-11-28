@@ -1,7 +1,7 @@
 package hac.experiment.custom;
 
 import ch.usi.inf.sape.hac.experiment.Experiment;
-import data_objects.TestCase;
+import prioritization.data_objects.TestCase;
 import utils.MetricUtils;
 
 public class JaccardDistance extends CustomDissimilarityMeasure{

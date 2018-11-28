@@ -1,7 +1,7 @@
 package hac.experiment.custom;
 
 import ch.usi.inf.sape.hac.experiment.DissimilarityMeasure;
-import data_objects.TestCase;
+import prioritization.data_objects.TestCase;
 
 public abstract class CustomDissimilarityMeasure implements DissimilarityMeasure{
 	protected ICenterCalculation centerCalculation;

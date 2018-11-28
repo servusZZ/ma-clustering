@@ -2,7 +2,7 @@ package hac.cluster.prioritization;
 
 import java.util.List;
 
-import hac.main.Cluster;
+import hac.data_objects.Cluster;
 import hac.sbfl.SBFLConfiguration;
 
 public abstract class ClusterPrioritizationBase {

@@ -1,6 +1,7 @@
 package evaluation;
 
 import hac.evaluation.ClusteringEvaluationEntry;
+import prioritization.evaluation.ProjectEvaluationEntry;
 
 /**
  * The class holds all evaluation information for one project

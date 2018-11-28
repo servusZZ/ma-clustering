@@ -8,13 +8,13 @@ import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
-import priorization.main.AnalysisWrapper;
+import faulty_project.globals.FaultyProjectGlobals;
 
 class OverlapConfiguration1Test {
 
 	@Test
 	void testComputeMostSuspiciousSet21Methods() {
-		AnalysisWrapper.methodsCount = 21;
+		FaultyProjectGlobals.methodsCount = 21;
 		Map<Integer, Double> methodDStarSusp = fillDStarSuspMap21Methods();
 		SBFLConfiguration sbflConfig = new OverlapConfiguration1();
 		Set<Integer> mostSuspSet = sbflConfig.computeMostSuspiciousSet(methodDStarSusp);
@@ -22,7 +22,7 @@ class OverlapConfiguration1Test {
 	}
 	@Test
 	void testComputeMostSuspiciousSetEqualHighsteNotSuspElement() {
-		AnalysisWrapper.methodsCount = 25;
+		FaultyProjectGlobals.methodsCount = 25;
 		Map<Integer, Double> methodDStarSusp = fillDStarSuspMap21Methods();
 		methodDStarSusp.put(21, 2.0);
 		methodDStarSusp.put(22, 2.0);
@@ -34,7 +34,7 @@ class OverlapConfiguration1Test {
 	}
 	@Test
 	void testComputeMostSuspiciousSetRelThreshold() {
-		AnalysisWrapper.methodsCount = 50;
+		FaultyProjectGlobals.methodsCount = 50;
 		Map<Integer, Double> methodDStarSusp = fillDStarSuspMap50Methods();
 		SBFLConfiguration sbflConfig = new OverlapConfiguration1();
 		Set<Integer> mostSuspSet = sbflConfig.computeMostSuspiciousSet(methodDStarSusp);
@@ -42,7 +42,7 @@ class OverlapConfiguration1Test {
 	}
 	@Test
 	void testComputeMostSuspiciousSetMaxThreshold() {
-		AnalysisWrapper.methodsCount = 150;
+		FaultyProjectGlobals.methodsCount = 150;
 		Map<Integer, Double> methodDStarSusp = fillDStarSuspMap50Methods();
 		methodDStarSusp.put(50, SBFLConfiguration.MAX_SUSP_VALUE);
 		methodDStarSusp.put(51, SBFLConfiguration.MAX_SUSP_VALUE);

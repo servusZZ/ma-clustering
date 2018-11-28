@@ -3,7 +3,7 @@ package hac.sbfl;
 import java.util.Map;
 import java.util.Set;
 
-import hac.main.Cluster;
+import hac.data_objects.Cluster;
 
 /**
  * A specific configuration that holds all relevant parameters and implementations regarding

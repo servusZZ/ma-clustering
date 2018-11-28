@@ -2,9 +2,9 @@ package hac.evaluation;
 
 import java.util.Arrays;
 
-import data_objects.TestCase;
+import hac.data_objects.Cluster;
 import hac.experiment.custom.CustomDissimilarityMeasure;
-import hac.main.Cluster;
+import prioritization.data_objects.TestCase;
 
 public class KNNToCenterSelection implements RepresentativeSelectionStrategy{
 

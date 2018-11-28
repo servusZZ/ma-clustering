@@ -1,4 +1,4 @@
-package hac.main;
+package hac.data_objects;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -7,13 +7,12 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-import data_objects.Fault;
-import data_objects.TestCase;
-import hac.data_objects.DStarTerms;
+import faulty_project.globals.FaultyProjectGlobals;
 import hac.evaluation.RepresentativeSelectionStrategy;
 import hac.experiment.custom.CustomDissimilarityMeasure;
 import hac.sbfl.SBFLConfiguration;
-import priorization.main.AnalysisWrapper;
+import prioritization.data_objects.Fault;
+import prioritization.data_objects.TestCase;
 import utils.PrintUtils;
 
 public class Cluster implements Comparable<Cluster>{
@@ -40,8 +39,8 @@ public class Cluster implements Comparable<Cluster>{
 		representative = null;
 	}
 	private void initMethodDStarTerms(DStarTerms[] passedMethodDStarTerms) {
-		methodDStarTerms = new DStarTerms[AnalysisWrapper.methodsCount];
-		for (int i = 0; i < AnalysisWrapper.methodsCount; i++) {
+		methodDStarTerms = new DStarTerms[FaultyProjectGlobals.methodsCount];
+		for (int i = 0; i < FaultyProjectGlobals.methodsCount; i++) {
 			methodDStarTerms[i] = passedMethodDStarTerms[i].clone();
 		}
 	}
@@ -83,7 +82,7 @@ public class Cluster implements Comparable<Cluster>{
 			System.err.println("New Failed TCs are null or empty. No reason to update the susp Set.");
 			return;
 		}
-		for (int i = 0; i < AnalysisWrapper.methodsCount; i++) {
+		for (int i = 0; i < FaultyProjectGlobals.methodsCount; i++) {
 			// Performance verbesserung: 
 			//		(derzeit noch nicht benötigt, da Cluster nur erstellt aber nie geupdatet wird)
 			//		updateTermValues soll boolean zurückgeben, welcher signalisiert ob sich ein Wert geändert hat

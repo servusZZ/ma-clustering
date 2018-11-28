@@ -6,9 +6,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import data_objects.TestCase;
+import hac.data_objects.Cluster;
 import hac.data_objects.PassedTCsCluster;
 import hac.sbfl.SBFLConfiguration;
+import prioritization.data_objects.TestCase;
 
 public class Refinement {
 	private int nextClusterID = 0;
