@@ -39,6 +39,7 @@ public class AnalysisWrapper {
 	 */
 	public void analyze() throws IOException {
 		for (FaultyVersion faultyVersion:faultyVersions) {
+			initFaultyProjectGlobals(faultyVersion);
 			System.out.println("Processing next faulty Version with " + faultyVersion.getFaults().size() + " faults, " + faultyVersion.getFailures().length + " failures, " + faultyVersion.getPassedTCs().length + " passing Test Cases and " + FaultyProjectGlobals.methodsCount + " relevant methods.");
 			ProjectEvaluationEntry projectMetrics = faultyVersion.getProjectMetrics();
 			List<PrioritizationStrategyBase> strategies = PrioritizationStrategyFactory.createStrategies(
@@ -57,7 +58,10 @@ public class AnalysisWrapper {
 			outputWriter.writeEvaluationEntry(strategy.evaluatePrioritizationStrategy(i, projectMetrics));
 		}
 	}
-	
+	private void initFaultyProjectGlobals(FaultyVersion faultyVersion) {
+		FaultyProjectGlobals.methodsCount = faultyVersion.getFailures()[0].coverage.length;
+		FaultyProjectGlobals.failuresCount = faultyVersion.getFailures().length;
+	}
 	/**
 	 * Method to simply print the statistics for a project and then exit the program.
 	 * Imports the data itself.
