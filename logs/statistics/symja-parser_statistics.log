@@ -1,0 +1,26 @@
+INFO: Printing statistics for project C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\symja-parser
+DEBUG: Imported 426 methods.
+DEBUG: Imported 83 tests.
+0 tests cover at least 100 methods.
+4 tests cover at least 60 methods.
+		186 faults cause at least 20 failures.
+		249 faults cause at least 10 failures.
+		287 faults cause at least 5 failures.
+		38 faults cause less than 5 failures.
+	A Failure has on average 81.25 underlying possible faults.
+	[82, 80, 83, 80]
+36 tests cover at least 40 methods.
+		1569 faults cause at least 20 failures.
+		1882 faults cause at least 10 failures.
+		2141 faults cause at least 5 failures.
+		234 faults cause less than 5 failures.
+	A Failure has on average 65.97222222222223 underlying possible faults.
+	[50, 52, 58, 57, 67, 68, 57, 61, 74, 72, 60, 79, 66, 66, 60, 55, 73, 75, 60, 57, 59, 82, 79, 66, 80, 61, 57, 83, 80, 66, 60, 55, 66, 66, 73, 75]
+80 tests cover at least 20 methods.
+		2966 faults cause at least 20 failures.
+		3377 faults cause at least 10 failures.
+		3707 faults cause at least 5 failures.
+		327 faults cause less than 5 failures.
+	A Failure has on average 50.425 underlying possible faults.
+	[39, 50, 52, 58, 46, 57, 33, 67, 68, 57, 61, 38, 74, 72, 48, 43, 51, 60, 51, 39, 79, 66, 66, 60, 55, 73, 75, 42, 33, 48, 29, 25, 21, 44, 36, 41, 42, 38, 60, 41, 37, 34, 23, 38, 45, 53, 27, 27, 45, 41, 57, 59, 46, 82, 39, 79, 51, 46, 66, 80, 46, 61, 57, 83, 80, 66, 28, 60, 55, 38, 66, 32, 66, 24, 29, 29, 25, 73, 28, 75]
+3 tests cover less than 20 methods.

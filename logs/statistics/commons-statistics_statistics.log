@@ -1,0 +1,14 @@
+INFO: Printing statistics for project C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\commons-statistics
+DEBUG: Imported 305 methods.
+DEBUG: Imported 358 tests.
+0 tests cover at least 100 methods.
+0 tests cover at least 60 methods.
+0 tests cover at least 40 methods.
+3 tests cover at least 20 methods.
+		6 faults cause at least 20 failures.
+		47 faults cause at least 10 failures.
+		74 faults cause at least 5 failures.
+		8 faults cause less than 5 failures.
+	A Failure has on average 27.333333333333332 underlying possible faults.
+	[36, 42, 4]
+355 tests cover less than 20 methods.

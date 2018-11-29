@@ -1,0 +1,20 @@
+INFO: Printing statistics for project C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\commons-collections
+DEBUG: Imported 3314 methods.
+DEBUG: Imported 2344 tests.
+0 tests cover at least 100 methods.
+0 tests cover at least 60 methods.
+13 tests cover at least 40 methods.
+		394 faults cause at least 20 failures.
+		487 faults cause at least 10 failures.
+		592 faults cause at least 5 failures.
+		72 faults cause less than 5 failures.
+	A Failure has on average 51.07692307692308 underlying possible faults.
+	[65, 43, 43, 63, 41, 34, 64, 65, 33, 63, 44, 64, 42]
+208 tests cover at least 20 methods.
+		4342 faults cause at least 20 failures.
+		5060 faults cause at least 10 failures.
+		5365 faults cause at least 5 failures.
+		420 faults cause less than 5 failures.
+	A Failure has on average 27.8125 underlying possible faults.
+	[19, 35, 14, 25, 24, 19, 34, 18, 65, 33, 21, 34, 15, 33, 40, 26, 12, 14, 29, 30, 36, 33, 41, 34, 34, 43, 20, 26, 19, 28, 16, 25, 18, 34, 21, 25, 26, 34, 27, 27, 21, 28, 15, 35, 19, 36, 26, 31, 39, 19, 43, 27, 20, 35, 22, 23, 19, 24, 17, 17, 63, 18, 26, 18, 18, 25, 26, 19, 20, 18, 25, 26, 33, 13, 35, 35, 19, 18, 22, 26, 26, 22, 26, 36, 32, 35, 25, 21, 19, 21, 31, 25, 24, 26, 32, 26, 27, 24, 18, 21, 24, 28, 38, 20, 41, 26, 34, 30, 34, 24, 33, 24, 39, 64, 22, 33, 32, 37, 35, 18, 26, 65, 22, 22, 39, 33, 26, 34, 24, 24, 33, 23, 34, 26, 24, 27, 15, 38, 34, 63, 20, 34, 36, 29, 36, 29, 35, 36, 25, 29, 11, 21, 26, 22, 28, 25, 28, 26, 41, 22, 19, 24, 22, 22, 32, 27, 27, 19, 27, 44, 25, 19, 34, 27, 39, 39, 25, 26, 18, 25, 24, 31, 19, 35, 10, 28, 16, 26, 31, 33, 18, 27, 25, 41, 28, 27, 64, 18, 20, 24, 37, 26, 14, 31, 24, 29, 27, 42]
+2136 tests cover less than 20 methods.

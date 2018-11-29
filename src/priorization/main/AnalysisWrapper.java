@@ -49,7 +49,6 @@ public class AnalysisWrapper {
 				analyzeStrategy(strategy, projectMetrics);
 			}
 			//TODO: SameName/Class/Package clustering implementieren
-			//		Train/Test split Konzept überlegen (vllt. paar Faults aus random speichern und vorerst immer die zum debuggen nehmen?)
 		}
 	}
 	private void analyzeStrategy(PrioritizationStrategyBase strategy, ProjectEvaluationEntry projectMetrics) throws IOException {

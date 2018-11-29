@@ -1,0 +1,32 @@
+INFO: Printing statistics for project C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\urban-airship
+DEBUG: Imported 2917 methods.
+DEBUG: Imported 607 tests.
+13 tests cover at least 100 methods.
+		433 faults cause at least 20 failures.
+		806 faults cause at least 10 failures.
+		1331 faults cause at least 5 failures.
+		700 faults cause less than 5 failures.
+	A Failure has on average 156.23076923076923 underlying possible faults.
+	[90, 111, 125, 111, 121, 152, 123, 119, 132, 737, 90, 57, 63]
+46 tests cover at least 60 methods.
+		1232 faults cause at least 20 failures.
+		2166 faults cause at least 10 failures.
+		3091 faults cause at least 5 failures.
+		1186 faults cause less than 5 failures.
+	A Failure has on average 92.97826086956522 underlying possible faults.
+	[90, 67, 98, 48, 62, 42, 111, 67, 125, 73, 111, 108, 121, 71, 53, 50, 71, 152, 123, 103, 92, 119, 69, 66, 88, 63, 54, 132, 737, 68, 91, 6, 90, 70, 68, 86, 69, 49, 48, 65, 60, 57, 48, 76, 97, 63]
+84 tests cover at least 40 methods.
+		1750 faults cause at least 20 failures.
+		3112 faults cause at least 10 failures.
+		4385 faults cause at least 5 failures.
+		1507 faults cause less than 5 failures.
+	A Failure has on average 70.14285714285714 underlying possible faults.
+	[52, 51, 58, 30, 90, 47, 67, 29, 44, 98, 48, 55, 62, 42, 111, 67, 42, 44, 125, 73, 40, 111, 108, 38, 121, 48, 71, 48, 53, 57, 48, 50, 71, 37, 152, 38, 123, 103, 92, 119, 69, 66, 88, 46, 40, 63, 28, 54, 132, 737, 37, 33, 40, 49, 40, 68, 46, 91, 6, 90, 70, 68, 86, 37, 32, 69, 49, 37, 43, 48, 57, 65, 47, 31, 36, 51, 60, 42, 57, 37, 48, 76, 97, 63]
+234 tests cover at least 20 methods.
+		3002 faults cause at least 20 failures.
+		5319 faults cause at least 10 failures.
+		7549 faults cause at least 5 failures.
+		2353 faults cause less than 5 failures.
+	A Failure has on average 42.31623931623932 underlying possible faults.
+	[43, 52, 37, 27, 51, 32, 21, 58, 30, 28, 35, 28, 90, 47, 37, 67, 29, 18, 44, 98, 13, 34, 43, 48, 36, 55, 62, 21, 24, 36, 32, 21, 30, 30, 42, 22, 42, 32, 10, 111, 67, 23, 42, 6, 44, 27, 1, 21, 37, 35, 21, 8, 10, 32, 36, 32, 125, 29, 26, 32, 38, 73, 23, 36, 22, 36, 40, 111, 27, 11, 28, 32, 22, 26, 39, 34, 35, 25, 12, 33, 23, 23, 108, 39, 45, 10, 38, 20, 121, 25, 48, 71, 48, 10, 53, 57, 25, 48, 50, 35, 35, 12, 71, 37, 152, 38, 25, 123, 22, 21, 33, 25, 103, 32, 27, 92, 28, 119, 69, 25, 21, 25, 36, 28, 66, 88, 24, 30, 46, 12, 22, 29, 22, 40, 38, 27, 63, 36, 28, 22, 25, 26, 54, 32, 36, 132, 737, 31, 23, 37, 33, 28, 36, 33, 40, 28, 49, 24, 25, 11, 10, 36, 36, 40, 32, 68, 37, 20, 46, 37, 91, 6, 19, 32, 25, 90, 38, 70, 11, 68, 86, 8, 37, 27, 29, 32, 33, 69, 49, 35, 31, 37, 38, 44, 43, 48, 27, 23, 57, 16, 65, 47, 25, 28, 31, 23, 26, 1, 36, 37, 25, 51, 60, 23, 42, 32, 33, 17, 57, 37, 31, 33, 40, 48, 29, 20, 11, 76, 5, 97, 23, 29, 63, 18]
+373 tests cover less than 20 methods.
