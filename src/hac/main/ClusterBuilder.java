@@ -36,7 +36,8 @@ public class ClusterBuilder {
 		List<Cluster> resultClusters = new ArrayList<Cluster>();
 		List<DendrogramNode> queue = new ArrayList<DendrogramNode>();
 		DendrogramNode tmpNode = root;
-		
+		//TODO: bei nur einem Failure wird null in clustersAreSimilar übergeben --> sollte aber kein Problem sein,
+		//			weil Versionen mit nur einem Failure ausgeschlossen werden können
 		while(!clustersAreSimilar(tmpNode.getLeft(), tmpNode.getRight())) {
 			insertNodeIntoQueue(queue, tmpNode.getLeft());
 			insertNodeIntoQueue(queue, tmpNode.getRight());

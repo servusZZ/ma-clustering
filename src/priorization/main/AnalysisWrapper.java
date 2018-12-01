@@ -58,16 +58,7 @@ public class AnalysisWrapper {
 		}
 	}
 	private void initFaultyProjectGlobals(FaultyVersion faultyVersion) {
-		FaultyProjectGlobals.methodsCount = faultyVersion.getFailures()[0].coverage.length;
+		FaultyProjectGlobals.methodsCount = faultyVersion.getProjectMetrics().getMethodsCount();
 		FaultyProjectGlobals.failuresCount = faultyVersion.getFailures().length;
-	}
-	/**
-	 * Method to simply print the statistics for a project and then exit the program.
-	 * Imports the data itself.
-	 */
-	public void printStatistics(String dir) throws IOException {
-//		prep = new PitAnalysisPreparation(dir);
-//		StatisticsPrinter statisticsPrinter = new StatisticsPrinter(prep.getPitMethods(), prep.getPitTests());
-//		statisticsPrinter.printTestStatistics();
 	}
 }

@@ -1,0 +1,137 @@
+INFO: Collecting mutations.xml files of project C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\biojava
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\biojava\pit-data\mutations-biojava-aa-prop-201810180514.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\biojava\pit-data\mutations-biojava-alignment-201810171337.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\biojava\pit-data\mutations-biojava-core-201810171247.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\biojava\pit-data\mutations-biojava-genome-201810180422.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\biojava\pit-data\mutations-biojava-integrationtest-201810180516.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\biojava\pit-data\mutations-biojava-modfinder-201810180438.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\biojava\pit-data\mutations-biojava-ontology-201810180516.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\biojava\pit-data\mutations-biojava-protein-disorder-201810180509.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\biojava\pit-data\mutations-biojava-structure-201810171343.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\biojava\pit-data\mutations-biojava-structure-gui-201810180422.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\biojava\pit-data\mutations-biojava-ws-201810180507.xml
+INFO: Merging files...
+INFO: Writing all methods to file C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\biojava\pit-data\methods-and-mutations-merged.xml
+INFO: Collecting mutations.xml files of project C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\bitcoinj
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\bitcoinj\pit-data\mutations.xml
+INFO: Merging files...
+INFO: Writing all methods to file C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\bitcoinj\pit-data\methods-and-mutations-merged.xml
+INFO: Collecting mutations.xml files of project C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\commons-codec
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\commons-codec\pit-data\mutations-repo-201810201426.xml
+INFO: Merging files...
+INFO: Writing all methods to file C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\commons-codec\pit-data\methods-and-mutations-merged.xml
+INFO: Collecting mutations.xml files of project C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\commons-collections
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\commons-collections\pit-data\mutations.xml
+INFO: Merging files...
+INFO: Writing all methods to file C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\commons-collections\pit-data\methods-and-mutations-merged.xml
+INFO: Collecting mutations.xml files of project C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\commons-geometry
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\commons-geometry\pit-data\mutations-commons-geometry-core-201810201338.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\commons-geometry\pit-data\mutations-commons-geometry-enclosing-201810201358.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\commons-geometry\pit-data\mutations-commons-geometry-euclidean-201810201338.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\commons-geometry\pit-data\mutations-commons-geometry-hull-201810201400.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\commons-geometry\pit-data\mutations-commons-geometry-spherical-201810201359.xml
+INFO: Merging files...
+INFO: Writing all methods to file C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\commons-geometry\pit-data\methods-and-mutations-merged.xml
+INFO: Collecting mutations.xml files of project C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\commons-imaging
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\commons-imaging\pit-data\mutations-repo-201810201434.xml
+INFO: Merging files...
+INFO: Writing all methods to file C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\commons-imaging\pit-data\methods-and-mutations-merged.xml
+INFO: Collecting mutations.xml files of project C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\commons-lang
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\commons-lang\pit-data\mutations.xml
+INFO: Merging files...
+INFO: Writing all methods to file C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\commons-lang\pit-data\methods-and-mutations-merged.xml
+INFO: Collecting mutations.xml files of project C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\commons-math
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\commons-math\pit-data\mutations.xml
+INFO: Merging files...
+INFO: Writing all methods to file C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\commons-math\pit-data\methods-and-mutations-merged.xml
+INFO: Collecting mutations.xml files of project C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\commons-statistics
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\commons-statistics\pit-data\mutations-commons-statistics-distribution-201810201440.xml
+INFO: Merging files...
+INFO: Writing all methods to file C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\commons-statistics\pit-data\methods-and-mutations-merged.xml
+INFO: Collecting mutations.xml files of project C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\geometry-api-java
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\geometry-api-java\pit-data\mutations.xml
+INFO: Merging files...
+INFO: Writing all methods to file C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\geometry-api-java\pit-data\methods-and-mutations-merged.xml
+INFO: Collecting mutations.xml files of project C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\google-http-java-client
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\google-http-java-client\pit-data\mutations-google-http-client-201810201222.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\google-http-java-client\pit-data\mutations-google-http-client-appengine-201810201225.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\google-http-java-client\pit-data\mutations-google-http-client-gson-201810201226.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\google-http-java-client\pit-data\mutations-google-http-client-jackson-201810201226.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\google-http-java-client\pit-data\mutations-google-http-client-jackson2-201810201227.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\google-http-java-client\pit-data\mutations-google-http-client-protobuf-201810201225.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\google-http-java-client\pit-data\mutations-google-http-client-test-201810201225.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\google-http-java-client\pit-data\mutations-google-http-client-xml-201810201228.xml
+INFO: Merging files...
+INFO: Writing all methods to file C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\google-http-java-client\pit-data\methods-and-mutations-merged.xml
+INFO: Collecting mutations.xml files of project C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\graphhopper
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\graphhopper\pit-data\mutations-api-201810191906.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\graphhopper\pit-data\mutations-client-hc-201810192116.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\graphhopper\pit-data\mutations-core-201810191906.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\graphhopper\pit-data\mutations-isochrone-201810192029.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\graphhopper\pit-data\mutations-reader-gtfs-201810192032.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\graphhopper\pit-data\mutations-reader-osm-201810192005.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\graphhopper\pit-data\mutations-tools-201810192116.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\graphhopper\pit-data\mutations-web-201810192130.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\graphhopper\pit-data\mutations-web-api-201810191906.xml
+INFO: Merging files...
+INFO: Writing all methods to file C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\graphhopper\pit-data\methods-and-mutations-merged.xml
+INFO: Collecting mutations.xml files of project C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\gson
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\gson\pit-data\mutations.xml
+INFO: Merging files...
+INFO: Writing all methods to file C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\gson\pit-data\methods-and-mutations-merged.xml
+INFO: Collecting mutations.xml files of project C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\jackson-databind
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\jackson-databind\pit-data\mutations.xml
+INFO: Merging files...
+INFO: Writing all methods to file C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\jackson-databind\pit-data\methods-and-mutations-merged.xml
+INFO: Collecting mutations.xml files of project C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\javaparser
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\javaparser\pit-data\mutations-javaparser-core-201809071149.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\javaparser\pit-data\mutations-javaparser-core-generators-201809101413.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\javaparser\pit-data\mutations-javaparser-metamodel-generator-201809101413.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\javaparser\pit-data\mutations-javaparser-symbol-solver-core-201809101413.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\javaparser\pit-data\mutations-javaparser-symbol-solver-logic-201809101413.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\javaparser\pit-data\mutations-javaparser-symbol-solver-model-201809101413.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\javaparser\pit-data\mutations-javaparser-symbol-solver-testing-201810152103.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\javaparser\pit-data\mutations-javaparser-testing-201810151517.xml
+INFO: Merging files...
+INFO: Writing all methods to file C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\javaparser\pit-data\methods-and-mutations-merged.xml
+INFO: Collecting mutations.xml files of project C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\jaxen
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\jaxen\pit-data\mutations.xml
+INFO: Merging files...
+INFO: Writing all methods to file C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\jaxen\pit-data\methods-and-mutations-merged.xml
+INFO: Collecting mutations.xml files of project C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\jfreechart
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\jfreechart\pit-data\mutations.xml
+INFO: Merging files...
+INFO: Writing all methods to file C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\jfreechart\pit-data\methods-and-mutations-merged.xml
+INFO: Collecting mutations.xml files of project C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\jsoup
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\jsoup\pit-data\mutations.xml
+INFO: Merging files...
+INFO: Writing all methods to file C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\jsoup\pit-data\methods-and-mutations-merged.xml
+INFO: Collecting mutations.xml files of project C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\littleproxy
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\littleproxy\pit-data\mutations.xml
+INFO: Merging files...
+INFO: Writing all methods to file C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\littleproxy\pit-data\methods-and-mutations-merged.xml
+INFO: Collecting mutations.xml files of project C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\pdfbox
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\pdfbox\pit-data\mutations-fontbox-201810171243.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\pdfbox\pit-data\mutations-pdfbox-201810171247.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\pdfbox\pit-data\mutations-preflight-201810171744.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\pdfbox\pit-data\mutations-tools-201810171756.xml
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\pdfbox\pit-data\mutations-xmpbox-201810171245.xml
+INFO: Merging files...
+INFO: Writing all methods to file C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\pdfbox\pit-data\methods-and-mutations-merged.xml
+INFO: Collecting mutations.xml files of project C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\symja-parser
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\symja-parser\pit-data\mutations.xml
+INFO: Merging files...
+INFO: Writing all methods to file C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\symja-parser\pit-data\methods-and-mutations-merged.xml
+INFO: Collecting mutations.xml files of project C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\traccar
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\traccar\pit-data\mutations.xml
+INFO: Merging files...
+INFO: Writing all methods to file C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\traccar\pit-data\methods-and-mutations-merged.xml
+INFO: Collecting mutations.xml files of project C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\urban-airship
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\urban-airship\pit-data\mutations-repo-201811152026.xml
+INFO: Merging files...
+INFO: Writing all methods to file C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\urban-airship\pit-data\methods-and-mutations-merged.xml
+INFO: Collecting mutations.xml files of project C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\vectorz
+DEBUG: Collecting next document C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\vectorz\pit-data\mutations.xml
+INFO: Merging files...
+INFO: Writing all methods to file C:\study\SWDiag\sharedFolder_UbuntuVM\MA\pit_data\vectorz\pit-data\methods-and-mutations-merged.xml
+INFO: Merging of documents finished!
