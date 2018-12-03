@@ -74,6 +74,8 @@ public class HierarchicalAgglomerativeClustering extends PrioritizationStrategyB
 		System.out.println("Evaluate the Clustering...");
 		ClusteringEvaluation clusteringEvaluation = new ClusteringEvaluation(dissimilarityMeasure, new KNNToCenterSelection(), clusters, faults);
 		clusteringEvaluation.evaluateClustering();
+		//EDIT: _FF, maybe only calculate f1-score, precision, recall and fault entropy
+		//		if only a single fault for each failure is allowed.
 		clusteringMetrics = clusteringEvaluation.getClusteringMetrics();
 		clusters = clusterPrioritization.prioritizeClusters(clusters);
 		prioritizedFailures = getRepresentativesOfClusters(clusters);

@@ -33,7 +33,8 @@ public class ClusteringEvaluation {
 		System.out.println("DEBUG: The representative selection failed for " + repSelectionSuccessfulFailedCount[1] + " clusters.");
 		double purity = purity();
 		System.out.println("DEBUG: Purity of Clusters:       " + purity);
-		
+		//TODO: _FF, f1Measure, precision, recall und fault Entropy für multiple underlying faults
+		//			nicht berücksichtigen (zumindest im Excel dann ignorieren)
 		Map<Fault, Integer> faultToIndexMapping = getFaultToIndexMapping();
 		int[][] failuresPerFaultPerCluster = getFailuresPerFaultPerCluster(faultToIndexMapping);
 		
@@ -61,11 +62,18 @@ public class ClusteringEvaluation {
 	 */
 	private int[] evaluateRepresentativeSelection() {
 		int successful = 0, failed = 0;
+		boolean tmpIsSuccessful;
 		for (Cluster c: clusters) {
+			tmpIsSuccessful = false;
 			TestCase representative = c.computeRepresentative(representativeSelection, dissimilarityMeasure);
-			if (c.getMajorFaults().contains(representative.getFault())) {
-				successful++;
-			} else {
+			for (Fault fault: representative.getFaults()) {
+				if (c.getMajorFaults().contains(fault)) {
+					tmpIsSuccessful = true;
+					successful++;
+					break;
+				}
+			}
+			if (!tmpIsSuccessful) {
 				failed++;
 			}
 		}

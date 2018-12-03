@@ -12,14 +12,15 @@ public class EvaluationUtils {
 	public Set<Fault> getFoundFaults(List<TestCase> failuresInvestigated) {
 		Set<Fault> foundFaults = new HashSet<Fault>();
 		for (TestCase failure:failuresInvestigated) {
-			foundFaults.add(failure.getFault());
+			// all faults of an investigated failure get fixed
+			foundFaults.addAll(failure.getFaults());
 		}
 		return foundFaults;
 	}
 	public Set<TestCase> getFixedFailures(Set<Fault> foundFaults, TestCase[] allFailures){
 		Set<TestCase> fixedFailures = new HashSet<TestCase>();
 		for (TestCase failure: allFailures) {
-			if (foundFaults.contains(failure.getFault())) {
+			if (foundFaults.containsAll(failure.getFaults())) {
 				fixedFailures.add(failure);
 			}
 		}

@@ -35,7 +35,7 @@ public class Cluster implements Comparable<Cluster>{
 		this.sbflConfig = sbflConfig;
 		initMethodDStarTerms(passedMethodDStarTerms);
 		updateSupsiciousSet(failedTCs);
-		computeMajorFault();
+		computeMajorFaults();
 		representative = null;
 	}
 	private void initMethodDStarTerms(DStarTerms[] passedMethodDStarTerms) {
@@ -99,13 +99,15 @@ public class Cluster implements Comparable<Cluster>{
 	private Set<Integer> retrieveMostSuspiciousSet(Map<Integer, Double> methodDStarSusp) {
 		return sbflConfig.computeMostSuspiciousSet(methodDStarSusp);
 	}
-	private void computeMajorFault() {
+	private void computeMajorFaults() {
 		majorFaults = new HashSet<Fault>();
 		int max = -1;
 		Map<Fault, Integer> faultCounts = new HashMap<Fault, Integer>();
 		for (TestCase tc: failedTCs) {
-			faultCounts.put(tc.getFault(), (faultCounts.getOrDefault(tc.getFault(), 0) + 1));
-			max = Math.max(faultCounts.get(tc.getFault()), max);
+			for (Fault fault: tc.getFaults()) {
+				faultCounts.put(fault, (faultCounts.getOrDefault(fault, 0) + 1));
+				max = Math.max(faultCounts.get(fault), max);
+			}
 		}
 		for (Map.Entry<Fault, Integer> entry: faultCounts.entrySet()) {
 			if (entry.getValue() == max) {
@@ -152,9 +154,14 @@ public class Cluster implements Comparable<Cluster>{
 	public int correctlyAssignedTCs() {
 		int correctlyAssignedCount = 0;
 		for (TestCase tc: failedTCs) {
-			if (tc.getFault() == getMajorFault()) {
-				correctlyAssignedCount++;
+			Fault firstMajorFault = getMajorFault();
+			for (Fault fault: tc.getFaults()) {
+				if (fault == firstMajorFault) {
+					correctlyAssignedCount++;
+					break;
+				}
 			}
+			
 		}
 		return correctlyAssignedCount;
 	}
@@ -165,7 +172,9 @@ public class Cluster implements Comparable<Cluster>{
 	public int[] getFailuresPerFaultCount(Map<Fault, Integer> faultToIndexMapping) {
 		int[] failuresPerFaultCount = new int[faultToIndexMapping.size()];
 		for (TestCase failure: failedTCs) {
-			failuresPerFaultCount[faultToIndexMapping.get(failure.getFault())] += 1;
+			for (Fault fault: failure.getFaults()) {
+				failuresPerFaultCount[faultToIndexMapping.get(fault)] += 1;
+			}
 		}
 		return failuresPerFaultCount;
 	}

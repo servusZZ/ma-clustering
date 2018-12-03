@@ -39,7 +39,7 @@ public class AnalysisWrapper {
 	 */
 	public void analyze() throws IOException {
 		for (FaultyVersion faultyVersion:faultyVersions) {
-			initFaultyProjectGlobals(faultyVersion);
+			FaultyProjectGlobals.init(faultyVersion);
 			System.out.println("Processing next faulty Version with " + faultyVersion.getFaults().size() + " faults, " + faultyVersion.getFailures().length + " failures, " + faultyVersion.getPassedTCs().length + " passing Test Cases and " + FaultyProjectGlobals.methodsCount + " relevant methods.");
 			ProjectEvaluationEntry projectMetrics = faultyVersion.getProjectMetrics();
 			List<PrioritizationStrategyBase> strategies = PrioritizationStrategyFactory.createStrategies(
@@ -56,9 +56,5 @@ public class AnalysisWrapper {
 		for (int i = MIN_FAILURES_TO_INVESTIGATE; i <= MAX_FAILURES_TO_INVESTIGATE; i++) {
 			outputWriter.writeEvaluationEntry(strategy.evaluatePrioritizationStrategy(i, projectMetrics));
 		}
-	}
-	private void initFaultyProjectGlobals(FaultyVersion faultyVersion) {
-		FaultyProjectGlobals.methodsCount = faultyVersion.getProjectMetrics().getMethodsCount();
-		FaultyProjectGlobals.failuresCount = faultyVersion.getFailures().length;
 	}
 }
