@@ -11,10 +11,16 @@ public class EvaluationEntry {
 	private String prioritizationStrategyName;
 	private int foundFaults;
 	private int fixedFailures;
+	/** stores the number of failures that are (superfluously) investigated without finding a new fault	*/
+	private int wastedEffort;
+	/**	only filled within the optimal prioritization strategy, used for calculating the performance */
+	private int biggestPossibleWastedEffort;
 	private int investigatedFailures_actual;
+	/**	metrics that indicate the relative performance of the prio strategy compared
+	 * to the best possible prioritization. */
+	private PerformanceEvaluationEntry performanceMetrics;
 	// metrics related to the context
 	private int investigatedFailures_planned;
-	private String debuggingStrategy;
 	
 	/** metrics related to the faulty project for which the prioritization is performed */
 	private ProjectEvaluationEntry projectMetrics;
@@ -27,30 +33,35 @@ public class EvaluationEntry {
 	 * @param clusteringMetrics optional, pass null if the strategy doesn't have clustering metrics
 	 */
 	public EvaluationEntry(String prioritizationStrategyName, int foundFaults, int fixedFailures,
-			int investigatedFailures_actual, int investigatedFailures_planned,
+			int wastedEffort, int investigatedFailures_actual, int investigatedFailures_planned,
 			ProjectEvaluationEntry projectMetrics, ClusteringEvaluationEntry clusteringMetrics) {
 		this.prioritizationStrategyName = prioritizationStrategyName;
 		this.foundFaults = foundFaults;
 		this.fixedFailures = fixedFailures;
+		this.wastedEffort = wastedEffort;
 		this.investigatedFailures_actual = investigatedFailures_actual;
 		this.investigatedFailures_planned = investigatedFailures_planned;
-		this.debuggingStrategy = "NA";
 		this.projectMetrics = projectMetrics;
 		this.clusteringMetrics = clusteringMetrics;
 	}
-	
+
 	public String getHeader() {
-		return "PrioritizationStrategy;#FoundFaults;#FixedFailures;#InvestigatedFailuresActual;#InvestigatedFailuresPlanned;DebuggingStrategy"
-				+ ";" + projectMetrics.getHeader()
+		return "PrioritizationStrategy;" + getPerformanceMetricsHeader() +
+				";#FoundFaults;#FixedFailures;#WastedEffort;#InvestigatedFailuresActual;#InvestigatedFailuresPlanned;"
+				+ projectMetrics.getHeader()
 				+ ";" + getClusteringMetricsHeader();
 	}
 	private String getClusteringMetricsHeader() {
 		return "DissimilarityMeasure;#Clusters;RepresentativeSelectionStrategy;#SuccessfulRepresentatives;#FailedRepresentatives;Purity;Precision;Recall;F1-Score;FaultEntropy";
 	}
+	private String getPerformanceMetricsHeader() {
+		return "PerformanceIndex;FoundFaultsPerformance;WastedEffortPerformance;FixedFailuresPerformance";
+	}
 	public String getValues() {
-		return prioritizationStrategyName + ";" + foundFaults + ";" + fixedFailures +
-				 ";" + investigatedFailures_actual + ";" + investigatedFailures_planned +
-				 ";" + debuggingStrategy +
+		return prioritizationStrategyName + 
+				 ";" + getPerformanceMetricValues() +
+				 ";" + foundFaults + ";" + fixedFailures +
+				 ";" + wastedEffort + ";" + investigatedFailures_actual + ";" + investigatedFailures_planned +
 				 ";" + projectMetrics.getValues() +
 				 ";" + getClusteringMetricValues();
 	}
@@ -60,5 +71,30 @@ public class EvaluationEntry {
 			return clusteringMetrics.getValues();
 		}
 		return ";;;;;;;;;";
+	}
+	private String getPerformanceMetricValues() {
+		if (performanceMetrics != null) {
+			return performanceMetrics.getValues();
+		}
+		return ";;;";
+	}
+
+	public int getBiggestPossibleWastedEffort() {
+		return biggestPossibleWastedEffort;
+	}
+	public void setBiggestPossibleWastedEffort(int biggestPossibleWastedEffort) {
+		this.biggestPossibleWastedEffort = biggestPossibleWastedEffort;
+	}
+	public int getFoundFaults() {
+		return foundFaults;
+	}
+	public int getFixedFailures() {
+		return fixedFailures;
+	}
+	public int getWastedEffort() {
+		return wastedEffort;
+	}
+	public void setPerformanceMetrics(PerformanceEvaluationEntry performanceMetrics) {
+		this.performanceMetrics = performanceMetrics;
 	}
 }

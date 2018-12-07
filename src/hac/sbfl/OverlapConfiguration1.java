@@ -42,7 +42,7 @@ public class OverlapConfiguration1 extends SBFLConfiguration{
 			mostSuspSet.add(entry.getKey());
 			i++;
 		}
-		// additionally fill all elements that have the same value than the lowset supiciousness
+		// additionally fill all elements that have the same value than the lowest supiciousness
 		// also into the set to avoid a random selection.
 		while (highestNotSuspEntry.getValue() == lowestSuspValue) {
 			mostSuspSet.add(highestNotSuspEntry.getKey());
@@ -71,10 +71,10 @@ public class OverlapConfiguration1 extends SBFLConfiguration{
 	 */
 	@Override
 	public boolean clustersAreSimilar(Cluster c1, Cluster c2) {
-		c1.dump();
-		c2.dump();
+//		c1.dump();
+//		c2.dump();
 		double similarity = getSimilarityValue(c1, c2);
-		System.out.println("The clusters have a similarity value of " + similarity);
+//		System.out.println("The clusters have a similarity value of " + similarity);
 		if(similarity > SIMILARITY_THRESHOLD) {
 			return true;
 		}

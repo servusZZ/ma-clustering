@@ -25,7 +25,6 @@ import hac.sbfl.SBFLConfiguration;
 import prioritization.data_objects.Fault;
 import prioritization.data_objects.TestCase;
 import priorization.main.PrioritizationStrategyBase;
-import utils.PrintUtils;
 
 public class HierarchicalAgglomerativeClustering extends PrioritizationStrategyBase{
 	private SBFLConfiguration sbflConfig;
@@ -52,8 +51,8 @@ public class HierarchicalAgglomerativeClustering extends PrioritizationStrategyB
 		CustomDissimilarityMeasure dissimilarityMeasure = new JaccardDistance(centerCalc);
 		
 		Dendrogram dendrogram = performHAC(dissimilarityMeasure);
-		System.out.println("Finished clustering Failures! Dump Dendrogram: ");
-		dendrogram.dump();
+//		System.out.println("Finished clustering Failures! Dump Dendrogram: ");
+//		dendrogram.dump();
 		
 		//TODO: Add Evaluation when comparing Clusters
 		//		during Cutting point determination of Failure Tree & Refinement check
@@ -64,13 +63,13 @@ public class HierarchicalAgglomerativeClustering extends PrioritizationStrategyB
 		System.out.println("DEBUG: Created ClusterBuilder and passedTCs");
 		List<Cluster> clusters = cb.getClustersOfCuttingLevel();
 		System.out.println("Cutting level of the Failure Tree contains " + clusters.size() + " clusters.");
-		PrintUtils.dumpClusters(clusters);
+//		PrintUtils.dumpClusters(clusters);
 		Refinement refinement = new Refinement(cb.getPassedTCsCluster(), sbflConfig);
 		clusters = refinement.refineClusters(clusters);
 		System.out.println("Number of refined clusters: " + clusters.size());
 		
-		System.out.println("Created " + clusters.size() + " clusters");
-		PrintUtils.dumpClusters(clusters);
+//		System.out.println("Created " + clusters.size() + " clusters");
+//		PrintUtils.dumpClusters(clusters);
 		System.out.println("Evaluate the Clustering...");
 		ClusteringEvaluation clusteringEvaluation = new ClusteringEvaluation(dissimilarityMeasure, new KNNToCenterSelection(), clusters, faults);
 		clusteringEvaluation.evaluateClustering();

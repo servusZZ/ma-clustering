@@ -1,10 +1,12 @@
 package priorization.main;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import evaluation.EvaluationEntry;
 import evaluation.EvaluationUtils;
+import evaluation.PerformanceEvaluationEntry;
 import hac.evaluation.ClusteringEvaluationEntry;
 import prioritization.data_objects.Fault;
 import prioritization.data_objects.TestCase;
@@ -40,16 +42,25 @@ public abstract class PrioritizationStrategyBase {
 	 * The clusteringMetrics in the returned EvaluationEntry object are null by default and
 	 * must be set within the prioritizeFailures method in respective subclasses.
 	 */
-	public EvaluationEntry evaluatePrioritizationStrategy(int failuresToInvestigateCount, ProjectEvaluationEntry projectMetrics) {
+	public EvaluationEntry evaluatePrioritizationStrategy(int failuresToInvestigateCount, ProjectEvaluationEntry projectMetrics, EvaluationEntry optimalMetrics) {
 		int investigatedFailuresActual = failuresToInvestigateCount;
 		if (prioritizedFailures.size() < failuresToInvestigateCount) {
 			investigatedFailuresActual = prioritizedFailures.size();
 		}
-		Set<Fault> foundFaults = evaluationHelper.getFoundFaults(prioritizedFailures.subList(0, investigatedFailuresActual));
+		Set<Fault> foundFaults = new HashSet<Fault>();
+		int wastedEffort = evaluationHelper.getFoundFaultsAndWastedEffort(prioritizedFailures.subList(0, investigatedFailuresActual), foundFaults);
 		Set<TestCase> fixedFailures = evaluationHelper.getFixedFailures(foundFaults, failures);
 		EvaluationEntry metrics = new EvaluationEntry(strategyName, foundFaults.size(),
-				fixedFailures.size(), investigatedFailuresActual, failuresToInvestigateCount,
+				fixedFailures.size(), wastedEffort, investigatedFailuresActual, failuresToInvestigateCount,
 				projectMetrics, clusteringMetrics);
+		addPerformanceMetrics(metrics, optimalMetrics);
 		return metrics;
+	}
+	private void addPerformanceMetrics(EvaluationEntry metrics, EvaluationEntry optimalMetrics) {
+		if (optimalMetrics == null) {
+			return;
+		}
+		PerformanceEvaluationEntry performanceMetrics = new PerformanceEvaluationEntry(metrics, optimalMetrics);
+		metrics.setPerformanceMetrics(performanceMetrics);
 	}
 }

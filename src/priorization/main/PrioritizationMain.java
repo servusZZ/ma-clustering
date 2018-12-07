@@ -10,8 +10,10 @@ public class PrioritizationMain {
 //					runAnalysis
 //					or: printStatistics
 		System.out.println("Program started...");
-		String projectName = "commons-geometry";
-		String dir = "C:\\study\\SWDiag\\sharedFolder_UbuntuVM\\MA\\pit_data\\" +  projectName + "\\pit-data\\";
+//		String projectName = "commons-geometry";
+//		String dir = "C:\\study\\SWDiag\\sharedFolder_UbuntuVM\\MA\\pit_data\\" +  projectName + "\\pit-data\\";
+		String projectName = "test-lessVersions";
+		String dir = "C:\\study\\SWDiag\\sharedFolder_UbuntuVM\\MA\\pit_data_faultyVersions\\" + projectName + "\\pit-data\\";
 		System.out.println("Processing project " + projectName);
 		AnalysisWrapper	wrapper = new AnalysisWrapper();
 		wrapper.importProject(dir, projectName);

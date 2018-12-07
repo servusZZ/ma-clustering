@@ -33,8 +33,8 @@ public class ClusteringEvaluation {
 		System.out.println("DEBUG: The representative selection failed for " + repSelectionSuccessfulFailedCount[1] + " clusters.");
 		double purity = purity();
 		System.out.println("DEBUG: Purity of Clusters:       " + purity);
-		//TODO: _FF, f1Measure, precision, recall und fault Entropy für multiple underlying faults
-		//			nicht berücksichtigen (zumindest im Excel dann ignorieren)
+		//Note: f1Measure, precision, recall and fault Entropy metrics are not valid
+		//			for the case that failures have multiple underlying faults (the best possible value for these metrics is not 1 anymore but something below 1)
 		Map<Fault, Integer> faultToIndexMapping = getFaultToIndexMapping();
 		int[][] failuresPerFaultPerCluster = getFailuresPerFaultPerCluster(faultToIndexMapping);
 		
