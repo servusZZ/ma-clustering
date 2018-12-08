@@ -58,19 +58,19 @@ public class HierarchicalAgglomerativeClustering extends PrioritizationStrategyB
 		//		during Cutting point determination of Failure Tree & Refinement check
 		//		  for each comparing of 2 clusters
 		//			count TP, TN, FP and FN
-		System.out.println("Determine cutting point of the Failure Tree...");
+//		System.out.println("Determine cutting point of the Failure Tree...");
 		ClusterBuilder cb = new ClusterBuilder(dendrogram.getRoot(), passedTCs, failures, sbflConfig);
-		System.out.println("DEBUG: Created ClusterBuilder and passedTCs");
+//		System.out.println("DEBUG: Created ClusterBuilder and passedTCs");
 		List<Cluster> clusters = cb.getClustersOfCuttingLevel();
-		System.out.println("Cutting level of the Failure Tree contains " + clusters.size() + " clusters.");
+//		System.out.println("Cutting level of the Failure Tree contains " + clusters.size() + " clusters.");
 //		PrintUtils.dumpClusters(clusters);
 		Refinement refinement = new Refinement(cb.getPassedTCsCluster(), sbflConfig);
 		clusters = refinement.refineClusters(clusters);
-		System.out.println("Number of refined clusters: " + clusters.size());
+//		System.out.println("Number of refined clusters: " + clusters.size());
 		
 //		System.out.println("Created " + clusters.size() + " clusters");
 //		PrintUtils.dumpClusters(clusters);
-		System.out.println("Evaluate the Clustering...");
+//		System.out.println("Evaluate the Clustering...");
 		ClusteringEvaluation clusteringEvaluation = new ClusteringEvaluation(dissimilarityMeasure, new KNNToCenterSelection(), clusters, faults);
 		clusteringEvaluation.evaluateClustering();
 		//EDIT: _FF, maybe only calculate f1-score, precision, recall and fault entropy

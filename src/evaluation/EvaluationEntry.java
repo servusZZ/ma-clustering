@@ -13,8 +13,6 @@ public class EvaluationEntry {
 	private int fixedFailures;
 	/** stores the number of failures that are (superfluously) investigated without finding a new fault	*/
 	private int wastedEffort;
-	/**	only filled within the optimal prioritization strategy, used for calculating the performance */
-	private int biggestPossibleWastedEffort;
 	private int investigatedFailures_actual;
 	/**	metrics that indicate the relative performance of the prio strategy compared
 	 * to the best possible prioritization. */
@@ -55,7 +53,7 @@ public class EvaluationEntry {
 		return "DissimilarityMeasure;#Clusters;RepresentativeSelectionStrategy;#SuccessfulRepresentatives;#FailedRepresentatives;Purity;Precision;Recall;F1-Score;FaultEntropy";
 	}
 	private String getPerformanceMetricsHeader() {
-		return "PerformanceIndex;FoundFaultsPerformance;WastedEffortPerformance;FixedFailuresPerformance";
+		return "PerformanceIndex;PerformanceIndexCA;FoundFaultsPerformance;WastedEffortPerformance;FixedFailuresPerformance";
 	}
 	public String getValues() {
 		return prioritizationStrategyName + 
@@ -76,15 +74,9 @@ public class EvaluationEntry {
 		if (performanceMetrics != null) {
 			return performanceMetrics.getValues();
 		}
-		return ";;;";
+		return ";;;;";
 	}
 
-	public int getBiggestPossibleWastedEffort() {
-		return biggestPossibleWastedEffort;
-	}
-	public void setBiggestPossibleWastedEffort(int biggestPossibleWastedEffort) {
-		this.biggestPossibleWastedEffort = biggestPossibleWastedEffort;
-	}
 	public int getFoundFaults() {
 		return foundFaults;
 	}

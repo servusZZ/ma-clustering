@@ -7,7 +7,7 @@ import java.util.Map;
 
 import data_export.evaluation.EvaluationFileWriter;
 import data_import.faulty_versions.FaultyVersionsReader;
-import evaluation.EvaluationEntry;
+import evaluation.OptimalEvaluationEntry;
 import faulty_project.globals.FaultyProjectGlobals;
 import prioritization.data_objects.FaultyVersion;
 import prioritization.evaluation.ProjectEvaluationEntry;
@@ -27,7 +27,7 @@ public class AnalysisWrapper {
 	//		wie die obere Grenze setzen: Alle ansehen macht bei 5 Failures z.B. noch Sinn,
 	//			bei 15 failures aber z.B. keinen Sinn weil man ja davon ausgeht, dass weniger Faults im System sind.
 	private static final int MIN_FAILURES_TO_INVESTIGATE = 3;
-	private static final int MAX_FAILURES_TO_INVESTIGATE = 10;
+	private static final int MAX_FAILURES_TO_INVESTIGATE = 15;
 	
 	private List<FaultyVersion> faultyVersions;
 	private EvaluationFileWriter outputWriter;
@@ -47,36 +47,37 @@ public class AnalysisWrapper {
 	public void analyze() throws IOException {
 		for (FaultyVersion faultyVersion:faultyVersions) {
 			FaultyProjectGlobals.init(faultyVersion);
-			System.out.println("Processing next faulty Version with " + faultyVersion.getFaults().size() + " faults, " + faultyVersion.getFailures().length + " failures, " + faultyVersion.getPassedTCs().length + " passing Test Cases and " + FaultyProjectGlobals.methodsCount + " relevant methods.");
 			ProjectEvaluationEntry projectMetrics = faultyVersion.getProjectMetrics();
-			// evaluation entry um Performance Metriken erweitern und diese anhand der optimal berechnen
-			Map<Integer, EvaluationEntry> optimalMetrics = analyzeOptimalStrategy(faultyVersion);
+			System.out.println("Processing next faulty Version " + projectMetrics.getId() + " with " + faultyVersion.getFaults().size() + " faults, " + FaultyProjectGlobals.failuresCount + " failures, " + faultyVersion.getPassedTCs().length + " passing Test Cases and " + FaultyProjectGlobals.methodsCount + " relevant methods.");
+			Map<Integer, OptimalEvaluationEntry> optimalMetrics = analyzeOptimalStrategy(faultyVersion);
 			List<PrioritizationStrategyBase> strategies = PrioritizationStrategyFactory.createStrategies(
 					faultyVersion.getFailures(), faultyVersion.getPassedTCs(), faultyVersion.getFaults());
 			for (PrioritizationStrategyBase strategy: strategies) {
 				System.out.println("Analyzing strategy " + strategy.strategyName);
 				analyzeStrategy(strategy, projectMetrics, optimalMetrics);
 			}
-			//TODO: A_NEXT, debug performance berechnung
 			//TODO: HAC mit unterschiedlichen Konfigurationen hinzufügen & evaluieren
-			//TODO: Versionen filtern, welche keinen Sinn ergeben:
-			//			nur ein investigatedFailure?
-			//			mehr investigatedPlanned als es Failures gibt
 		}
 	}
-	private void analyzeStrategy(PrioritizationStrategyBase strategy, ProjectEvaluationEntry projectMetrics, Map<Integer, EvaluationEntry> optimalMetrics) throws IOException {
+	private void analyzeStrategy(PrioritizationStrategyBase strategy, ProjectEvaluationEntry projectMetrics, Map<Integer, OptimalEvaluationEntry> optimalMetrics) throws IOException {
 		strategy.prioritizeFailures();
-		for (int i = MIN_FAILURES_TO_INVESTIGATE; i <= MAX_FAILURES_TO_INVESTIGATE; i++) {
+		for (int i = MIN_FAILURES_TO_INVESTIGATE; i <= getMaxFailuresToInvestigate(); i++) {
 			outputWriter.writeEvaluationEntry(strategy.evaluatePrioritizationStrategy(i, projectMetrics, optimalMetrics.get(i)));
 		}
 	}
-	private Map<Integer, EvaluationEntry> analyzeOptimalStrategy(FaultyVersion faultyVersion) {
+	private Map<Integer, OptimalEvaluationEntry> analyzeOptimalStrategy(FaultyVersion faultyVersion) {
 		OptimalPrioritization optimalStrategy = new OptimalPrioritization(faultyVersion.getFailures(), faultyVersion.getPassedTCs(), faultyVersion.getFaults());
 		optimalStrategy.prioritizeFailures();
-		Map<Integer, EvaluationEntry> optimalMetrics = new HashMap<Integer, EvaluationEntry>();
-		for (int i = MIN_FAILURES_TO_INVESTIGATE; i <= MAX_FAILURES_TO_INVESTIGATE; i++) {
-			optimalMetrics.put(i, optimalStrategy.evaluatePrioritizationStrategy(i, faultyVersion.getProjectMetrics(), null));
+		Map<Integer, OptimalEvaluationEntry> optimalMetrics = new HashMap<Integer, OptimalEvaluationEntry>();
+		for (int i = MIN_FAILURES_TO_INVESTIGATE; i <= getMaxFailuresToInvestigate(); i++) {
+			optimalMetrics.put(i, (OptimalEvaluationEntry)optimalStrategy.evaluatePrioritizationStrategy(i, faultyVersion.getProjectMetrics(), null));
 		}
 		return optimalMetrics;			
+	}
+	private int getMaxFailuresToInvestigate() {
+		if (MAX_FAILURES_TO_INVESTIGATE > FaultyProjectGlobals.failuresCount) {
+			return FaultyProjectGlobals.failuresCount;
+		}
+		return MAX_FAILURES_TO_INVESTIGATE;
 	}
 }

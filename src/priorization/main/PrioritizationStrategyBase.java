@@ -6,6 +6,7 @@ import java.util.Set;
 
 import evaluation.EvaluationEntry;
 import evaluation.EvaluationUtils;
+import evaluation.OptimalEvaluationEntry;
 import evaluation.PerformanceEvaluationEntry;
 import hac.evaluation.ClusteringEvaluationEntry;
 import prioritization.data_objects.Fault;
@@ -42,7 +43,7 @@ public abstract class PrioritizationStrategyBase {
 	 * The clusteringMetrics in the returned EvaluationEntry object are null by default and
 	 * must be set within the prioritizeFailures method in respective subclasses.
 	 */
-	public EvaluationEntry evaluatePrioritizationStrategy(int failuresToInvestigateCount, ProjectEvaluationEntry projectMetrics, EvaluationEntry optimalMetrics) {
+	public EvaluationEntry evaluatePrioritizationStrategy(int failuresToInvestigateCount, ProjectEvaluationEntry projectMetrics, OptimalEvaluationEntry optimalMetrics) {
 		int investigatedFailuresActual = failuresToInvestigateCount;
 		if (prioritizedFailures.size() < failuresToInvestigateCount) {
 			investigatedFailuresActual = prioritizedFailures.size();
@@ -56,7 +57,7 @@ public abstract class PrioritizationStrategyBase {
 		addPerformanceMetrics(metrics, optimalMetrics);
 		return metrics;
 	}
-	private void addPerformanceMetrics(EvaluationEntry metrics, EvaluationEntry optimalMetrics) {
+	private void addPerformanceMetrics(EvaluationEntry metrics, OptimalEvaluationEntry optimalMetrics) {
 		if (optimalMetrics == null) {
 			return;
 		}

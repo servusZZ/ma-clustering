@@ -29,21 +29,21 @@ public class ClusteringEvaluation {
 	 */
 	public void evaluateClustering() {
 		int[] repSelectionSuccessfulFailedCount = evaluateRepresentativeSelection();
-		System.out.println("DEBUG: The representative selection was successful for " + repSelectionSuccessfulFailedCount[0] + " clusters.");
-		System.out.println("DEBUG: The representative selection failed for " + repSelectionSuccessfulFailedCount[1] + " clusters.");
+//		System.out.println("DEBUG: The representative selection was successful for " + repSelectionSuccessfulFailedCount[0] + " clusters.");
+//		System.out.println("DEBUG: The representative selection failed for " + repSelectionSuccessfulFailedCount[1] + " clusters.");
 		double purity = purity();
-		System.out.println("DEBUG: Purity of Clusters:       " + purity);
+//		System.out.println("DEBUG: Purity of Clusters:       " + purity);
 		//Note: f1Measure, precision, recall and fault Entropy metrics are not valid
 		//			for the case that failures have multiple underlying faults (the best possible value for these metrics is not 1 anymore but something below 1)
 		Map<Fault, Integer> faultToIndexMapping = getFaultToIndexMapping();
 		int[][] failuresPerFaultPerCluster = getFailuresPerFaultPerCluster(faultToIndexMapping);
 		
 		double[] precisionRecallF1 = f1Measure(failuresPerFaultPerCluster, faultToIndexMapping);
-		System.out.println("DEBUG: Precision:                " + precisionRecallF1[0]);
-		System.out.println("DEBUG: Recall:                   " + precisionRecallF1[1]);
-		System.out.println("DEBUG: F1-Score:                 " + precisionRecallF1[2]);
+//		System.out.println("DEBUG: Precision:                " + precisionRecallF1[0]);
+//		System.out.println("DEBUG: Recall:                   " + precisionRecallF1[1]);
+//		System.out.println("DEBUG: F1-Score:                 " + precisionRecallF1[2]);
 		double totalFaultEntropy = totalFaultEntropy(failuresPerFaultPerCluster, faultToIndexMapping);
-		System.out.println("DEBUG: Total Deviation Entropy:  " + totalFaultEntropy);
+//		System.out.println("DEBUG: Total Deviation Entropy:  " + totalFaultEntropy);
 		clusteringMetrics = new ClusteringEvaluationEntry(dissimilarityMeasure.getClass().getSimpleName(),
 				clusters.size(), representativeSelection.getClass().getSimpleName(),
 				repSelectionSuccessfulFailedCount[0], repSelectionSuccessfulFailedCount[1],
