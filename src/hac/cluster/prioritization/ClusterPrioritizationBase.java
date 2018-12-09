@@ -14,7 +14,7 @@ public abstract class ClusterPrioritizationBase {
 	/**
 	 * prioritizes the passed clusters, so that the representative of the first cluster
 	 * in the list is the first Failure that should be fixed.<br>
-	 * CAUTION: This method changes the passed list of clusters.
+	 * NOTE: This method changes the passed list of clusters.
 	 */
 	public abstract List<Cluster> prioritizeClusters(List<Cluster> clusters);
 }

@@ -10,8 +10,6 @@ import ch.usi.inf.sape.hac.agglomeration.AverageLinkage;
 import ch.usi.inf.sape.hac.dendrogram.Dendrogram;
 import ch.usi.inf.sape.hac.dendrogram.DendrogramBuilder;
 import ch.usi.inf.sape.hac.experiment.Experiment;
-import hac.cluster.prioritization.ClusterPrioritizationBase;
-import hac.cluster.prioritization.ClusterPrioritizationDissimilarGreatestFirst;
 import hac.data_objects.Cluster;
 import hac.evaluation.ClusteringEvaluation;
 import hac.evaluation.KNNToCenterSelection;
@@ -20,22 +18,16 @@ import hac.experiment.custom.CustomDissimilarityMeasure;
 import hac.experiment.custom.FailureClusteringExperiment;
 import hac.experiment.custom.ICenterCalculation;
 import hac.experiment.custom.JaccardDistance;
-import hac.sbfl.OverlapConfiguration1;
-import hac.sbfl.SBFLConfiguration;
 import prioritization.data_objects.Fault;
 import prioritization.data_objects.TestCase;
-import priorization.main.PrioritizationStrategyBase;
+import prioritization.strategies.HACPrioritizationBase;
 
-public class HierarchicalAgglomerativeClustering extends PrioritizationStrategyBase{
-	private SBFLConfiguration sbflConfig;
-	private ClusterPrioritizationBase clusterPrioritization;
+public class HierarchicalAgglomerativeClustering extends HACPrioritizationBase{
+	
 	
 	public HierarchicalAgglomerativeClustering(TestCase[] failures,
 			TestCase[] passedTCs, Set<Fault> faults) {
 		super(failures, passedTCs, faults);
-		this.sbflConfig = new OverlapConfiguration1();
-		this.clusterPrioritization = new ClusterPrioritizationDissimilarGreatestFirst(sbflConfig);
-		this.strategyName = "HAC DissimilarGreatestFirst";
 	}
 	private Dendrogram performHAC(CustomDissimilarityMeasure dissimilarityMeasure) {
 		Experiment experiment = new FailureClusteringExperiment(failures);

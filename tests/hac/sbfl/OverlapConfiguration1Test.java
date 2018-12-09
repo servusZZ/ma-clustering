@@ -16,7 +16,11 @@ class OverlapConfiguration1Test {
 	void testComputeMostSuspiciousSet21Methods() {
 		FaultyProjectGlobals.methodsCount = 21;
 		Map<Integer, Double> methodDStarSusp = fillDStarSuspMap21Methods();
-		SBFLConfiguration sbflConfig = new OverlapConfiguration1();
+		SBFLConfiguration sbflConfig = new OverlapConfiguration();
+		sbflConfig.MOST_SUSP_MAX_COUNT = 12;
+		sbflConfig.MOST_SUSP_MIN_COUNT = 4;
+		sbflConfig.MOST_SUSP_THRESHOLD = 0.15;
+		sbflConfig.SIMILARITY_THRESHOLD = 0.60;
 		Set<Integer> mostSuspSet = sbflConfig.computeMostSuspiciousSet(methodDStarSusp);
 		assertTrue(isMostSuspSet21Methods(mostSuspSet));
 	}
@@ -28,7 +32,11 @@ class OverlapConfiguration1Test {
 		methodDStarSusp.put(22, 2.0);
 		methodDStarSusp.put(23, 2.0);
 		methodDStarSusp.put(24, 2.0);
-		SBFLConfiguration sbflConfig = new OverlapConfiguration1();
+		SBFLConfiguration sbflConfig = new OverlapConfiguration();
+		sbflConfig.MOST_SUSP_MAX_COUNT = 12;
+		sbflConfig.MOST_SUSP_MIN_COUNT = 4;
+		sbflConfig.MOST_SUSP_THRESHOLD = 0.15;
+		sbflConfig.SIMILARITY_THRESHOLD = 0.60;
 		Set<Integer> mostSuspSet = sbflConfig.computeMostSuspiciousSet(methodDStarSusp);
 		assertTrue(isMostSuspSet24Methods(mostSuspSet));
 	}
@@ -36,7 +44,11 @@ class OverlapConfiguration1Test {
 	void testComputeMostSuspiciousSetRelThreshold() {
 		FaultyProjectGlobals.methodsCount = 50;
 		Map<Integer, Double> methodDStarSusp = fillDStarSuspMap50Methods();
-		SBFLConfiguration sbflConfig = new OverlapConfiguration1();
+		SBFLConfiguration sbflConfig = new OverlapConfiguration();
+		sbflConfig.MOST_SUSP_MAX_COUNT = 12;
+		sbflConfig.MOST_SUSP_MIN_COUNT = 4;
+		sbflConfig.MOST_SUSP_THRESHOLD = 0.15;
+		sbflConfig.SIMILARITY_THRESHOLD = 0.60;
 		Set<Integer> mostSuspSet = sbflConfig.computeMostSuspiciousSet(methodDStarSusp);
 		assertTrue(isMostSuspSet50Methods(mostSuspSet));
 	}
@@ -48,7 +60,11 @@ class OverlapConfiguration1Test {
 		methodDStarSusp.put(51, SBFLConfiguration.MAX_SUSP_VALUE);
 		methodDStarSusp.put(52, SBFLConfiguration.MAX_SUSP_VALUE);
 		methodDStarSusp.put(53, SBFLConfiguration.MAX_SUSP_VALUE);
-		SBFLConfiguration sbflConfig = new OverlapConfiguration1();
+		SBFLConfiguration sbflConfig = new OverlapConfiguration();
+		sbflConfig.MOST_SUSP_MAX_COUNT = 12;
+		sbflConfig.MOST_SUSP_MIN_COUNT = 4;
+		sbflConfig.MOST_SUSP_THRESHOLD = 0.15;
+		sbflConfig.SIMILARITY_THRESHOLD = 0.60;
 		Set<Integer> mostSuspSet = sbflConfig.computeMostSuspiciousSet(methodDStarSusp);
 		assertTrue(isMostSuspSet150Methods(mostSuspSet));
 	}

@@ -52,11 +52,11 @@ public class AnalysisWrapper {
 			Map<Integer, OptimalEvaluationEntry> optimalMetrics = analyzeOptimalStrategy(faultyVersion);
 			List<PrioritizationStrategyBase> strategies = PrioritizationStrategyFactory.createStrategies(
 					faultyVersion.getFailures(), faultyVersion.getPassedTCs(), faultyVersion.getFaults());
+			System.out.println("Analyzing the version with " + strategies.size() + " strategies.");
 			for (PrioritizationStrategyBase strategy: strategies) {
-				System.out.println("Analyzing strategy " + strategy.strategyName);
+//				System.out.println("Analyzing strategy " + strategy.strategyName);
 				analyzeStrategy(strategy, projectMetrics, optimalMetrics);
 			}
-			//TODO: HAC mit unterschiedlichen Konfigurationen hinzufügen & evaluieren
 		}
 	}
 	private void analyzeStrategy(PrioritizationStrategyBase strategy, ProjectEvaluationEntry projectMetrics, Map<Integer, OptimalEvaluationEntry> optimalMetrics) throws IOException {
@@ -65,12 +65,14 @@ public class AnalysisWrapper {
 			outputWriter.writeEvaluationEntry(strategy.evaluatePrioritizationStrategy(i, projectMetrics, optimalMetrics.get(i)));
 		}
 	}
-	private Map<Integer, OptimalEvaluationEntry> analyzeOptimalStrategy(FaultyVersion faultyVersion) {
+	private Map<Integer, OptimalEvaluationEntry> analyzeOptimalStrategy(FaultyVersion faultyVersion) throws IOException {
 		OptimalPrioritization optimalStrategy = new OptimalPrioritization(faultyVersion.getFailures(), faultyVersion.getPassedTCs(), faultyVersion.getFaults());
 		optimalStrategy.prioritizeFailures();
 		Map<Integer, OptimalEvaluationEntry> optimalMetrics = new HashMap<Integer, OptimalEvaluationEntry>();
 		for (int i = MIN_FAILURES_TO_INVESTIGATE; i <= getMaxFailuresToInvestigate(); i++) {
-			optimalMetrics.put(i, (OptimalEvaluationEntry)optimalStrategy.evaluatePrioritizationStrategy(i, faultyVersion.getProjectMetrics(), null));
+			OptimalEvaluationEntry optimalMetric = (OptimalEvaluationEntry)optimalStrategy.evaluatePrioritizationStrategy(i, faultyVersion.getProjectMetrics(), null);
+			optimalMetrics.put(i, optimalMetric);
+			outputWriter.writeEvaluationEntry(optimalMetric);
 		}
 		return optimalMetrics;			
 	}

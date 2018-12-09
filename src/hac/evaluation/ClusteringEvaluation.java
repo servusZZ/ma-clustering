@@ -102,7 +102,7 @@ public class ClusteringEvaluation {
 		double totalDeviationEntropy = 0.0;
 		for (Map.Entry<Fault, Integer> faultToIndex:faultToIndexMapping.entrySet()) {
 			double deviationEntropyPerFault = deviationEntropyPerFault(failuresPerFaultPerCluster, faultToIndex.getValue());
-			System.out.println("   Deviation Entropy of " + faultToIndex.getKey().id + " is " + deviationEntropyPerFault);
+//			System.out.println("   Deviation Entropy of " + faultToIndex.getKey().id + " is " + deviationEntropyPerFault);
 			totalDeviationEntropy += deviationEntropyPerFault;
 		}
 		return totalDeviationEntropy;
