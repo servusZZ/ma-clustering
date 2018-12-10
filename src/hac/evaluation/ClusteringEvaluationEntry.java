@@ -18,6 +18,11 @@ public class ClusteringEvaluationEntry {
 	private double f1score;
 	private double faultEntropy;
 	
+	private int comparisonTP;
+	private int comparisonTN;
+	private int comparisonFP;
+	private int comparisonFN;
+	
 	public ClusteringEvaluationEntry(String dissimilarityMeasure, int clustersCount,
 			String representativeSelectionStrategy, int representativeSelectionSuccessful,
 			int representativeSelectionFailed, double purity, double precision,
@@ -40,9 +45,19 @@ public class ClusteringEvaluationEntry {
 				 ";" + getGermanRepresentation(precision) +
 				 ";" + getGermanRepresentation(recall) +
 				 ";" + getGermanRepresentation(f1score) +
-				 ";" + getGermanRepresentation(faultEntropy);
+				 ";" + getGermanRepresentation(faultEntropy) +
+				 ";" + comparisonTP +
+				 ";" + comparisonTN +
+				 ";" + comparisonFP +
+				 ";" + comparisonFN;
 	}
 	private String getGermanRepresentation(double val) {
 		return StringUtils.replaceChars("" + val, '.', ',');
+	}
+	public void setComparisonValues(ClusterComparingEvaluation cce) {
+		comparisonFN = cce.getFN();
+		comparisonFP = cce.getFP();
+		comparisonTN = cce.getTN();
+		comparisonTP = cce.getTP();
 	}
 }

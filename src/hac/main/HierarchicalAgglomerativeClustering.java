@@ -41,33 +41,19 @@ public class HierarchicalAgglomerativeClustering extends HACPrioritizationBase{
 	public void prioritizeFailures() {
 		ICenterCalculation centerCalc = new AverageCenterCalculation();
 		CustomDissimilarityMeasure dissimilarityMeasure = new JaccardDistance(centerCalc);
-		
 		Dendrogram dendrogram = performHAC(dissimilarityMeasure);
-//		System.out.println("Finished clustering Failures! Dump Dendrogram: ");
-//		dendrogram.dump();
 		
-		//TODO: Add Evaluation when comparing Clusters
-		//		during Cutting point determination of Failure Tree & Refinement check
-		//		  for each comparing of 2 clusters
-		//			count TP, TN, FP and FN
-//		System.out.println("Determine cutting point of the Failure Tree...");
 		ClusterBuilder cb = new ClusterBuilder(dendrogram.getRoot(), passedTCs, failures, sbflConfig);
-//		System.out.println("DEBUG: Created ClusterBuilder and passedTCs");
 		List<Cluster> clusters = cb.getClustersOfCuttingLevel();
-//		System.out.println("Cutting level of the Failure Tree contains " + clusters.size() + " clusters.");
-//		PrintUtils.dumpClusters(clusters);
 		Refinement refinement = new Refinement(cb.getPassedTCsCluster(), sbflConfig);
 		clusters = refinement.refineClusters(clusters);
-//		System.out.println("Number of refined clusters: " + clusters.size());
 		
-//		System.out.println("Created " + clusters.size() + " clusters");
-//		PrintUtils.dumpClusters(clusters);
-//		System.out.println("Evaluate the Clustering...");
 		ClusteringEvaluation clusteringEvaluation = new ClusteringEvaluation(dissimilarityMeasure, new KNNToCenterSelection(), clusters, faults);
 		clusteringEvaluation.evaluateClustering();
 		//EDIT: _FF, maybe only calculate f1-score, precision, recall and fault entropy
 		//		if only a single fault for each failure is allowed.
 		clusteringMetrics = clusteringEvaluation.getClusteringMetrics();
+		clusteringMetrics.setComparisonValues(sbflConfig.getClusterComparisonEvaluation());
 		clusters = clusterPrioritization.prioritizeClusters(clusters);
 		prioritizedFailures = getRepresentativesOfClusters(clusters);
 	}

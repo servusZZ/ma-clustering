@@ -33,7 +33,6 @@ public class HACFactory {
 		 * Parameter = {medium, biggerSuspSet, soft}
 		 * 
 		 * 2 * 3 + 2 + 2 = 10 Varianten
-		 * 
 		 */
 		return strategies;
 	}

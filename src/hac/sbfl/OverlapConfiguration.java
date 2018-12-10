@@ -16,10 +16,15 @@ public class OverlapConfiguration extends SBFLConfiguration{
 	 */
 	@Override
 	public boolean clustersAreSimilar(Cluster c1, Cluster c2) {
-		return clustersAreSimilar(getSimilarityValue(c1, c2));
+		boolean result = clustersAreSimilar(getSimilarityValue(c1, c2));
+		clusterComparisonEvaluation.evaluateComparison(result, c1, c2);
+		return result;
 	}
 	@Override
 	public double getSimilarityValue(Cluster c1, Cluster c2) {
-		return MetricUtils.overlapSimilarity(c1.getSuspiciousSet(), c2.getSuspiciousSet());
+		double simValue = MetricUtils.overlapSimilarity(c1.getSuspiciousSet(), c2.getSuspiciousSet());
+		boolean result = clustersAreSimilar(simValue);
+		clusterComparisonEvaluation.evaluateComparison(result, c1, c2);
+		return simValue;
 	}
 }

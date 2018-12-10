@@ -50,7 +50,7 @@ public class EvaluationEntry {
 				+ ";" + getClusteringMetricsHeader();
 	}
 	private String getClusteringMetricsHeader() {
-		return "DissimilarityMeasure;#Clusters;RepresentativeSelectionStrategy;#SuccessfulRepresentatives;#FailedRepresentatives;Purity;Precision;Recall;F1-Score;FaultEntropy";
+		return "DissimilarityMeasure;#Clusters;RepresentativeSelectionStrategy;#SuccessfulRepresentatives;#FailedRepresentatives;Purity;Precision;Recall;F1-Score;FaultEntropy;ComparisonTP;ComparisonTN;ComparisonFP;ComparisonFN";
 	}
 	private String getPerformanceMetricsHeader() {
 		return "PerformanceIndex;PerformanceIndexCA;FoundFaultsPerformance;WastedEffortPerformance;FixedFailuresPerformance";
@@ -68,7 +68,7 @@ public class EvaluationEntry {
 		if (clusteringMetrics != null) {
 			return clusteringMetrics.getValues();
 		}
-		return ";;;;;;;;;";
+		return ";;;;;;;;;;;;;";
 	}
 	private String getPerformanceMetricValues() {
 		if (performanceMetrics != null) {

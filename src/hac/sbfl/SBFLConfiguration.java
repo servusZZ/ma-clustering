@@ -8,6 +8,7 @@ import java.util.Map.Entry;
 
 import faulty_project.globals.FaultyProjectGlobals;
 import hac.data_objects.Cluster;
+import hac.evaluation.ClusterComparingEvaluation;
 import utils.SortingUtils;
 
 /**
@@ -31,7 +32,12 @@ public abstract class SBFLConfiguration {
 	public double SIMILARITY_THRESHOLD;
 	/**	can only be exceeded by 178 or more failing tests */
 	public static final double MAX_SUSP_VALUE = 1000000000;
-	public SBFLConfiguration() { }
+	
+	protected ClusterComparingEvaluation clusterComparisonEvaluation;
+	
+	public SBFLConfiguration() { 
+		clusterComparisonEvaluation = new ClusterComparingEvaluation();
+	}
 	public abstract boolean clustersAreSimilar(Cluster c1, Cluster c2);
 	public abstract double getSimilarityValue(Cluster c1, Cluster c2);
 	
@@ -82,5 +88,8 @@ public abstract class SBFLConfiguration {
 			return MOST_SUSP_MAX_COUNT;
 		}
 		return mostSuspSetSize;
+	}
+	public ClusterComparingEvaluation getClusterComparisonEvaluation() {
+		return clusterComparisonEvaluation;
 	}
 }
