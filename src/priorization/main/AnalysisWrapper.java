@@ -1,6 +1,7 @@
 package priorization.main;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,11 +24,9 @@ public class AnalysisWrapper {
 	private static final String OUTPUT_DIR = "C:\\study\\workspace_master-thesis-java\\ma-clustering\\output\\";
 	private final static String OUTPUT_FILE_NAME = "prioritization-evaluation.csv";
 	
-	//TODO: mit Rainer besprechen: Weniger als 3 failures inspizieren passt nicht in den Kontext?
-	//		wie die obere Grenze setzen: Alle ansehen macht bei 5 Failures z.B. noch Sinn,
-	//			bei 15 failures aber z.B. keinen Sinn weil man ja davon ausgeht, dass weniger Faults im System sind.
 	private static final int MIN_FAILURES_TO_INVESTIGATE = 3;
-	private static final int MAX_FAILURES_TO_INVESTIGATE = 15;
+	private static final int MAX_FAILURES_TO_INVESTIGATE = 20;
+	private static final int[] EXTRA_FAILURES_TO_INVESTIGATE = {30, 50, 80, 130};
 	
 	private List<FaultyVersion> faultyVersions;
 	private EvaluationFileWriter outputWriter;
@@ -54,27 +53,39 @@ public class AnalysisWrapper {
 					faultyVersion.getFailures(), faultyVersion.getPassedTCs(), faultyVersion.getFaults());
 			System.out.println("Analyzing the version with " + strategies.size() + " strategies.");
 			for (PrioritizationStrategyBase strategy: strategies) {
-//				System.out.println("Analyzing strategy " + strategy.strategyName);
 				analyzeStrategy(strategy, projectMetrics, optimalMetrics);
 			}
 		}
 	}
 	private void analyzeStrategy(PrioritizationStrategyBase strategy, ProjectEvaluationEntry projectMetrics, Map<Integer, OptimalEvaluationEntry> optimalMetrics) throws IOException {
 		strategy.prioritizeFailures();
-		for (int i = MIN_FAILURES_TO_INVESTIGATE; i <= getMaxFailuresToInvestigate(); i++) {
-			outputWriter.writeEvaluationEntry(strategy.evaluatePrioritizationStrategy(i, projectMetrics, optimalMetrics.get(i)));
+		for (int failuresToInvestigate: getFailuresToInvestigateCounts()) {
+			outputWriter.writeEvaluationEntry(strategy.evaluatePrioritizationStrategy(failuresToInvestigate, projectMetrics, optimalMetrics.get(failuresToInvestigate)));
 		}
 	}
 	private Map<Integer, OptimalEvaluationEntry> analyzeOptimalStrategy(FaultyVersion faultyVersion) throws IOException {
 		OptimalPrioritization optimalStrategy = new OptimalPrioritization(faultyVersion.getFailures(), faultyVersion.getPassedTCs(), faultyVersion.getFaults());
 		optimalStrategy.prioritizeFailures();
 		Map<Integer, OptimalEvaluationEntry> optimalMetrics = new HashMap<Integer, OptimalEvaluationEntry>();
-		for (int i = MIN_FAILURES_TO_INVESTIGATE; i <= getMaxFailuresToInvestigate(); i++) {
-			OptimalEvaluationEntry optimalMetric = (OptimalEvaluationEntry)optimalStrategy.evaluatePrioritizationStrategy(i, faultyVersion.getProjectMetrics(), null);
-			optimalMetrics.put(i, optimalMetric);
+		for (int failuresToInvestigate: getFailuresToInvestigateCounts()) {
+			OptimalEvaluationEntry optimalMetric = (OptimalEvaluationEntry)optimalStrategy.evaluatePrioritizationStrategy(failuresToInvestigate, faultyVersion.getProjectMetrics(), null);
+			optimalMetrics.put(failuresToInvestigate, optimalMetric);
 			outputWriter.writeEvaluationEntry(optimalMetric);
 		}
-		return optimalMetrics;			
+		return optimalMetrics;
+	}
+	private List<Integer> getFailuresToInvestigateCounts(){
+		List<Integer> failuresToInvestigateCounts = new ArrayList<Integer>();
+		for (int i = MIN_FAILURES_TO_INVESTIGATE; i <= getMaxFailuresToInvestigate(); i++) {
+			failuresToInvestigateCounts.add(i);
+		}
+		for (int i = 0; i < EXTRA_FAILURES_TO_INVESTIGATE.length; i++) {
+			if (EXTRA_FAILURES_TO_INVESTIGATE[i] > FaultyProjectGlobals.failuresCount) {
+				break;
+			}
+			failuresToInvestigateCounts.add(EXTRA_FAILURES_TO_INVESTIGATE[i]);
+		}
+		return failuresToInvestigateCounts;
 	}
 	private int getMaxFailuresToInvestigate() {
 		if (MAX_FAILURES_TO_INVESTIGATE > FaultyProjectGlobals.failuresCount) {

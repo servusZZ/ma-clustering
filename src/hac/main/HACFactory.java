@@ -21,16 +21,13 @@ public class HACFactory {
 		strategies.addAll(createStrategiesWithOverlapConfig(failures, passedTCs, faults));
 		strategies.addAll(createStrategiesWithJaccardConfig(failures, passedTCs, faults));
 		
-		//TODO: create strategies: Rainer fragen welche er (noch) für sinnvoll hält
 		/**	 Varianten bilden nach: MetricBerechnung * Thresholds
 		 * 		+2 pro MetricBerechnung einmal ohne dissimilarityGreatestFirst, stattdessen Greatest und Random
 		 * 		(+ pro MetricBerechnung einmal ohne Refinement?)
 		 * 		RepSelection scheint gut zu funktionieren --> daher nicht variieren bzw. Fälle in denen es nicht zu 100% funktioniert vorerst manuell inspizieren
 		 * 
-		 * JaccardDistance für HAC auch variieren? >> Rainer fragen
-		 * 
 		 * MetricBerechnung = {OverlapConfig, JaccardDistance}
-		 * Parameter = {medium, biggerSuspSet, soft}
+		 * Parameter = {medium, biggerSuspSet, soft} evtl noch eine "verySoft" o.Ä. hinzufügen
 		 * 
 		 * 2 * 3 + 2 + 2 = 10 Varianten
 		 */
