@@ -4,6 +4,9 @@ import java.beans.XMLDecoder;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 import directories.globals.Directories;
@@ -13,13 +16,20 @@ import prioritization.data_objects.FaultyVersion;
 public class FaultyVersionsReader {
 
 	public static List<FaultyVersion> importFaultyVersions(String dir) throws IOException{
-		String outputFile = dir + Directories.FAULTY_VERSIONS_FILE_NAME;
-		FileInputStream fis = new FileInputStream(new File(outputFile));
-		XMLDecoder decoder = new XMLDecoder(fis);
-		@SuppressWarnings("unchecked")
-		List<FaultyVersion> faultyVersions = (List<FaultyVersion>) decoder.readObject();
-		decoder.close();
-		fis.close();
+		List<FaultyVersion> faultyVersions = new ArrayList<FaultyVersion>();
+		int filesCounter = 1;
+		String outputFile = dir + "faulty-versions-1.xml";
+		while (Files.exists(Paths.get(outputFile))) {
+			FileInputStream fis = new FileInputStream(new File(outputFile));
+			XMLDecoder decoder = new XMLDecoder(fis);
+			@SuppressWarnings("unchecked")
+			List<FaultyVersion> tmpfaultyVersions = (List<FaultyVersion>) decoder.readObject();
+			faultyVersions.addAll(tmpfaultyVersions);
+			decoder.close();
+			fis.close();
+			filesCounter++;
+			outputFile = dir + "faulty-versions-" + filesCounter + ".xml";
+		}
 		initTestCases(faultyVersions);
 		return faultyVersions;
 	}
