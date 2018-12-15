@@ -28,32 +28,40 @@ public class AnalysisWrapper {
 	private static final int MAX_FAILURES_TO_INVESTIGATE = 20;
 	private static final int[] EXTRA_FAILURES_TO_INVESTIGATE = {30, 50, 80, 130};
 	
-	private List<FaultyVersion> faultyVersions;
 	private EvaluationFileWriter outputWriter;
 	
 	public AnalysisWrapper() {
 		outputWriter = new EvaluationFileWriter(OUTPUT_DIR, OUTPUT_FILE_NAME);
 	}
+	//TODO: Methode analyze Train-Set hinzufügen
+	//			Eigene Klasse trainSet definieren, in welcher die projekte und die
+	//			jeweiligen Ids der faulty versions festgehalten sind, welche teil des train sets sind
+	//			Diese projektweise importieren & analysieren (mit HAC Varianten)
+
 	/**
-	 * imports data multiple faulty versions to analyze for a PIT project
+	 * Performs a step-wise analysis of a project. I.e. it imports each faulty-versions file and 
+	 * analyzes it.
 	 */
-	public void importProject(String dir, String projectName) throws IOException {
-		faultyVersions = FaultyVersionsReader.importFaultyVersions(dir);
+	public void processProject(String dir, String projectName) throws IOException {
+		while(FaultyVersionsReader.hasNextFaultyVersionsFile(dir)) {
+			List<FaultyVersion> faultyVersions = FaultyVersionsReader.importNextFaultyVersionsFile(dir);
+			analyze(faultyVersions);
+		}
+		FaultyVersionsReader.resetFilesCounter();
 	}
 	/**
-	 * Analyzes all imported faulty versions for a PIT project.
+	 * Analyzes the passed imported faulty versions of a PIT project.
 	 */
-	public void analyze() throws IOException {
+	private void analyze(List<FaultyVersion> faultyVersions) throws IOException {
 		for (FaultyVersion faultyVersion:faultyVersions) {
 			FaultyProjectGlobals.init(faultyVersion);
-			ProjectEvaluationEntry projectMetrics = faultyVersion.getProjectMetrics();
-			System.out.println("Processing next faulty Version " + projectMetrics.getId() + " with " + faultyVersion.getFaults().size() + " faults, " + FaultyProjectGlobals.failuresCount + " failures, " + faultyVersion.getPassedTCs().length + " passing Test Cases and " + FaultyProjectGlobals.methodsCount + " relevant methods.");
+			System.out.println("Processing next faulty Version " + faultyVersion.getProjectMetrics().getId() + " with " + faultyVersion.getFaults().size() + " faults, " + FaultyProjectGlobals.failuresCount + " failures, " + faultyVersion.getPassedTCs().length + " passing Test Cases and " + FaultyProjectGlobals.methodsCount + " relevant methods.");
 			Map<Integer, OptimalEvaluationEntry> optimalMetrics = analyzeOptimalStrategy(faultyVersion);
 			List<PrioritizationStrategyBase> strategies = PrioritizationStrategyFactory.createStrategies(
 					faultyVersion.getFailures(), faultyVersion.getPassedTCs(), faultyVersion.getFaults());
 			System.out.println("Analyzing the version with " + strategies.size() + " strategies.");
 			for (PrioritizationStrategyBase strategy: strategies) {
-				analyzeStrategy(strategy, projectMetrics, optimalMetrics);
+				analyzeStrategy(strategy, faultyVersion.getProjectMetrics(), optimalMetrics);
 			}
 		}
 	}
@@ -92,5 +100,30 @@ public class AnalysisWrapper {
 			return FaultyProjectGlobals.failuresCount;
 		}
 		return MAX_FAILURES_TO_INVESTIGATE;
+	}
+	/**
+	 * Prints the project metrics data for each faulty version into the 
+	 * prioritization-evaluation.csv output file.
+	 */
+	public void printProject(String dir, String projectName) throws IOException {
+		while(FaultyVersionsReader.hasNextFaultyVersionsFile(dir)) {
+			List<FaultyVersion> faultyVersions = FaultyVersionsReader.importNextFaultyVersionsFile(dir);
+			printFaultyVersions(faultyVersions);
+		}
+		FaultyVersionsReader.resetFilesCounter();
+	}
+	/**
+	 * Prints the passed faultyVersions by analyzing them with the optimal strategy, the 
+	 * parameter failuresToInvestigatePlanned is fixed to the value 10.
+	 */
+	private void printFaultyVersions(List<FaultyVersion> faultyVersions) throws IOException {
+		for (FaultyVersion faultyVersion:faultyVersions) {
+			FaultyProjectGlobals.init(faultyVersion);
+			System.out.println("Printing next faulty Version " + faultyVersion.getProjectMetrics().getId() + " with " + faultyVersion.getFaults().size() + " faults, " + FaultyProjectGlobals.failuresCount + " failures, " + faultyVersion.getPassedTCs().length + " passing Test Cases and " + FaultyProjectGlobals.methodsCount + " relevant methods.");
+			OptimalPrioritization optimalStrategy = new OptimalPrioritization(faultyVersion.getFailures(), faultyVersion.getPassedTCs(), faultyVersion.getFaults());
+			optimalStrategy.prioritizeFailures();
+			OptimalEvaluationEntry optimalMetric = (OptimalEvaluationEntry)optimalStrategy.evaluatePrioritizationStrategy(10, faultyVersion.getProjectMetrics(), null);
+			outputWriter.writeEvaluationEntry(optimalMetric);
+		}
 	}
 }
