@@ -31,7 +31,7 @@ public abstract class SBFLConfiguration {
 	public int MOST_SUSP_MIN_COUNT;
 	public double SIMILARITY_THRESHOLD;
 	/**	can only be exceeded by 178 or more failing tests */
-	public static final double MAX_SUSP_VALUE = 1000000000;
+	public static final double MAX_SUSP_VALUE = new Double("1000000000000");
 	
 	protected ClusterComparingEvaluation clusterComparisonEvaluation;
 	
@@ -82,6 +82,7 @@ public abstract class SBFLConfiguration {
 	protected int getMostSuspiciousSetSize() {
 		int mostSuspSetSize = (int) (FaultyProjectGlobals.methodsCount * MOST_SUSP_THRESHOLD);
 		if(mostSuspSetSize < MOST_SUSP_MIN_COUNT) {
+			System.out.println("TRACE: most suspicious set would have a size of " + mostSuspSetSize + " and was set to minimum size " + MOST_SUSP_MIN_COUNT);
 			return MOST_SUSP_MIN_COUNT;
 		}
 		else if(mostSuspSetSize > MOST_SUSP_MAX_COUNT) {

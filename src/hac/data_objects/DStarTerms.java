@@ -43,6 +43,7 @@ public class DStarTerms {
 		double susp = Math.pow(n_cf, 4) / (n_uf + n_cs);
 		if (susp > SBFLConfiguration.MAX_SUSP_VALUE) {
 			System.out.println("WARNING: Maximum susp. value was exceeded by a normal susp value of " + susp + " for method " + methodID + ".");
+			return SBFLConfiguration.MAX_SUSP_VALUE - 2;
 		}
 		return susp;
 	}

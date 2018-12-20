@@ -10,6 +10,7 @@ import java.util.List;
 
 import faulty_project.globals.FaultyProjectGlobals;
 import prioritization.data_objects.FaultyVersion;
+import prioritization.data_objects.TrainSet;
 
 public class FaultyVersionsReader {
 	private static int filesCounter = 1;
@@ -37,6 +38,23 @@ public class FaultyVersionsReader {
 		decoder.close();
 		fis.close();
 		filesCounter++;
+		initTestCases(faultyVersions);
+		return faultyVersions;
+	}
+	/**
+	 * equivalent to the next() method of an Iterator<List<FaultyVersion>>.
+	 * Only returns faulty versions that are contained in the train set.
+	 */
+	public static List<FaultyVersion> importNextFaultyVersionsFile_TrainSet(String dir, TrainSet trainSet) throws IOException{
+		String outputFile = getFaultyVersionsFileName(dir, filesCounter);
+		FileInputStream fis = new FileInputStream(new File(outputFile));
+		XMLDecoder decoder = new XMLDecoder(fis);
+		@SuppressWarnings("unchecked")
+		List<FaultyVersion> faultyVersions = (List<FaultyVersion>) decoder.readObject();
+		decoder.close();
+		fis.close();
+		filesCounter++;
+		trainSet.retainOnlyTrainSetVersions(faultyVersions);
 		initTestCases(faultyVersions);
 		return faultyVersions;
 	}

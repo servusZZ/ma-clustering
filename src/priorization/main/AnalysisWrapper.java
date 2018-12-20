@@ -11,14 +11,14 @@ import data_import.faulty_versions.FaultyVersionsReader;
 import evaluation.OptimalEvaluationEntry;
 import faulty_project.globals.FaultyProjectGlobals;
 import prioritization.data_objects.FaultyVersion;
+import prioritization.data_objects.TrainSet;
 import prioritization.evaluation.ProjectEvaluationEntry;
 import prioritization.strategies.OptimalPrioritization;
 /**
  * Wrapper to analyze a pit project. Usage:<br>
- * import()<br>
- * analyze()<br>
- * __ get faulty versions<br>
- * __ build and analyze each<br>
+ * processProject()<br>
+ * __ import faulty versions per file<br>
+ * __ and analyze each<br>
  */
 public class AnalysisWrapper {
 	private static final String OUTPUT_DIR = "C:\\study\\workspace_master-thesis-java\\ma-clustering\\output\\";
@@ -29,14 +29,12 @@ public class AnalysisWrapper {
 	private static final int[] EXTRA_FAILURES_TO_INVESTIGATE = {30, 50, 80, 130};
 	
 	private EvaluationFileWriter outputWriter;
+	private TrainSet trainSet;
 	
 	public AnalysisWrapper() {
 		outputWriter = new EvaluationFileWriter(OUTPUT_DIR, OUTPUT_FILE_NAME);
+		trainSet = new TrainSet();
 	}
-	//TODO: Methode analyze Train-Set hinzufügen
-	//			Eigene Klasse trainSet definieren, in welcher die projekte und die
-	//			jeweiligen Ids der faulty versions festgehalten sind, welche teil des train sets sind
-	//			Diese projektweise importieren & analysieren (mit HAC Varianten)
 
 	/**
 	 * Performs a step-wise analysis of a project. I.e. it imports each faulty-versions file and 
@@ -124,6 +122,37 @@ public class AnalysisWrapper {
 			optimalStrategy.prioritizeFailures();
 			OptimalEvaluationEntry optimalMetric = (OptimalEvaluationEntry)optimalStrategy.evaluatePrioritizationStrategy(10, faultyVersion.getProjectMetrics(), null);
 			outputWriter.writeEvaluationEntry(optimalMetric);
+		}
+	}
+	
+	public void analyzeTrainSet(String dir, String projectName) throws IOException {
+		if (!trainSet.containsProject(projectName)) {
+			return;
+		}
+		while(FaultyVersionsReader.hasNextFaultyVersionsFile(dir)) {
+			List<FaultyVersion> trainSetVersionsPerFile = FaultyVersionsReader.importNextFaultyVersionsFile_TrainSet(dir, trainSet);
+			if (trainSetVersionsPerFile.isEmpty()) {
+				continue;
+			}
+			analyzeStrategiesForTrainSet(trainSetVersionsPerFile);
+		}
+		FaultyVersionsReader.resetFilesCounter();
+	}
+	/**
+	 * Analyzes the passed imported faulty versions of a PIT project with the HAC Configs, so that
+	 * the parameters are trained.
+	 */
+	private void analyzeStrategiesForTrainSet(List<FaultyVersion> faultyVersions) throws IOException {
+		for (FaultyVersion faultyVersion:faultyVersions) {
+			FaultyProjectGlobals.init(faultyVersion);
+			System.out.println("Processing next faulty Version " + faultyVersion.getProjectMetrics().getId() + " with " + faultyVersion.getFaults().size() + " faults, " + FaultyProjectGlobals.failuresCount + " failures, " + faultyVersion.getPassedTCs().length + " passing Test Cases and " + FaultyProjectGlobals.methodsCount + " relevant methods.");
+			Map<Integer, OptimalEvaluationEntry> optimalMetrics = analyzeOptimalStrategy(faultyVersion);
+			List<PrioritizationStrategyBase> strategies = PrioritizationStrategyFactory.createTrainSetStrategies(
+					faultyVersion.getFailures(), faultyVersion.getPassedTCs(), faultyVersion.getFaults());
+			System.out.println("Analyzing the version with " + strategies.size() + " strategies.");
+			for (PrioritizationStrategyBase strategy: strategies) {
+				analyzeStrategy(strategy, faultyVersion.getProjectMetrics(), optimalMetrics);
+			}
 		}
 	}
 }

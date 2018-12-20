@@ -17,6 +17,16 @@ public class PrioritizationStrategyFactory {
 		List<PrioritizationStrategyBase> strategies = new ArrayList<PrioritizationStrategyBase>();
 		strategies.add(new PackageNameClusteringPrioritization(failures, passedTCs, faults));
 		strategies.add(new ClassNameClusteringPrioritization(failures, passedTCs, faults));
+		//strategies.addAll(HACFactory.createHACStrategies(failures, passedTCs, faults));
+		// TODO: only create the HAC strategy that is seen as best during training phase
+		strategies.add(new RandomPrioritization(failures, passedTCs, faults));
+		return strategies;
+	}
+	
+	public static List<PrioritizationStrategyBase> createTrainSetStrategies(TestCase[] failures, TestCase[] passedTCs, Set<Fault> faults){
+		List<PrioritizationStrategyBase> strategies = new ArrayList<PrioritizationStrategyBase>();
+		strategies.add(new PackageNameClusteringPrioritization(failures, passedTCs, faults));
+		strategies.add(new ClassNameClusteringPrioritization(failures, passedTCs, faults));
 		strategies.addAll(HACFactory.createHACStrategies(failures, passedTCs, faults));
 		strategies.add(new RandomPrioritization(failures, passedTCs, faults));
 		return strategies;
