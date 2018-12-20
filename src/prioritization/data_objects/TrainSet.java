@@ -1,6 +1,7 @@
 package prioritization.data_objects;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -15,6 +16,7 @@ public class TrainSet {
 	private Map<String, Set<String>> faultyVersions;
 	
 	public TrainSet() {
+		faultyVersions = new HashMap<String, Set<String>>();
 		initBiojavaFaultyVersions();
 		initCommonsCollectionsFaultyVersions();
 		initJsoupFaultyVersions();
