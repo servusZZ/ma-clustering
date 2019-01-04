@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import data_export.evaluation.EvaluationFileWriter;
 import data_import.faulty_versions.FaultyVersionsReader;
@@ -15,7 +14,6 @@ import hac.main.HACFactory;
 import prioritization.data_objects.FaultyVersion;
 import prioritization.data_objects.TrainSet;
 import prioritization.evaluation.ProjectEvaluationEntry;
-import prioritization.strategies.HACPrioritizationBase;
 import prioritization.strategies.OptimalPrioritization;
 /**
  * Wrapper to analyze a pit project. Usage:<br>
@@ -41,11 +39,11 @@ public class AnalysisWrapper {
 
 	/**
 	 * Performs a step-wise analysis of a project. I.e. it imports each faulty-versions file and 
-	 * analyzes it.
+	 * analyzes it. Skips the versions contained in the train set.
 	 */
 	public void processProject(String dir, String projectName) throws IOException {
 		while(FaultyVersionsReader.hasNextFaultyVersionsFile(dir)) {
-			List<FaultyVersion> faultyVersions = FaultyVersionsReader.importNextFaultyVersionsFile(dir);
+			List<FaultyVersion> faultyVersions = FaultyVersionsReader.importNextFaultyVersionsFile_TestSet(dir, trainSet);
 			analyze(faultyVersions);
 		}
 		FaultyVersionsReader.resetFilesCounter();

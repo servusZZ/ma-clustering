@@ -16,6 +16,21 @@ import prioritization.strategies.HACPrioritizationBase;
 
 public class HACFactory {
 	
+	public static HACPrioritizationBase createHACStrategy(TestCase[] failures, TestCase[] passedTCs, Set<Fault> faults) {
+		HACPrioritizationBase strategy = new HierarchicalAgglomerativeClustering(failures, passedTCs, faults);
+		SBFLConfiguration sbflConfig = new OverlapConfiguration();
+		sbflConfig.MOST_SUSP_MAX_COUNT = 12;
+		sbflConfig.MOST_SUSP_MIN_COUNT = 4;
+		sbflConfig.MOST_SUSP_THRESHOLD = 0.20;
+		/**	a greater value means that 2 clusters are similar.<br>
+		 * 3 of 5 overlap elements are not considered as similar, 6 of 9 are similar */
+		sbflConfig.SIMILARITY_THRESHOLD = 0.60;
+		strategy.setSbflConfig(sbflConfig);
+		strategy.setClusterPrioritization(new ClusterPrioritizationDissimilarGreatestFirst(sbflConfig));
+		strategy.setStrategyName("HAC Overlap medium");
+		return strategy;
+	}
+	
 	public static List<HACPrioritizationBase> createHACStrategies(TestCase[] failures, TestCase[] passedTCs, Set<Fault> faults){
 		List<HACPrioritizationBase> strategies = new ArrayList<HACPrioritizationBase>();
 		

@@ -27,7 +27,24 @@ public class FaultyVersionsReader {
 		return Files.exists(Paths.get(outputFile));
 	}
 	/**
-	 * equivalent to the next() method of an Iterator<List<FaultyVersion>>
+	 * equivalent to the next() method of an Iterator<List<FaultyVersion>>.
+	 * Only returns faulty versions that are contained in the test set.
+	 */
+	public static List<FaultyVersion> importNextFaultyVersionsFile_TestSet(String dir, TrainSet trainSet) throws IOException{
+		String outputFile = getFaultyVersionsFileName(dir, filesCounter);
+		FileInputStream fis = new FileInputStream(new File(outputFile));
+		XMLDecoder decoder = new XMLDecoder(fis);
+		@SuppressWarnings("unchecked")
+		List<FaultyVersion> faultyVersions = (List<FaultyVersion>) decoder.readObject();
+		decoder.close();
+		fis.close();
+		filesCounter++;
+		trainSet.filterOutTrainSetVersions(faultyVersions);
+		initTestCases(faultyVersions);
+		return faultyVersions;
+	}
+	/**
+	 * equivalent to the next() method of an Iterator<List<FaultyVersion>>.
 	 */
 	public static List<FaultyVersion> importNextFaultyVersionsFile(String dir) throws IOException{
 		String outputFile = getFaultyVersionsFileName(dir, filesCounter);
@@ -77,23 +94,4 @@ public class FaultyVersionsReader {
 			}
 		}
 	}
-	
-//	public static List<FaultyVersion> importFaultyVersions(String dir) throws IOException{
-//	List<FaultyVersion> faultyVersions = new ArrayList<FaultyVersion>();
-//	int filesCounter = 1;
-//	String outputFile = dir + "faulty-versions-1.xml";
-//	while (Files.exists(Paths.get(outputFile))) {
-//		FileInputStream fis = new FileInputStream(new File(outputFile));
-//		XMLDecoder decoder = new XMLDecoder(fis);
-//		@SuppressWarnings("unchecked")
-//		List<FaultyVersion> tmpfaultyVersions = (List<FaultyVersion>) decoder.readObject();
-//		faultyVersions.addAll(tmpfaultyVersions);
-//		decoder.close();
-//		fis.close();
-//		filesCounter++;
-//		outputFile = dir + "faulty-versions-" + filesCounter + ".xml";
-//	}
-//	initTestCases(faultyVersions);
-//	return faultyVersions;
-//}
 }
