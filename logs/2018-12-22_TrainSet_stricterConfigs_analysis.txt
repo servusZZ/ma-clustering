@@ -1,0 +1,1312 @@
+Analysis of Train Set started...
+Evaluation output file: C:\study\workspace_master-thesis-java\ma-clustering\output\prioritization-evaluation.csv
+Processing project biojava
+Processing next faulty Version biojava-2 with 1 faults, 8 failures, 384 passing Test Cases and 45 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-4 with 1 faults, 6 failures, 609 passing Test Cases and 275 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-7 with 1 faults, 25 failures, 370 passing Test Cases and 261 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-11 with 2 faults, 43 failures, 595 passing Test Cases and 2329 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-15 with 2 faults, 39 failures, 598 passing Test Cases and 2305 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-16 with 2 faults, 12 failures, 626 passing Test Cases and 1608 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-22 with 3 faults, 11 failures, 625 passing Test Cases and 1595 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-23 with 3 faults, 26 failures, 654 passing Test Cases and 1743 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-24 with 3 faults, 19 failures, 618 passing Test Cases and 2116 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-32 with 4 faults, 46 failures, 614 passing Test Cases and 521 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-33 with 4 faults, 41 failures, 638 passing Test Cases and 1469 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-40 with 4 faults, 117 failures, 524 passing Test Cases and 3045 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-42 with 5 faults, 64 failures, 582 passing Test Cases and 2800 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-43 with 5 faults, 18 failures, 619 passing Test Cases and 2089 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-47 with 5 faults, 13 failures, 624 passing Test Cases and 2098 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-53 with 6 faults, 108 failures, 530 passing Test Cases and 2879 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-54 with 6 faults, 28 failures, 615 passing Test Cases and 2355 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-59 with 6 faults, 48 failures, 597 passing Test Cases and 2618 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-61 with 7 faults, 93 failures, 548 passing Test Cases and 3025 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-63 with 7 faults, 39 failures, 642 passing Test Cases and 2808 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-70 with 7 faults, 23 failures, 615 passing Test Cases and 2178 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-72 with 8 faults, 61 failures, 581 passing Test Cases and 2762 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-74 with 8 faults, 36 failures, 604 passing Test Cases and 2649 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-76 with 8 faults, 67 failures, 578 passing Test Cases and 2921 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-83 with 9 faults, 56 failures, 582 passing Test Cases and 2795 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-86 with 9 faults, 104 failures, 579 passing Test Cases and 3037 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-88 with 9 faults, 58 failures, 588 passing Test Cases and 3010 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-91 with 10 faults, 54 failures, 590 passing Test Cases and 2602 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-94 with 10 faults, 67 failures, 617 passing Test Cases and 2596 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-96 with 10 faults, 71 failures, 572 passing Test Cases and 2673 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-108 with 11 faults, 50 failures, 632 passing Test Cases and 2681 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-109 with 11 faults, 60 failures, 586 passing Test Cases and 2889 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-110 with 11 faults, 43 failures, 598 passing Test Cases and 2084 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-111 with 12 faults, 30 failures, 611 passing Test Cases and 2505 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-115 with 12 faults, 80 failures, 558 passing Test Cases and 2973 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-120 with 12 faults, 55 failures, 586 passing Test Cases and 2935 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-123 with 13 faults, 56 failures, 585 passing Test Cases and 2739 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-125 with 13 faults, 108 failures, 585 passing Test Cases and 3290 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-128 with 13 faults, 71 failures, 575 passing Test Cases and 2650 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-131 with 14 faults, 63 failures, 584 passing Test Cases and 2836 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-135 with 14 faults, 88 failures, 558 passing Test Cases and 3079 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-138 with 14 faults, 85 failures, 602 passing Test Cases and 2820 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-144 with 15 faults, 54 failures, 628 passing Test Cases and 2742 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-146 with 15 faults, 60 failures, 628 passing Test Cases and 3082 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-148 with 15 faults, 92 failures, 593 passing Test Cases and 3062 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-156 with 16 faults, 91 failures, 594 passing Test Cases and 2909 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-157 with 16 faults, 49 failures, 600 passing Test Cases and 2968 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-158 with 16 faults, 114 failures, 573 passing Test Cases and 3105 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-161 with 17 faults, 66 failures, 621 passing Test Cases and 2979 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-166 with 17 faults, 120 failures, 535 passing Test Cases and 3571 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-168 with 17 faults, 65 failures, 623 passing Test Cases and 3211 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-173 with 18 faults, 155 failures, 492 passing Test Cases and 3151 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-175 with 18 faults, 46 failures, 600 passing Test Cases and 3149 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-178 with 18 faults, 92 failures, 556 passing Test Cases and 3283 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-182 with 19 faults, 143 failures, 546 passing Test Cases and 3392 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-185 with 19 faults, 109 failures, 574 passing Test Cases and 3133 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-188 with 19 faults, 63 failures, 630 passing Test Cases and 2958 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-193 with 20 faults, 109 failures, 580 passing Test Cases and 3381 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-196 with 20 faults, 110 failures, 580 passing Test Cases and 3222 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-200 with 20 faults, 79 failures, 571 passing Test Cases and 3338 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-201 with 2 faults, 36 failures, 9 passing Test Cases and 68 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-204 with 3 faults, 27 failures, 368 passing Test Cases and 294 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-208 with 4 faults, 174 failures, 472 passing Test Cases and 3200 relevant methods.
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-212 with 5 faults, 88 failures, 553 passing Test Cases and 2971 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-213 with 6 faults, 147 failures, 491 passing Test Cases and 3013 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-216 with 7 faults, 55 failures, 583 passing Test Cases and 2426 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-219 with 8 faults, 84 failures, 595 passing Test Cases and 2636 relevant methods.
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-223 with 9 faults, 40 failures, 610 passing Test Cases and 2704 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-226 with 10 faults, 17 failures, 626 passing Test Cases and 1564 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-230 with 11 faults, 40 failures, 609 passing Test Cases and 2472 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-232 with 12 faults, 102 failures, 537 passing Test Cases and 2999 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-235 with 13 faults, 60 failures, 582 passing Test Cases and 2490 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-238 with 14 faults, 78 failures, 567 passing Test Cases and 3098 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-240 with 15 faults, 127 failures, 515 passing Test Cases and 3168 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-244 with 16 faults, 61 failures, 584 passing Test Cases and 2997 relevant methods.
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-246 with 17 faults, 98 failures, 549 passing Test Cases and 3111 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-251 with 18 faults, 142 failures, 505 passing Test Cases and 3326 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-252 with 19 faults, 82 failures, 607 passing Test Cases and 2984 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version biojava-255 with 20 faults, 138 failures, 553 passing Test Cases and 3512 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing project bitcoinj
+Processing project commons-codec
+Processing project commons-collections
+Processing next faulty Version commons-collections-3 with 1 faults, 12 failures, 141 passing Test Cases and 43 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-4 with 1 faults, 3 failures, 127 passing Test Cases and 34 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-5 with 1 faults, 2 failures, 150 passing Test Cases and 32 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-12 with 2 faults, 40 failures, 123 passing Test Cases and 84 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-14 with 2 faults, 2 failures, 94 passing Test Cases and 59 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-16 with 2 faults, 9 failures, 153 passing Test Cases and 80 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-21 with 3 faults, 61 failures, 144 passing Test Cases and 188 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-28 with 3 faults, 43 failures, 149 passing Test Cases and 158 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-29 with 3 faults, 23 failures, 142 passing Test Cases and 88 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-33 with 4 faults, 30 failures, 139 passing Test Cases and 110 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-36 with 4 faults, 22 failures, 139 passing Test Cases and 105 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-37 with 4 faults, 9 failures, 188 passing Test Cases and 143 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-44 with 5 faults, 93 failures, 113 passing Test Cases and 275 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-48 with 5 faults, 42 failures, 158 passing Test Cases and 162 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-49 with 5 faults, 37 failures, 162 passing Test Cases and 205 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-51 with 6 faults, 52 failures, 148 passing Test Cases and 234 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-54 with 6 faults, 15 failures, 188 passing Test Cases and 186 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-55 with 6 faults, 43 failures, 163 passing Test Cases and 243 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-62 with 7 faults, 53 failures, 155 passing Test Cases and 240 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-65 with 7 faults, 60 failures, 146 passing Test Cases and 217 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-67 with 7 faults, 64 failures, 142 passing Test Cases and 324 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-72 with 8 faults, 18 failures, 152 passing Test Cases and 205 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-75 with 8 faults, 39 failures, 169 passing Test Cases and 242 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-77 with 8 faults, 48 failures, 159 passing Test Cases and 258 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-84 with 9 faults, 63 failures, 143 passing Test Cases and 274 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-86 with 9 faults, 58 failures, 147 passing Test Cases and 330 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-89 with 9 faults, 31 failures, 174 passing Test Cases and 234 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-92 with 10 faults, 108 failures, 100 passing Test Cases and 375 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-95 with 10 faults, 84 failures, 121 passing Test Cases and 296 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-99 with 10 faults, 67 failures, 139 passing Test Cases and 314 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-105 with 11 faults, 96 failures, 112 passing Test Cases and 347 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-106 with 11 faults, 83 failures, 125 passing Test Cases and 382 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-110 with 11 faults, 75 failures, 130 passing Test Cases and 280 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-113 with 12 faults, 67 failures, 141 passing Test Cases and 364 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-114 with 12 faults, 38 failures, 168 passing Test Cases and 283 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-116 with 12 faults, 47 failures, 160 passing Test Cases and 299 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-123 with 13 faults, 83 failures, 123 passing Test Cases and 370 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-128 with 13 faults, 78 failures, 130 passing Test Cases and 355 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-129 with 13 faults, 53 failures, 153 passing Test Cases and 341 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-133 with 14 faults, 68 failures, 140 passing Test Cases and 375 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-136 with 14 faults, 72 failures, 136 passing Test Cases and 387 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-138 with 14 faults, 66 failures, 140 passing Test Cases and 383 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-142 with 15 faults, 102 failures, 104 passing Test Cases and 409 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-145 with 15 faults, 62 failures, 146 passing Test Cases and 413 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-147 with 15 faults, 25 failures, 183 passing Test Cases and 330 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-152 with 16 faults, 86 failures, 122 passing Test Cases and 433 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-153 with 16 faults, 108 failures, 100 passing Test Cases and 403 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-158 with 16 faults, 105 failures, 101 passing Test Cases and 470 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-164 with 17 faults, 89 failures, 117 passing Test Cases and 420 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-167 with 17 faults, 72 failures, 136 passing Test Cases and 453 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-169 with 17 faults, 90 failures, 118 passing Test Cases and 467 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-174 with 18 faults, 139 failures, 69 passing Test Cases and 504 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-178 with 18 faults, 71 failures, 137 passing Test Cases and 481 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-180 with 18 faults, 89 failures, 119 passing Test Cases and 429 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-182 with 19 faults, 76 failures, 132 passing Test Cases and 486 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-185 with 19 faults, 87 failures, 121 passing Test Cases and 443 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-187 with 19 faults, 72 failures, 136 passing Test Cases and 406 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-193 with 20 faults, 69 failures, 137 passing Test Cases and 456 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-198 with 20 faults, 104 failures, 104 passing Test Cases and 429 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-200 with 20 faults, 90 failures, 118 passing Test Cases and 477 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-202 with 2 faults, 6 failures, 152 passing Test Cases and 76 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-205 with 3 faults, 36 failures, 20 passing Test Cases and 108 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-209 with 4 faults, 7 failures, 156 passing Test Cases and 112 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-210 with 5 faults, 8 failures, 84 passing Test Cases and 121 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-215 with 6 faults, 48 failures, 120 passing Test Cases and 168 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-217 with 7 faults, 15 failures, 186 passing Test Cases and 147 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-221 with 8 faults, 59 failures, 145 passing Test Cases and 257 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-223 with 9 faults, 72 failures, 133 passing Test Cases and 288 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-225 with 10 faults, 35 failures, 171 passing Test Cases and 275 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-228 with 11 faults, 60 failures, 145 passing Test Cases and 294 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-231 with 12 faults, 60 failures, 146 passing Test Cases and 298 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-235 with 13 faults, 51 failures, 155 passing Test Cases and 311 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-237 with 14 faults, 105 failures, 101 passing Test Cases and 360 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-241 with 15 faults, 82 failures, 124 passing Test Cases and 312 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-245 with 16 faults, 124 failures, 84 passing Test Cases and 493 relevant methods.
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-247 with 17 faults, 57 failures, 151 passing Test Cases and 385 relevant methods.
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-250 with 18 faults, 88 failures, 118 passing Test Cases and 338 relevant methods.
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-254 with 19 faults, 74 failures, 133 passing Test Cases and 369 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version commons-collections-257 with 20 faults, 129 failures, 77 passing Test Cases and 473 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing project commons-geometry
+Processing project commons-imaging
+Processing project commons-lang
+Processing project commons-math
+Processing project geometry-api-java
+Processing project google-http-java-client
+Processing project graphhopper
+Processing project gson
+Processing project jackson-databind
+Processing project javaparser
+Processing project jaxen
+Processing project jfreechart
+Processing project jsoup
+Processing next faulty Version jsoup-1 with 1 faults, 55 failures, 473 passing Test Cases and 497 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-4 with 1 faults, 114 failures, 414 passing Test Cases and 689 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-8 with 1 faults, 11 failures, 517 passing Test Cases and 430 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-11 with 2 faults, 5 failures, 523 passing Test Cases and 435 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-13 with 2 faults, 333 failures, 195 passing Test Cases and 809 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-15 with 2 faults, 38 failures, 490 passing Test Cases and 523 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-22 with 3 faults, 24 failures, 504 passing Test Cases and 553 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-24 with 3 faults, 13 failures, 515 passing Test Cases and 460 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-25 with 3 faults, 270 failures, 258 passing Test Cases and 803 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-32 with 4 faults, 34 failures, 494 passing Test Cases and 565 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-34 with 4 faults, 141 failures, 387 passing Test Cases and 594 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-36 with 4 faults, 22 failures, 506 passing Test Cases and 388 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-43 with 5 faults, 32 failures, 496 passing Test Cases and 552 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-47 with 5 faults, 42 failures, 486 passing Test Cases and 539 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-50 with 5 faults, 35 failures, 493 passing Test Cases and 463 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-52 with 6 faults, 66 failures, 462 passing Test Cases and 613 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-54 with 6 faults, 32 failures, 496 passing Test Cases and 492 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-57 with 6 faults, 211 failures, 317 passing Test Cases and 760 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-61 with 7 faults, 178 failures, 350 passing Test Cases and 755 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-64 with 7 faults, 25 failures, 503 passing Test Cases and 579 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-69 with 7 faults, 63 failures, 465 passing Test Cases and 658 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-71 with 8 faults, 84 failures, 444 passing Test Cases and 673 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-74 with 8 faults, 52 failures, 476 passing Test Cases and 649 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-80 with 8 faults, 46 failures, 482 passing Test Cases and 597 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-82 with 9 faults, 359 failures, 169 passing Test Cases and 845 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-86 with 9 faults, 40 failures, 488 passing Test Cases and 633 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-89 with 9 faults, 94 failures, 434 passing Test Cases and 704 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-94 with 10 faults, 34 failures, 494 passing Test Cases and 527 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-98 with 10 faults, 87 failures, 441 passing Test Cases and 688 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-99 with 10 faults, 65 failures, 463 passing Test Cases and 687 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-102 with 11 faults, 86 failures, 442 passing Test Cases and 696 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-103 with 11 faults, 120 failures, 408 passing Test Cases and 731 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-106 with 11 faults, 235 failures, 293 passing Test Cases and 790 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-112 with 12 faults, 64 failures, 464 passing Test Cases and 683 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-115 with 12 faults, 40 failures, 488 passing Test Cases and 599 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-118 with 12 faults, 74 failures, 454 passing Test Cases and 645 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-121 with 13 faults, 67 failures, 461 passing Test Cases and 656 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-124 with 13 faults, 80 failures, 448 passing Test Cases and 676 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-128 with 13 faults, 102 failures, 426 passing Test Cases and 699 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-136 with 14 faults, 104 failures, 424 passing Test Cases and 745 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-137 with 14 faults, 98 failures, 430 passing Test Cases and 700 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-139 with 14 faults, 86 failures, 442 passing Test Cases and 674 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-142 with 15 faults, 173 failures, 355 passing Test Cases and 767 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-144 with 15 faults, 105 failures, 423 passing Test Cases and 686 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-145 with 15 faults, 113 failures, 415 passing Test Cases and 737 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-152 with 16 faults, 88 failures, 440 passing Test Cases and 681 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-158 with 16 faults, 97 failures, 431 passing Test Cases and 726 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-160 with 16 faults, 114 failures, 414 passing Test Cases and 707 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-162 with 17 faults, 127 failures, 401 passing Test Cases and 738 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-167 with 17 faults, 81 failures, 447 passing Test Cases and 685 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-169 with 17 faults, 130 failures, 398 passing Test Cases and 751 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-171 with 18 faults, 107 failures, 421 passing Test Cases and 715 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-176 with 18 faults, 95 failures, 433 passing Test Cases and 711 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-180 with 18 faults, 93 failures, 435 passing Test Cases and 741 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-183 with 19 faults, 97 failures, 431 passing Test Cases and 716 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-185 with 19 faults, 115 failures, 413 passing Test Cases and 745 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-188 with 19 faults, 112 failures, 416 passing Test Cases and 733 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-191 with 20 faults, 86 failures, 442 passing Test Cases and 729 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-194 with 20 faults, 125 failures, 403 passing Test Cases and 766 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-199 with 20 faults, 102 failures, 426 passing Test Cases and 752 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-201 with 2 faults, 181 failures, 347 passing Test Cases and 628 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-204 with 3 faults, 238 failures, 290 passing Test Cases and 697 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-208 with 4 faults, 334 failures, 194 passing Test Cases and 814 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-210 with 5 faults, 184 failures, 344 passing Test Cases and 743 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-213 with 6 faults, 270 failures, 258 passing Test Cases and 780 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-218 with 7 faults, 70 failures, 458 passing Test Cases and 634 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-221 with 8 faults, 83 failures, 445 passing Test Cases and 658 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-223 with 9 faults, 498 failures, 30 passing Test Cases and 866 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-226 with 10 faults, 92 failures, 436 passing Test Cases and 669 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-230 with 11 faults, 155 failures, 373 passing Test Cases and 761 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-232 with 12 faults, 147 failures, 381 passing Test Cases and 733 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-234 with 13 faults, 133 failures, 395 passing Test Cases and 692 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-237 with 14 faults, 73 failures, 455 passing Test Cases and 676 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-241 with 15 faults, 156 failures, 372 passing Test Cases and 725 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-245 with 16 faults, 95 failures, 433 passing Test Cases and 699 relevant methods.
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-247 with 17 faults, 139 failures, 389 passing Test Cases and 756 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-251 with 18 faults, 150 failures, 378 passing Test Cases and 739 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-252 with 19 faults, 120 failures, 408 passing Test Cases and 734 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version jsoup-255 with 20 faults, 136 failures, 392 passing Test Cases and 709 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing project littleproxy
+Processing next faulty Version littleproxy-3 with 1 faults, 113 failures, 64 passing Test Cases and 172 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-4 with 1 faults, 118 failures, 59 passing Test Cases and 172 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-5 with 1 faults, 6 failures, 171 passing Test Cases and 111 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-12 with 2 faults, 172 failures, 5 passing Test Cases and 174 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-16 with 2 faults, 3 failures, 174 passing Test Cases and 113 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-17 with 2 faults, 4 failures, 173 passing Test Cases and 115 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-23 with 3 faults, 120 failures, 57 passing Test Cases and 173 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-27 with 3 faults, 142 failures, 35 passing Test Cases and 168 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-30 with 3 faults, 65 failures, 112 passing Test Cases and 151 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-33 with 4 faults, 98 failures, 79 passing Test Cases and 157 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-37 with 4 faults, 72 failures, 105 passing Test Cases and 146 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-39 with 4 faults, 76 failures, 101 passing Test Cases and 148 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-44 with 5 faults, 27 failures, 150 passing Test Cases and 164 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-46 with 5 faults, 55 failures, 122 passing Test Cases and 153 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-50 with 5 faults, 77 failures, 100 passing Test Cases and 148 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-52 with 6 faults, 88 failures, 89 passing Test Cases and 169 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-54 with 6 faults, 97 failures, 80 passing Test Cases and 148 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-55 with 6 faults, 109 failures, 68 passing Test Cases and 149 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-63 with 7 faults, 80 failures, 97 passing Test Cases and 167 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-66 with 7 faults, 45 failures, 132 passing Test Cases and 161 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-68 with 7 faults, 94 failures, 83 passing Test Cases and 151 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-74 with 8 faults, 112 failures, 65 passing Test Cases and 170 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-77 with 8 faults, 98 failures, 79 passing Test Cases and 169 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-79 with 8 faults, 62 failures, 115 passing Test Cases and 154 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-85 with 9 faults, 89 failures, 88 passing Test Cases and 167 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-87 with 9 faults, 115 failures, 62 passing Test Cases and 170 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-89 with 9 faults, 99 failures, 78 passing Test Cases and 169 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-91 with 10 faults, 85 failures, 92 passing Test Cases and 166 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-95 with 10 faults, 45 failures, 132 passing Test Cases and 153 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-99 with 10 faults, 67 failures, 110 passing Test Cases and 168 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-102 with 11 faults, 85 failures, 92 passing Test Cases and 167 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-105 with 11 faults, 115 failures, 62 passing Test Cases and 171 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-110 with 11 faults, 108 failures, 69 passing Test Cases and 171 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-114 with 12 faults, 93 failures, 84 passing Test Cases and 172 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-116 with 12 faults, 71 failures, 106 passing Test Cases and 174 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-119 with 12 faults, 66 failures, 111 passing Test Cases and 167 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-121 with 13 faults, 117 failures, 60 passing Test Cases and 173 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-123 with 13 faults, 92 failures, 85 passing Test Cases and 173 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-125 with 13 faults, 87 failures, 90 passing Test Cases and 168 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-132 with 14 faults, 103 failures, 74 passing Test Cases and 175 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-134 with 14 faults, 89 failures, 88 passing Test Cases and 172 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-136 with 14 faults, 105 failures, 72 passing Test Cases and 173 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-142 with 2 faults, 177 failures, 0 passing Test Cases and 175 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-145 with 3 faults, 162 failures, 15 passing Test Cases and 171 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-150 with 4 faults, 176 failures, 1 passing Test Cases and 175 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-151 with 5 faults, 175 failures, 2 passing Test Cases and 175 relevant methods.
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-156 with 6 faults, 97 failures, 80 passing Test Cases and 158 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-158 with 7 faults, 176 failures, 1 passing Test Cases and 175 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-160 with 8 faults, 173 failures, 4 passing Test Cases and 175 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-164 with 9 faults, 144 failures, 33 passing Test Cases and 165 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-166 with 10 faults, 172 failures, 5 passing Test Cases and 175 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-169 with 11 faults, 126 failures, 51 passing Test Cases and 169 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-172 with 12 faults, 145 failures, 32 passing Test Cases and 167 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-175 with 13 faults, 134 failures, 43 passing Test Cases and 170 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-178 with 14 faults, 149 failures, 28 passing Test Cases and 159 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-183 with 15 faults, 114 failures, 63 passing Test Cases and 175 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-184 with 16 faults, 151 failures, 26 passing Test Cases and 175 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-189 with 17 faults, 156 failures, 21 passing Test Cases and 175 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-190 with 18 faults, 131 failures, 46 passing Test Cases and 173 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-195 with 19 faults, 116 failures, 61 passing Test Cases and 174 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version littleproxy-197 with 20 faults, 146 failures, 31 passing Test Cases and 175 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing project pdfbox
+Processing project symja-parser
+Processing project traccar
+Processing project urban-airship
+Processing next faulty Version urban-airship-5 with 1 faults, 3 failures, 3 passing Test Cases and 44 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-6 with 1 faults, 4 failures, 220 passing Test Cases and 1185 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-8 with 1 faults, 6 failures, 168 passing Test Cases and 263 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-15 with 2 faults, 11 failures, 217 passing Test Cases and 1299 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-16 with 2 faults, 17 failures, 207 passing Test Cases and 1294 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-18 with 2 faults, 7 failures, 217 passing Test Cases and 1195 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-22 with 3 faults, 5 failures, 224 passing Test Cases and 1299 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-26 with 3 faults, 5 failures, 190 passing Test Cases and 275 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-29 with 3 faults, 8 failures, 135 passing Test Cases and 215 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-32 with 4 faults, 11 failures, 213 passing Test Cases and 1267 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-35 with 4 faults, 15 failures, 218 passing Test Cases and 1399 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-38 with 4 faults, 17 failures, 155 passing Test Cases and 342 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-41 with 5 faults, 53 failures, 179 passing Test Cases and 1576 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-47 with 5 faults, 13 failures, 211 passing Test Cases and 1322 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-48 with 5 faults, 24 failures, 206 passing Test Cases and 1311 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-53 with 6 faults, 25 failures, 207 passing Test Cases and 1564 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-56 with 6 faults, 21 failures, 213 passing Test Cases and 1483 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-60 with 6 faults, 12 failures, 213 passing Test Cases and 1415 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-63 with 7 faults, 18 failures, 207 passing Test Cases and 1470 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-65 with 7 faults, 23 failures, 208 passing Test Cases and 1458 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-69 with 7 faults, 25 failures, 207 passing Test Cases and 1507 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-73 with 8 faults, 38 failures, 191 passing Test Cases and 1408 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-75 with 8 faults, 28 failures, 201 passing Test Cases and 1590 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-80 with 8 faults, 44 failures, 185 passing Test Cases and 1511 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-83 with 9 faults, 33 failures, 196 passing Test Cases and 1577 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-86 with 9 faults, 31 failures, 200 passing Test Cases and 1556 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-89 with 9 faults, 24 failures, 205 passing Test Cases and 1444 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-92 with 10 faults, 31 failures, 201 passing Test Cases and 1590 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-96 with 10 faults, 26 failures, 206 passing Test Cases and 1514 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-100 with 10 faults, 34 failures, 197 passing Test Cases and 1706 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-105 with 11 faults, 39 failures, 192 passing Test Cases and 1664 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-106 with 11 faults, 28 failures, 200 passing Test Cases and 1506 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-110 with 11 faults, 35 failures, 198 passing Test Cases and 1665 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-111 with 12 faults, 35 failures, 199 passing Test Cases and 1509 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-113 with 12 faults, 47 failures, 182 passing Test Cases and 1729 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-119 with 12 faults, 29 failures, 203 passing Test Cases and 1620 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-122 with 13 faults, 37 failures, 192 passing Test Cases and 1698 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-124 with 13 faults, 23 failures, 207 passing Test Cases and 1650 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-128 with 13 faults, 43 failures, 189 passing Test Cases and 1605 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-135 with 14 faults, 31 failures, 196 passing Test Cases and 1595 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-137 with 14 faults, 40 failures, 191 passing Test Cases and 1522 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-140 with 14 faults, 37 failures, 195 passing Test Cases and 1694 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-143 with 15 faults, 42 failures, 190 passing Test Cases and 1747 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-147 with 15 faults, 40 failures, 194 passing Test Cases and 1646 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-150 with 15 faults, 37 failures, 192 passing Test Cases and 1673 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-153 with 16 faults, 28 failures, 200 passing Test Cases and 1646 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-155 with 16 faults, 33 failures, 199 passing Test Cases and 1728 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-157 with 16 faults, 39 failures, 193 passing Test Cases and 1818 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-162 with 17 faults, 47 failures, 184 passing Test Cases and 1698 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-165 with 17 faults, 39 failures, 194 passing Test Cases and 1742 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-167 with 17 faults, 31 failures, 202 passing Test Cases and 1744 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-171 with 18 faults, 46 failures, 187 passing Test Cases and 1662 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-174 with 18 faults, 46 failures, 188 passing Test Cases and 1667 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-179 with 18 faults, 59 failures, 173 passing Test Cases and 1850 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-185 with 19 faults, 52 failures, 179 passing Test Cases and 1710 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-187 with 19 faults, 44 failures, 190 passing Test Cases and 1794 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-189 with 19 faults, 57 failures, 177 passing Test Cases and 1757 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-191 with 20 faults, 54 failures, 180 passing Test Cases and 1820 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-193 with 20 faults, 56 failures, 176 passing Test Cases and 1830 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-197 with 20 faults, 67 failures, 165 passing Test Cases and 1804 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-202 with 2 faults, 3 failures, 221 passing Test Cases and 1176 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-206 with 3 faults, 14 failures, 210 passing Test Cases and 1265 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-208 with 4 faults, 26 failures, 204 passing Test Cases and 1351 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-211 with 5 faults, 20 failures, 208 passing Test Cases and 1350 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-214 with 6 faults, 39 failures, 191 passing Test Cases and 1507 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-216 with 7 faults, 18 failures, 211 passing Test Cases and 1476 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-219 with 8 faults, 21 failures, 211 passing Test Cases and 1493 relevant methods.
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-223 with 9 faults, 28 failures, 203 passing Test Cases and 1521 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-225 with 10 faults, 23 failures, 206 passing Test Cases and 1518 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-229 with 11 faults, 26 failures, 205 passing Test Cases and 1573 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-231 with 12 faults, 34 failures, 197 passing Test Cases and 1565 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-235 with 13 faults, 50 failures, 182 passing Test Cases and 1769 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-239 with 14 faults, 25 failures, 207 passing Test Cases and 1647 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-240 with 15 faults, 39 failures, 191 passing Test Cases and 1615 relevant methods.
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-245 with 16 faults, 35 failures, 198 passing Test Cases and 1605 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-248 with 17 faults, 51 failures, 180 passing Test Cases and 1710 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-250 with 18 faults, 35 failures, 196 passing Test Cases and 1649 relevant methods.
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-253 with 19 faults, 98 failures, 135 passing Test Cases and 2005 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing next faulty Version urban-airship-255 with 20 faults, 63 failures, 170 passing Test Cases and 1761 relevant methods.
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+TRACE: minimalFixedFailures is zero
+Analyzing the version with 4 strategies.
+Processing project vectorz
+Analysis of Train Set finished!

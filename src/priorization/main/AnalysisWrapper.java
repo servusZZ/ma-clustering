@@ -5,14 +5,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import data_export.evaluation.EvaluationFileWriter;
 import data_import.faulty_versions.FaultyVersionsReader;
 import evaluation.OptimalEvaluationEntry;
 import faulty_project.globals.FaultyProjectGlobals;
+import hac.main.HACFactory;
 import prioritization.data_objects.FaultyVersion;
 import prioritization.data_objects.TrainSet;
 import prioritization.evaluation.ProjectEvaluationEntry;
+import prioritization.strategies.HACPrioritizationBase;
 import prioritization.strategies.OptimalPrioritization;
 /**
  * Wrapper to analyze a pit project. Usage:<br>
@@ -149,6 +152,39 @@ public class AnalysisWrapper {
 			Map<Integer, OptimalEvaluationEntry> optimalMetrics = analyzeOptimalStrategy(faultyVersion);
 			List<PrioritizationStrategyBase> strategies = PrioritizationStrategyFactory.createTrainSetStrategies(
 					faultyVersion.getFailures(), faultyVersion.getPassedTCs(), faultyVersion.getFaults());
+			System.out.println("Analyzing the version with " + strategies.size() + " strategies.");
+			for (PrioritizationStrategyBase strategy: strategies) {
+				analyzeStrategy(strategy, faultyVersion.getProjectMetrics(), optimalMetrics);
+			}
+		}
+	}
+
+	public void analyzeTrainSetStrictConfigs(String dir, String projectName) throws IOException {
+		if (!trainSet.containsProject(projectName)) {
+			return;
+		}
+		while(FaultyVersionsReader.hasNextFaultyVersionsFile(dir)) {
+			List<FaultyVersion> trainSetVersionsPerFile = FaultyVersionsReader.importNextFaultyVersionsFile_TrainSet(dir, trainSet);
+			if (trainSetVersionsPerFile.isEmpty()) {
+				continue;
+			}
+			analyzeStrictStrategiesForTrainSet(trainSetVersionsPerFile);
+		}
+		FaultyVersionsReader.resetFilesCounter();
+	}
+	
+	/**
+	 * Analyzes the passed imported faulty versions of a PIT project with 4 specific stricter HAC Configs,
+	 * so that the parameters are trained.
+	 */
+	private void analyzeStrictStrategiesForTrainSet(List<FaultyVersion> faultyVersions) throws IOException {
+		for (FaultyVersion faultyVersion:faultyVersions) {
+			FaultyProjectGlobals.init(faultyVersion);
+			System.out.println("Processing next faulty Version " + faultyVersion.getProjectMetrics().getId() + " with " + faultyVersion.getFaults().size() + " faults, " + FaultyProjectGlobals.failuresCount + " failures, " + faultyVersion.getPassedTCs().length + " passing Test Cases and " + FaultyProjectGlobals.methodsCount + " relevant methods.");
+			Map<Integer, OptimalEvaluationEntry> optimalMetrics = analyzeOptimalStrategy(faultyVersion);
+			List<PrioritizationStrategyBase> strategies = new ArrayList<PrioritizationStrategyBase>();
+			strategies.addAll(HACFactory.createStrictHACStrategies(faultyVersion.getFailures(),
+					faultyVersion.getPassedTCs(), faultyVersion.getFaults()));
 			System.out.println("Analyzing the version with " + strategies.size() + " strategies.");
 			for (PrioritizationStrategyBase strategy: strategies) {
 				analyzeStrategy(strategy, faultyVersion.getProjectMetrics(), optimalMetrics);

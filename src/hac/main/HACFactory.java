@@ -15,6 +15,7 @@ import prioritization.data_objects.TestCase;
 import prioritization.strategies.HACPrioritizationBase;
 
 public class HACFactory {
+	
 	public static List<HACPrioritizationBase> createHACStrategies(TestCase[] failures, TestCase[] passedTCs, Set<Fault> faults){
 		List<HACPrioritizationBase> strategies = new ArrayList<HACPrioritizationBase>();
 		
@@ -23,7 +24,6 @@ public class HACFactory {
 		
 		/**	 Varianten bilden nach: MetricBerechnung * Thresholds
 		 * 		+2 pro MetricBerechnung einmal ohne dissimilarityGreatestFirst, stattdessen Greatest und Random
-		 * 		(+ pro MetricBerechnung einmal ohne Refinement?)
 		 * 		RepSelection scheint gut zu funktionieren --> daher nicht variieren bzw. Fälle in denen es nicht zu 100% funktioniert vorerst manuell inspizieren
 		 * 
 		 * MetricBerechnung = {OverlapConfig, JaccardDistance}
@@ -31,6 +31,55 @@ public class HACFactory {
 		 * 
 		 * 2 * 3 + 2 + 2 = 10 Varianten
 		 */
+		return strategies;
+	}
+	public static List<HACPrioritizationBase> createStrictHACStrategies(TestCase[] failures, TestCase[] passedTCs, Set<Fault> faults){
+		List<HACPrioritizationBase> strategies = new ArrayList<HACPrioritizationBase>();
+		
+		HACPrioritizationBase strategy = new HierarchicalAgglomerativeClustering(failures, passedTCs, faults);
+		SBFLConfiguration sbflConfig = new JaccardSBFLConfiguration();
+		sbflConfig.MOST_SUSP_MAX_COUNT = 12;
+		sbflConfig.MOST_SUSP_MIN_COUNT = 4;
+		sbflConfig.MOST_SUSP_THRESHOLD = 0.20;
+		sbflConfig.SIMILARITY_THRESHOLD = 0.70;
+		strategy.setSbflConfig(sbflConfig);
+		strategy.setClusterPrioritization(new ClusterPrioritizationDissimilarGreatestFirst(sbflConfig));
+		strategy.setStrategyName("HAC Jaccard strict");
+		strategies.add(strategy);
+		
+		strategy = new HierarchicalAgglomerativeClustering(failures, passedTCs, faults);
+		sbflConfig = new JaccardSBFLConfiguration();
+		sbflConfig.MOST_SUSP_MAX_COUNT = 12;
+		sbflConfig.MOST_SUSP_MIN_COUNT = 4;
+		sbflConfig.MOST_SUSP_THRESHOLD = 0.20;
+		sbflConfig.SIMILARITY_THRESHOLD = 0.85;
+		strategy.setSbflConfig(sbflConfig);
+		strategy.setClusterPrioritization(new ClusterPrioritizationDissimilarGreatestFirst(sbflConfig));
+		strategy.setStrategyName("HAC Jaccard veryStrict");
+		strategies.add(strategy);
+		
+		strategy = new HierarchicalAgglomerativeClustering(failures, passedTCs, faults);
+		sbflConfig = new OverlapConfiguration();
+		sbflConfig.MOST_SUSP_MAX_COUNT = 12;
+		sbflConfig.MOST_SUSP_MIN_COUNT = 4;
+		sbflConfig.MOST_SUSP_THRESHOLD = 0.20;
+		sbflConfig.SIMILARITY_THRESHOLD = 0.70;
+		strategy.setSbflConfig(sbflConfig);
+		strategy.setClusterPrioritization(new ClusterPrioritizationDissimilarGreatestFirst(sbflConfig));
+		strategy.setStrategyName("HAC Overlap strict");
+		strategies.add(strategy);
+		
+		strategy = new HierarchicalAgglomerativeClustering(failures, passedTCs, faults);
+		sbflConfig = new OverlapConfiguration();
+		sbflConfig.MOST_SUSP_MAX_COUNT = 12;
+		sbflConfig.MOST_SUSP_MIN_COUNT = 4;
+		sbflConfig.MOST_SUSP_THRESHOLD = 0.20;
+		sbflConfig.SIMILARITY_THRESHOLD = 0.85;
+		strategy.setSbflConfig(sbflConfig);
+		strategy.setClusterPrioritization(new ClusterPrioritizationDissimilarGreatestFirst(sbflConfig));
+		strategy.setStrategyName("HAC Overlap veryStrict");
+		strategies.add(strategy);
+		
 		return strategies;
 	}
 	
