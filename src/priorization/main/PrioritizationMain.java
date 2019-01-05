@@ -4,15 +4,14 @@ import java.io.File;
 import java.io.IOException;
 
 public class PrioritizationMain {
-	private static final String PIT_MUTATIONS_BASE_DIR = "C:\\study\\SWDiag\\sharedFolder_UbuntuVM\\MA\\pit_data\\";
+//	private static final String PIT_MUTATIONS_BASE_DIR = "C:\\study\\SWDiag\\sharedFolder_UbuntuVM\\MA\\pit_data\\";
+	private static final String PIT_MUTATIONS_BASE_DIR = "F:\\Backups\\pit_data\\";
 	
 //	for each pit project
 //	processProject
 //		import & analyze for each File
 //	or: printStatistics
 	public static void main(String[] args) throws IOException {
-		//TODO: copy faultyVersions back to MA directory
-		//			debug & run, check if train Set versions are skipped successfully
 		analyzeTestSet();
 //		String projectName = "commons-geometry";
 //		String dir = "C:\\study\\SWDiag\\sharedFolder_UbuntuVM\\MA\\pit_data\\" +  projectName + "\\pit-data\\";
