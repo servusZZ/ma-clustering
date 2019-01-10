@@ -12,7 +12,7 @@ public class PrioritizationMain {
 //		import & analyze for each File
 //	or: printStatistics
 	public static void main(String[] args) throws IOException {
-		analyzeTestSet();
+		analyzeTrainSet();
 //		String projectName = "commons-geometry";
 //		String dir = "C:\\study\\SWDiag\\sharedFolder_UbuntuVM\\MA\\pit_data\\" +  projectName + "\\pit-data\\";
 //		String projectName = "test-lessVersions";
@@ -32,20 +32,6 @@ public class PrioritizationMain {
 		System.out.println("Analysis of Test Set finished!");
 	}
 	
-	@SuppressWarnings("unused")
-	private static void analyzeTrainSetStrictVersions() throws IOException{
-		System.out.println("Analysis of Train Set started...");
-		AnalysisWrapper	wrapper = new AnalysisWrapper();
-		File[] projectDirectories = new File(PIT_MUTATIONS_BASE_DIR).listFiles(File::isDirectory);
-		for (File projectDir : projectDirectories) {
-			String projectName = projectDir.getPath().substring(projectDir.getPath().lastIndexOf('\\') + 1, projectDir.getPath().length());
-			String dir = projectDir.getPath() + "\\pit-data\\";
-			System.out.println("Processing project " + projectName);
-			wrapper.analyzeTrainSetStrictConfigs(dir, projectName);
-		}
-		System.out.println("Analysis of Train Set finished!");
-	}
-	@SuppressWarnings("unused")
 	private static void analyzeTrainSet() throws IOException {
 		System.out.println("Analysis of Train Set started...");
 		AnalysisWrapper	wrapper = new AnalysisWrapper();
