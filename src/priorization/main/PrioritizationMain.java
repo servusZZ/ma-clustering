@@ -4,8 +4,8 @@ import java.io.File;
 import java.io.IOException;
 
 public class PrioritizationMain {
-//	private static final String PIT_MUTATIONS_BASE_DIR = "C:\\study\\SWDiag\\sharedFolder_UbuntuVM\\MA\\pit_data\\";
-	private static final String PIT_MUTATIONS_BASE_DIR = "F:\\Backups\\pit_data\\";
+	private static final String PIT_MUTATIONS_BASE_DIR = "C:\\study\\SWDiag\\sharedFolder_UbuntuVM\\MA\\pit_data\\";
+//	private static final String PIT_MUTATIONS_BASE_DIR = "F:\\Backups\\pit_data\\";
 	
 //	for each pit project
 //	processProject

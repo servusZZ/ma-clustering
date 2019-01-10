@@ -12,9 +12,9 @@ public class PerformanceEvaluationEntry {
 	private double fixedFailuresPerformance;
 	
 	public PerformanceEvaluationEntry(EvaluationEntry metrics, OptimalEvaluationEntry optimalMetrics) {
-		foundFaultsPerformance = PerformanceMetricsCalculation.getFoundFaultsPerformance(metrics.getFoundFaults(), optimalMetrics.getFoundFaults(), optimalMetrics.getMinimumFoundFaults());
+		foundFaultsPerformance = PerformanceMetricsCalculation.getFoundFaultsPerformance(metrics.getFoundFaults(), optimalMetrics.getFoundFaults());
 		wastedEffortPerformance = PerformanceMetricsCalculation.getWastedEffortPerformance(metrics.getWastedEffort(), optimalMetrics.getBiggestPossibleWastedEffort());
-		fixedFailuresPerformance = PerformanceMetricsCalculation.getFixedFailuresPerformance(metrics.getFixedFailures(), optimalMetrics.getFixedFailures(), optimalMetrics.getMinimumFixedFailures());
+		fixedFailuresPerformance = PerformanceMetricsCalculation.getFixedFailuresPerformance(metrics.getFixedFailures(), optimalMetrics.getFixedFailures());
 		performanceIndex = PerformanceMetricsCalculation.getOverallPerformanceIndex(foundFaultsPerformance, wastedEffortPerformance, fixedFailuresPerformance);
 		initPerformanceIndexForCorrelationAnalysis();
 	}
