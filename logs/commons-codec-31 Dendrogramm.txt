@@ -1,0 +1,35 @@
+  Merge:    dissimilarity=1     obs=16
+    Merge:    dissimilarity=0.9609119423666167     obs=11
+      Merge:    dissimilarity=0.5448269362913084     obs=9
+        Merge:   dissimilarity=0.47551699577561646     obs=6
+          Merge:    dissimilarity=0.04761904761904767     obs=2
+            Observation: 0
+            Observation: 6
+          Merge:    dissimilarity=0.40550807217473883     obs=4
+            Merge:    dissimilarity=0.34615384615384615    obs=3
+              Merge:    dissimilarity=0    obs=2
+                Observation: 1
+                Observation: 4
+              Observation: 9
+            Observation: 5
+        Merge:   dissimilarity=0.27586206896551724     obs=3
+          Observation: 8
+          Merge:    dissimilarity=0    obs=2
+            Observation: 13
+            Observation: 14
+      Merge:     dissimilarity=0.46153846153846156     obs=2
+        Observation: 2
+        Observation: 3
+    Merge:      dissimilarity=0.41290322580645167     obs=5
+      Observation: 7
+      Merge:      dissimilarity=0.23888888888888885     obs=4
+        Merge:      dissimilarity=0.10344827586206895     obs=3
+          Merge:      dissimilarity=0.07407407407407407     obs=2
+            Observation: 10
+            Observation: 11
+          Observation: 15
+        Observation: 12
+        
+        
+        
+Observation-IDs stimmen nicht mit excel überein

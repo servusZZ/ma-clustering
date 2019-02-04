@@ -156,4 +156,12 @@ public class AnalysisWrapper {
 		}
 	}
 	
+	public void analyzeSpecificVersion(String dir, String projectName, String faultyVersionID) throws IOException {
+		FaultyVersion faultyVersion = FaultyVersionsReader.importSpecificVersion(dir, faultyVersionID);
+		List<FaultyVersion> faultyVersions = new ArrayList<FaultyVersion>();
+		faultyVersions.add(faultyVersion);
+		analyze(faultyVersions);
+		FaultyVersionsReader.resetFilesCounter();
+	}
+	
 }

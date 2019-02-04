@@ -24,10 +24,10 @@ public class HACFactory {
 		sbflConfig.MOST_SUSP_THRESHOLD = 0.20;
 		/**	a greater value means that 2 clusters are similar.<br>
 		 * 3 of 5 overlap elements are not considered as similar, 6 of 9 are similar */
-		sbflConfig.SIMILARITY_THRESHOLD = 0.60;
+		sbflConfig.SIMILARITY_THRESHOLD = 0.70;
 		strategy.setSbflConfig(sbflConfig);
 		strategy.setClusterPrioritization(new ClusterPrioritizationDissimilarGreatestFirst(sbflConfig));
-		strategy.setStrategyName("HAC Overlap medium");
+		strategy.setStrategyName("HAC Overlap strict");
 		return strategy;
 	}
 	

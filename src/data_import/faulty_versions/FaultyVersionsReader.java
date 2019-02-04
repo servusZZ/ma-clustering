@@ -44,6 +44,31 @@ public class FaultyVersionsReader {
 		return faultyVersions;
 	}
 	/**
+	 * Imports all files of the passed dir and searches for the faultyVersionID. Returns the FaultyVersion with the
+	 * respective ID.
+	 * Returns null, iff the faultyVersionID doesn't exist.
+	 */
+	public static FaultyVersion importSpecificVersion(String dir, String faultyVersionID) throws IOException{
+		while (FaultyVersionsReader.hasNextFaultyVersionsFile(dir)) {
+			// import next file
+			String outputFile = getFaultyVersionsFileName(dir, filesCounter);
+			FileInputStream fis = new FileInputStream(new File(outputFile));
+			XMLDecoder decoder = new XMLDecoder(fis);
+			@SuppressWarnings("unchecked")
+			List<FaultyVersion> faultyVersions = (List<FaultyVersion>) decoder.readObject();
+			decoder.close();
+			fis.close();
+			filesCounter++;
+			for (FaultyVersion faultyVersion : faultyVersions) {
+				if (faultyVersionID.equals(faultyVersion.getFaultyVersionId())) {
+					initTestCases(faultyVersion);
+					return faultyVersion;
+				}
+			}
+		}
+		return null;
+	}
+	/**
 	 * equivalent to the next() method of an Iterator<List<FaultyVersion>>.
 	 */
 	public static List<FaultyVersion> importNextFaultyVersionsFile(String dir) throws IOException{
@@ -92,6 +117,18 @@ public class FaultyVersionsReader {
 			for (int i = 0; i < faultyVersion.getPassedTCs().length; i++) {
 				faultyVersion.getPassedTCs()[i].initBooleanAndNumericCoverage();
 			}
+		}
+	}
+	/**
+	 * Inits the coverage fields of the Test Case objects.
+	 */
+	private static void initTestCases(FaultyVersion faultyVersion) {
+		FaultyProjectGlobals.init(faultyVersion);
+		for (int i = 0; i < FaultyProjectGlobals.failuresCount; i++) {
+			faultyVersion.getFailures()[i].initBooleanAndNumericCoverage();
+		}
+		for (int i = 0; i < faultyVersion.getPassedTCs().length; i++) {
+			faultyVersion.getPassedTCs()[i].initBooleanAndNumericCoverage();
 		}
 	}
 }

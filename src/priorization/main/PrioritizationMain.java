@@ -12,13 +12,16 @@ public class PrioritizationMain {
 //		import & analyze for each File
 //	or: printStatistics
 	public static void main(String[] args) throws IOException {
-		analyzeTrainSet();
+		analyzeSpecificVersion();
+//		analyzeTrainSet();
 //		String projectName = "commons-geometry";
 //		String dir = "C:\\study\\SWDiag\\sharedFolder_UbuntuVM\\MA\\pit_data\\" +  projectName + "\\pit-data\\";
 //		String projectName = "test-lessVersions";
 //		String dir = "C:\\study\\SWDiag\\sharedFolder_UbuntuVM\\MA\\pit_data_faultyVersions\\" + projectName + "\\pit-data\\";	
 //		wrapper.processProject(dir, projectName);
 	}
+
+	@SuppressWarnings("unused")
 	private static void analyzeTestSet() throws IOException {
 		System.out.println("Analysis of Test Set started...");
 		AnalysisWrapper	wrapper = new AnalysisWrapper();
@@ -31,7 +34,7 @@ public class PrioritizationMain {
 		}
 		System.out.println("Analysis of Test Set finished!");
 	}
-	
+	@SuppressWarnings("unused")
 	private static void analyzeTrainSet() throws IOException {
 		System.out.println("Analysis of Train Set started...");
 		AnalysisWrapper	wrapper = new AnalysisWrapper();
@@ -45,9 +48,13 @@ public class PrioritizationMain {
 		System.out.println("Analysis of Train Set finished!");
 	}
 	
-	@SuppressWarnings("unused")
-	private static void debugSpecificVersions() throws IOException {
-		String[] projects = {""};
+	private static void analyzeSpecificVersion() throws IOException {
+		String projectName = "commons-codec";
+		String faultyVersionID = "commons-codec-31";
+		String dir = PIT_MUTATIONS_BASE_DIR + projectName + "\\pit-data\\";
+		AnalysisWrapper wrapper = new AnalysisWrapper();
+		wrapper.analyzeSpecificVersion(dir, projectName, faultyVersionID);
+		System.out.println("Analysis of Specific Version(s) finished!");
 	}
 	@SuppressWarnings("unused")
 	private static void printProjects() throws IOException {
